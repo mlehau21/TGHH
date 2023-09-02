@@ -150,7 +150,7 @@
                                         </div>
                                         <div class="col-md-7 section-heading-right">
                                             <ul class="nav nav-tabs d-flex justify-content-md-end justify-content-between align-items-center border-0 " id="myTab" role="tablist">
-                                              
+
                                                 @foreach($postCategory as $category)
                                                     <li class="nav-item pe-4">
                                                         <button class="nav-link text-gray fs-14 fw-6 px-0 {{($loop->index == 0) ? 'active' : ''}}" id="{{$category->id}}-tab" data-bs-toggle="tab" data-bs-target="#menu-{{$category->id}}" type="button" role="tab" aria-controls="contact" aria-selected="false">{!! $category->name !!}</button>
@@ -161,9 +161,9 @@
                                     </div>
                                 </div>
                                 <div class="tab-content">
-                                    
+
                                     @foreach($postCategory as $category)
-                                        
+
                                         @php
                                             $catePost = $category->posts->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE);
                                         @endphp
@@ -315,7 +315,7 @@
                                              width="800" class="img-fluid">
                                     </a>
                                 </div>
-                               
+
                             @endif
                                 @if(isset(getAdImageMobile(\App\Models\AdSpaces::INDEX_TOP)->code))
                                     <div class=" container index-top-mobile ad-space-url-mobile">
@@ -348,7 +348,7 @@
                                             @php
                                                 $range = getCategoryNumbers(range(1,$category->posts->count()));
                                             @endphp
-                                          
+
                                             @foreach($category->posts->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE) as $categoryPost)
                                                 <div class="{{ in_array($loop->iteration,$range) ? 'col-lg-7 ' : 'col-lg-5' }} mb-4 pb-lg-0 pb-sm-3">
                                                     <div class="post-image position-relative rounded-10">
@@ -404,7 +404,7 @@
                             @endif
                         @endforeach
                         <!-- end technology-section -->
-                    
+
                         @if(checkAdSpaced('index_bottom'))
                             @if(isset(getAdImageDesktop(\App\Models\AdSpaces::INDEX_BOTTOM)->code))
                                 <div class="container index-top-desktop ad-space-url-desktop">
@@ -412,7 +412,7 @@
                                 </div>
                             @else
                             <div class="container index-top-desktop">
-                                
+
                                 <a href="{{getAdImageDesktop(\App\Models\AdSpaces::INDEX_BOTTOM)->ad_url}}"
                                    target="_blank">
                                     <img src="{{asset(getAdImageDesktop(\App\Models\AdSpaces::INDEX_BOTTOM)->ad_banner)}}"
@@ -488,7 +488,7 @@
                                                             {!! Str::limit($latestPost->description,220) !!}
                                                         </p>
                                                         <div class="desc d-flex">
-                                                            
+
                                                             <p class="fs-14 text-black mb-0"><a href="{{route('userDetails',$latestPost->user->id)}}" class="text-black">{{ __('messages.common.by') }}  {{ $latestPost->user->full_name }}</a>
                                                             </p>
                                                             <span class=" text-primary  px-2"> | </span>
@@ -702,7 +702,7 @@
         @endif
         <!-- end featured-post-section -->
 
-        <!-- start blog-section -->
+        {{-- <!-- start blog-section -->
         <section class="blog-section bg-black py-100">
             <div class="container">
                 <div class="row justify-content-center">
@@ -727,7 +727,7 @@
                 </div>
             </div>
         </section>
-        <!-- end blog-section -->
+        <!-- end blog-section --> --}}
         <!-- end sub-section -->
     </div>
 @endsection

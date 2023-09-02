@@ -8,6 +8,8 @@
     width: 80px;
 }
 
+
+
 .add-post-card .item-icon .icon-article {
     color: #009ef7;
     font-size: 48px;
@@ -115,7 +117,7 @@
 .custom-card-layout :hover{
     color: #009ef7;
     border-color: #009ef7;
-    background-color: #f1faff !important;   
+    background-color: #f1faff !important;
 }
 .btn-check:checked + .btn.btn-outline.btn-outline-dashed.btn-outline-default, .show > .btn.btn-outline.btn-outline-dashed.btn-outline-default {
         color: #009ef7;
@@ -320,7 +322,7 @@ input[type=number] {
         max-width:300px;
         max-height: 200px;
     }
- 
+
 }
 .badge-light-primary {
     color: #009ef7;

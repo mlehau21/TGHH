@@ -43,7 +43,7 @@ class CategoryPage extends SearchableComponent
      */
     public function postsData()
     {
-        $this->setQuery($this->getQuery()->with(['category', 'postArticle', 'postGalleries', 'postSortLists.media', 'postSortLists', 'media', 'user'])->where('visibility', Post::VISIBILITY_ACTIVE));
+        $this->setQuery($this->getQuery()->with(['category', 'postArticle', 'postGalleries', 'postSortLists.media', 'postSortLists', 'media', 'user'])->where('visibility', Post::VISIBILITY_ACTIVE)->orderByDesc('created_at'));
 
         $categoryId = (! empty(Category::where('slug', $this->slug)->first())) ? Category::where('slug', $this->slug)
             ->first()->id : null;

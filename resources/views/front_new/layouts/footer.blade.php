@@ -1,8 +1,8 @@
 <footer class="footer pt-60 bg-light">
     <div class="container">
         <div class="row justify-content-between">
-            <div class="col-lg-4 col-sm-7 ">
-                <div class="footer-logo">
+            <div class="col-lg-2 col-sm-7 ">
+                <div>
                     <a href="{{ route('front.home') }}">
                         <img src="{{$settings['logo']}}" alt="" class="img-fluid w-100 h-100" />
                     </a>
@@ -85,7 +85,7 @@
                         <a href="{{route('page.Terms')}}" class="fs-12 me-4 {{ Request::is('terms-conditions*') ? 'text-success' : 'text-gray' }}">{{__('messages.setting.terms-conditions')}}</a>
                         <a href="{{route('page.support')}}" class="fs-12 me-4 {{ Request::is('support*') ? 'text-success' : 'text-gray' }}">{{__('messages.setting.support')}}</a>
                         <a href="{{route('page.privacy')}}" class="fs-12 {{ Request::is('privacy*') ? 'text-success' : 'text-gray' }}">{{__('messages.setting.privacy')}}</a>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
