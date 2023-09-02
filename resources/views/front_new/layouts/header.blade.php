@@ -55,7 +55,7 @@
                             <a href="{{$settings['instagram_url']}}" target="_blank"> <i class="fa-brands fa-instagram text-secondary fs-18"></i></a>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
+                    <div class="col-xl-1 col-lg-4 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
                         @if(getLogInUser())
                             <div class="language-dropdown ms-2 d-none d-sm-block">
                                 <a class="nav-link p-0 fs-14 pe-3" href="javascript:void(0)"
@@ -512,51 +512,7 @@
                             </div>
                         </form>
                     </div>
-                    <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                        <i class="fa-solid fa-bars  fs-20"></i>
-                    </a>
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-                        <a type="button" class="closebtn text-reset text-black" data-bs-dismiss="offcanvas" aria-label="Close">&times;</a>
-                        <div class="offcanvas-content pt-60">
-                            <div class="mb-5">
-                                <a href="/">
-                                    <img src="{{ $settings['logo'] }}" alt="" class="w-100 h-100" />
-                                </a>
-                            </div>
-                            <div class="contact-desc">
-                                <h3 class="text-black fw-7 mb-4">{{__('messages.setting.contact_information')}}</h3>
-                                <div class="desc d-flex  mb-4">
-                                    <div class="icon  d-flex justify-content-center align-items-center">
-                                        <i class="fa-solid fa-location-dot  text-black"></i>
-                                    </div>
-                                    <a class="fs-14 text-black mb-0  ps-4">{!! $settings['contact_address'] !!}</a>
-                                </div>
-                                <div class="desc d-flex align-items-sm-center mb-4">
-                                    <div class="icon d-flex justify-content-center align-items-center">
-                                        <i class="fa-solid fa-envelope  text-black"></i>
-                                    </div>
-                                    <a href="{{"mailto:".$settings['email']}}" class="fs-14 text-black mb-0  ps-4 d-flex  align-items-center"><span class="__cf_email__">{{$settings['email']}}</span></a>
-                                </div>
-                                <div class="desc d-flex align-items-sm-center mb-4 ">
-                                    <div  class="icon bground d-flex justify-content-center align-items-center">
-                                        <i class="fa-solid fa-phone  text-black"></i>
-                                    </div>
-                                    <a href="tel:+91 70963 36561"
-                                       class="fs-14 text-black mb-0  ps-4 -flex  align-items-center">{{$settings['contact_no']}}</a>
-                                </div>
-                            </div>
-                            <div class="social-icon d-flex  mt-4 flex-wrap">
-                                <a href="{{$settings['facebook_url']}}" target="_blank"> <i class="fa-brands fa-facebook-f text-gray fs-18 me-3"></i> </a>
-                                <a href="{{$settings['twitter_url']}}" target="_blank"> <i class="fa-brands fa-twitter text-gray fs-18 me-3"></i> </a>
-                                <a href="{{$settings['linkedin_url']}}" target="_blank"> <i class="fa-brands fa-linkedin-in  text-gray fs-18 me-3"></i></a>
-                                <a href="{{$settings['pinterest_url']}}" target="_blank"> <i class="fa-brands fa-pinterest text-gray fs-18 me-3"></i></a>
-                                <a href="{{$settings['instagram_url']}}" target="_blank"> <i class="fa-brands fa-instagram  text-gray fs-18 me-3"></i></a>
-                                <a href="{{$settings['vk_url']}}" target="_blank"> <i class="fa-brands fa-vk text-gray fs-18 me-3"></i></a>
-                                <a href="{{$settings['telegram_url']}}" target="_blank"> <i class="fa-brands fa-telegram text-gray fs-18 me-3"></i></a>
-                                <a href="{{$settings['youtube_url']}}" target="_blank"> <i class="fa-brands fa-youtube text-gray fs-18 "></i></a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>

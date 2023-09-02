@@ -18,7 +18,7 @@
     <meta http-equiv="content-language" content="{{ getFrontSelectLanguageName() ?? 'en' }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:image" content="@if(View::hasSection('meta_image'))@yield('meta_image')@else{{ $settings['logo'] }}@endif"/>
-    <title>@yield('title') | {{(!empty(getSEOTools()->site_title)) ? getSEOTools()->site_title : $settings['application_name']}} </title>
+    <title>@yield('title') </title>
 
     <link rel="shortcut icon" type="image/x-icon" href="{{ $settings['favicon'] }}">
     <link href="{{ mix('css/front-third-party.css') }}" rel="stylesheet" type="text/css">
