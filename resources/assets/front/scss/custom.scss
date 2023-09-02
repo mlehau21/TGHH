@@ -488,7 +488,7 @@ form {
 
     .theme-switch-box {
         align-items: center;
-        background: $primary;
+        background: #fd107c;
         border-radius: 1.5rem;
         display: grid;
         gap: 8px;
@@ -553,7 +553,7 @@ form {
     .swiper-slide-active{
         visibility: visible !important;
     }
-    
+
     .swiper-slide{
         visibility: hidden;
     }
@@ -596,7 +596,7 @@ form {
     padding: 10px;
     width: 320px;
     z-index: 999;
-    
+
     .search-submit {
         background-color: #17b978;
         border: none;
@@ -611,7 +611,7 @@ form {
         transition: all .3s ease;
         width: 40px;
     }
-    
+
     .custom-input-control {
         border: 0!important;
         border-radius: 3px;
@@ -748,16 +748,16 @@ form {
 .card {
     .admin-card-image {
         border-radius:5px 5px 0 0 !important;
-        width: 420px ; 
+        width: 420px ;
         height: 250px
     }
     .admin-post-card-body {
         border: 1px solid rgb(120,120,120,0.5) !important;
         border-radius: 0px 0px 5px 5px  !important;
         padding:15px !important;
-        
+
         h5{
-            color: #101010; 
+            color: #101010;
             font-weight: 600 !important;
             font-size: 16px;
             line-height: 160%;
@@ -768,7 +768,7 @@ form {
             font-size: 14px;
             line-height: 160%;
         }
-        
+
     }
 }
 .main-admin-card {
@@ -780,7 +780,7 @@ form {
     }
 }
 .admin-card {
-    
+
     background-color: white;
     border: 1px solid rgb(120,120,120,0.5) !important;
     padding:20px!important;

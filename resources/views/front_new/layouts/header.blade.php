@@ -1,6 +1,21 @@
 <link rel="stylesheet" type="text/css" href="" />
+@if(checkAdSpaced('header'))
+    @if(isset(getAdImageDesktop(\App\Models\AdSpaces::HEADER)->code))
+        <div class=" container index-top-desktop ad-space-url-desktop-header">
+            {!! getAdImageDesktop(\App\Models\AdSpaces::HEADER)->code !!}
+        </div>
+    @else
+    <div class="container index-top-desktop">
+        <a href="{{getAdImageDesktop(\App\Models\AdSpaces::HEADER)->ad_url}}"
+           target="_blank">
+            <img src="{{asset(getAdImageDesktop(\App\Models\AdSpaces::HEADER)->ad_banner)}}"
+                 width="1300" class="img-fluid">
+        </a>
+    </div>
+    @endif
+@endif
 <!-- start-breaking-news-section -->
-<div class="breaking-news-section py-2" id="topbar-wrap">
+{{-- <div class="breaking-news-section py-2" id="topbar-wrap">
     <div class="container">
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-8 text-center">
@@ -28,7 +43,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- end-breaking-news-section -->
 
 <!--start top-bar-section -->
@@ -55,7 +70,7 @@
                             <a href="{{$settings['instagram_url']}}" target="_blank"> <i class="fa-brands fa-instagram text-secondary fs-18"></i></a>
                         </div>
                     </div>
-                    <div class="col-xl-1 col-lg-4 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
+                    <div class="col-xl-2 col-lg-4 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
                         @if(getLogInUser())
                             <div class="language-dropdown ms-2 d-none d-sm-block">
                                 <a class="nav-link p-0 fs-14 pe-3" href="javascript:void(0)"
@@ -266,7 +281,7 @@
         </div>
     </div>
 </section>
-@if(checkAdSpaced('header'))
+{{-- @if(checkAdSpaced('header'))
     @if(isset(getAdImageDesktop(\App\Models\AdSpaces::HEADER)->code))
         <div class=" container index-top-desktop ad-space-url-desktop-header">
             {!! getAdImageDesktop(\App\Models\AdSpaces::HEADER)->code !!}
@@ -280,7 +295,7 @@
         </a>
     </div>
     @endif
-@endif
+@endif --}}
 {{--<div class="container py-2 heder-ad">--}}
 {{--    <img src="{{asset('images/1300.png')}}" width="1300" height="130" class="img-fluid">--}}
 {{--</div>--}}
