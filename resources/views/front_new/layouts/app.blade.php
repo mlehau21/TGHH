@@ -14,7 +14,7 @@
         <meta name="description" content="@if(View::hasSection('meta_description'))@yield('meta_description')
         @else{{!empty(getSEOTools()) ? getSEOTools()->site_description : ''}}@endif">
 {{--    @endif--}}
-    
+
     <meta http-equiv="content-language" content="{{ getFrontSelectLanguageName() ?? 'en' }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta property="og:image" content="@if(View::hasSection('meta_image'))@yield('meta_image')@else{{ $settings['logo'] }}@endif"/>
@@ -23,6 +23,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ $settings['favicon'] }}">
     <link href="{{ mix('css/front-third-party.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ mix('css/front-pages.css') }}" rel="stylesheet" type="text/css">
+    {{-- <style>
+        bground {
+          background-color:  #fe127e !important;
+        }
+    </style> --}}
+
 
 {{--        <link rel="stylesheet" href="{{ asset('front_web/css/all.min.css') }}" />--}}
 {{--    <link rel="stylesheet" type="text/css" href="{{asset('front_web/scss/bootstrap.css')}}">--}}
@@ -36,7 +42,7 @@
 {{--    @yield('pageCss')--}}
     @livewireStyles
     {!! reCaptcha()->renderJs() !!}
-    
+
 {{--    @livewireScripts--}}
     <script src="{{ asset('vendor/livewire/livewire.js') }}"></script>
     @include('livewire.livewire-turbo')
@@ -45,7 +51,7 @@
         $langSession = Session::get('frontLanguageChange');
         $frontLanguage = !isset($langSession) ? getSettingValue()['front_language'] : $langSession;
     @endphp
-    
+
     <script src="https://cdn.jsdelivr.net/gh/livewire/turbolinks@v0.1.x/dist/livewire-turbolinks.js"
             data-turbolinks-eval="false" data-turbo-eval="false"></script>
     <script src='https://www.google.com/recaptcha/api.js'></script>
