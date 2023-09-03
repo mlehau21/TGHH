@@ -219,7 +219,7 @@ header {
                 &.active,
                 &:hover,
                 &:focus {
-                    color: $primary;
+                    color: $black;
                 }
             }
             .dropdown-nav,
@@ -314,7 +314,7 @@ header {
                 padding: 10px 65px 10px 20px !important;
             }
             .search-form-box .form-group .search-submit {
-                background-color: $primary;
+                background-color: $black;
                 border: none;
                 border-radius: 3px;
                 color: $white;

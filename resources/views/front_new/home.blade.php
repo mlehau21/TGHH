@@ -141,7 +141,7 @@
                                 </div>
                             @endif
                         @endif
-                        <section class="whats-new-section pt-60">
+                        {{-- <section class="whats-new-section pt-60">
                             @if(!empty($firstHeadlinePost))
                                 <div class="section-heading pb-3">
                                     <div class="row align-items-center justify-content-between">
@@ -176,7 +176,7 @@
                                                                 <div class="card-img-top ">
                                                                     <a href="{{ route('detailPage',$posts->slug) }}">
 {{--                                                                        <img data-src="{{$posts->post_image}}" src="{{ asset('front_web/images/bg-process.png') }}" alt="" class="w-100 h-100 lazy">--}}
-                                                                        @if($posts->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                                        {{-- @if($posts->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                                             <button class="common-music-icon small-music-icon"
                                                                                     type="button">
                                                                                 <i class="icon fa-solid fa-music text-white"></i>
@@ -214,10 +214,10 @@
                                                             $middlePost = $catePost->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE)->first()
                                                         @endphp
                                                         <div class="new-post-image position-relative rounded-10">
-                                                            <a href="{{route('detailPage',$middlePost->slug)}}">
+                                                            <a href="{{route('detailPage',$middlePost->slug)}}"> --}}
 {{--                                                                <img data-src="{{($middlePost->post_image) ?--}}
 {{--                                                                            $middlePost->post_image :" /"}}" src="{{ asset('front_web/images/bg-process.png') }}" alt="" class="w-100 h-100 lazy" />--}}
-                                                                @if($middlePost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                                {{-- @if($middlePost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                                     <button class="common-music-icon tab-music-icon"
                                                                             type="button">
                                                                         <i class="icon fa-solid fa-music text-white"></i>
@@ -259,10 +259,10 @@
                                                         @foreach($catePost->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE)->skip(3)->take(2) as $posts)
                                                             <div class="card mb-md-0 pb-md-0 mb-lg-4 pb-lg-2 mb-sm-0 pb-sm-0 mb-4 pb-sm-2 me-lg-0 pe-sm-1 me-sm-2">
                                                                 <div class="card-img-top ">
-                                                                    <a href="{{ route('detailPage',$posts->slug) }}">
+                                                                    <a href="{{ route('detailPage',$posts->slug) }}"> --}}
 {{--                                                                        <img data-src="{{$posts->post_image}}" src="{{ asset('front_web/images/bg-process.png') }}" alt=""--}}
 {{--                                                                             class="w-100 h-100 lazy">--}}
-                                                                        @if($middlePost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                                        {{-- @if($middlePost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                                             <button class="common-music-icon small-music-icon"
                                                                                     type="button">
                                                                                 <i class="icon fa-solid fa-music text-white "></i>
@@ -300,7 +300,74 @@
                                     @endforeach
                                 </div>
                             @endif
+                        </section>  --}}
+                        @if( isset($latestPosts) && !$latestPosts->isEmpty())
+                        <section class="latest-news-section pt-60">
+                            <div class="section-heading border-bottom-0">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-6 section-heading-left">
+                                        <h2 class="text-black mb-0">{{ __('messages.details.latest_news') }}</h2>
+                                    </div>
+                                    <div class=" col-sm-6 text-end">
+                                        <a href="{{ route('allPosts') }}" class="fs-14 btn fw-6">{{ __('messages.details.view_more') }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="latest-news-post pt-40">
+                                <div class="row">
+                                    @foreach($latestPosts as $latestPost)
+                                        <div class="col-lg-6 mb-sm-5 mb-4 pb-lg-0 pb-sm-3">
+                                            <div class="card position-relative">
+                                                <div class="news-post-image rounded-10">
+                                                    <a href="{{route('detailPage',$latestPost->slug)}}">
+
+                                                        @if($latestPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                            <button class="common-music-icon all-posts-music-icon"
+                                                                    type="button">
+                                                                <i class="icon fa-solid fa-music text-white "></i>
+                                                            </button>
+                                                            <img src="{{$latestPost->post_image}}"
+                                                                 class="w-100 h-100" alt=""/>
+                                                        @elseif($latestPost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                                            @php
+                                                                $thumbUrl = !empty($latestPost->postVideo) && !empty($latestPost->postVideo->thumbnail_image_url) ? $latestPost->postVideo->thumbnail_image_url : null;
+                                                                $thumbImage = !empty($latestPost->postVideo) && !empty($latestPost->postVideo->uploaded_thumb) ? $latestPost->postVideo->uploaded_thumb : asset('front_web/images/default.jpg')
+                                                            @endphp
+                                                            <button class="common-music-icon all-posts-music-icon"
+                                                                    type="button">
+                                                                <i class="icon fa-solid fa-play text-white "></i>
+                                                            </button>
+                                                            <img src="{{ (!empty($thumbUrl) ? $thumbUrl : $thumbImage)  }}"
+                                                                 class="w-100 h-100" alt=""/>
+                                                        @else
+                                                            <img src="{{$latestPost->post_image}}"
+                                                                 class="w-100 h-100" alt=""/>
+                                                        @endif
+                                                    </a>
+                                                </div>
+                                                <a href="{{route('categoryPage',$latestPost->category->slug)}}" class="tags position-absolute fw-7">{{ $latestPost->category->name }}</a>
+                                                <div class="news-post-content">
+                                                    <h3 class="text-black py-2 fw-7 mb-0 ">
+                                                        <a href="{{route('detailPage',$latestPost->slug)}}" class="text-black py-2 fw-7">{!! $latestPost->title!!}</a>
+                                                    </h3>
+                                                    <p class="fs-14 text-gray mb-0 pb-2">
+                                                        {!! Str::limit($latestPost->description,220) !!}
+                                                    </p>
+                                                    <div class="desc d-flex">
+
+                                                        <p class="fs-14 text-black mb-0"><a href="{{route('userDetails',$latestPost->user->id)}}" class="text-black">{{ __('messages.common.by') }}  {{ $latestPost->user->full_name }}</a>
+                                                        </p>
+                                                        <span class=" text-primary  px-2"> | </span>
+                                                        <p class="fs-14 text-black mb-0">{{ ucfirst(__('messages.common.'.strtolower($latestPost->created_at->format('M')))) }} {{ $latestPost->created_at->format('d , Y') }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
                         </section>
+                    @endif
                         <!-- end what's new-section -->
                         @if(checkAdSpaced('index_top'))
                             @if(isset(getAdImageDesktop(\App\Models\AdSpaces::INDEX_TOP)->code))
@@ -435,7 +502,7 @@
                                 @endif
                         @endif
                         <!-- start latest-news-section -->
-                        @if( isset($latestPosts) && !$latestPosts->isEmpty())
+                        {{-- @if( isset($latestPosts) && !$latestPosts->isEmpty())
                             <section class="latest-news-section pt-60">
                                 <div class="section-heading border-bottom-0">
                                     <div class="row align-items-center">
@@ -454,7 +521,7 @@
                                                 <div class="card position-relative">
                                                     <div class="news-post-image rounded-10">
                                                         <a href="{{route('detailPage',$latestPost->slug)}}">
-{{--                                                            <img data-src="{{$latestPost->post_image}}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy">--}}
+
                                                             @if($latestPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                                 <button class="common-music-icon all-posts-music-icon"
                                                                         type="button">
@@ -501,7 +568,165 @@
                                     </div>
                                 </div>
                             </section>
-                        @endif
+                        @endif --}}
+                        @if(!$featurePostCategory->isEmpty())
+                        <section class="featured-post-section py-60">
+                            <div class="container">
+                                <div class="section-heading pb-3">
+                                    <div class="row align-items-center justify-content-between">
+                                        <div class="col-md-6 section-heading-left">
+                                            <h2 class="text-black">{{ __('messages.details.featured_post') }}</h2>
+                                        </div>
+                                        <div class="col-md-6 section-heading-right">
+                                            <ul class="nav nav-tabs d-flex justify-content-md-end justify-content-between align-items-center border-0 " id="myTab" role="tablist">
+                                                @foreach($featurePostCategory as $category)
+                                                    <li class="nav-item pe-md-5 pe-4">
+                                                        <button class="nav-link text-gray fs-14 fw-6 px-0 {{($loop->index == 0) ? 'active' : ''}}" id="{{$category->id}}-f-tab" data-bs-toggle="tab" data-bs-target="#menu-f-{{$category->id}}" type="button" role="tab" aria-controls="contacts" aria-selected="false">{!! $category->name !!}</button>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    @foreach($featurePostCategory as $category)
+                                        @php
+                                            $featCatePost = $category->posts->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE);
+                                        @endphp
+                                        @if(!empty($featCatePost->first()))
+                                            <div class="tab-pane fade featured-post pt-60 {{($loop->index == 0) ? 'show active' : ''}}" id="menu-f-{{$category->id}}" role="tabpanel" aria-labelledby="{{$category->id}}-f-tab">
+                                                <div class="row">
+                                                    <div class="col-lg-3 d-lg-block d-sm-flex">
+                                                        @foreach($featCatePost->where('featured', 1)->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE)->skip(1)->take(2) as $posts)
+                                                            <div class="card mb-4 pb-sm-2 me-lg-0 pe-sm-1 me-sm-2">
+                                                                <div class="card-img-top ">
+                                                                    <a href="{{ route('detailPage',$posts->slug) }}">
+
+                                                                        @if($posts->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                                            <button class="common-music-icon small-music-icon"
+                                                                                    type="button">
+                                                                                <i class="icon fa-solid fa-music text-white "></i>
+                                                                            </button>
+                                                                            <img src="{{$posts->post_image}}" class="w-100 h-100"
+                                                                                 alt=""/>
+                                                                        @elseif($posts->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                                                            @php
+                                                                                $thumbUrl = !empty($posts->postVideo) && !empty($posts->postVideo->thumbnail_image_url) ? $posts->postVideo->thumbnail_image_url : null;
+                                                                                $thumbImage = !empty($posts->postVideo) && !empty($posts->postVideo->uploaded_thumb) ? $posts->postVideo->uploaded_thumb : asset('front_web/images/default.jpg')
+                                                                            @endphp
+                                                                            <button class="common-music-icon small-music-icon"
+                                                                                    type="button">
+                                                                                <i class="icon fa-solid fa-play text-white "></i>
+                                                                            </button>
+                                                                            <img src="{{ (!empty($thumbUrl) ? $thumbUrl : $thumbImage)  }}" class="w-100 h-100"
+                                                                                 alt=""/>
+                                                                        @else
+                                                                            <img src="{{$posts->post_image}}" class="w-100 h-100"
+                                                                                 alt=""/>
+                                                                        @endif
+                                                                    </a>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title mb-1 fs-16 text-black fw-6">
+                                                                        <a href="{{ route('detailPage',$posts->slug) }}" class="fs-16 text-black fw-6">{!! \Illuminate\Support\Str::limit($posts->title,40,'...') !!}</a>
+                                                                    </h5>
+                                                                    <span class="card-text fs-12 text-gray">{{ ucfirst(__('messages.common.'.strtolower($posts->created_at->format('M')))) }} {{ $posts->created_at->format('d, Y') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                    <div class="col-lg-6 mb-lg-0">
+                                                        @php
+                                                            $middleFeaturePost = $featCatePost->where('featured', 1)->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE)->first()
+                                                        @endphp
+                                                        <div class="featured-post-image position-relative rounded-10">
+                                                            <a href="{{route('detailPage',$middleFeaturePost->slug)}}">
+
+                                                                @if($middleFeaturePost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                                    <button class="common-music-icon tab-music-icon"
+                                                                            type="button">
+                                                                        <i class="icon fa-solid fa-music text-white "></i>
+                                                                    </button>
+                                                                    <img src="{{($middleFeaturePost->post_image) ?
+                                                                          $middleFeaturePost->post_image :" /"}}"
+                                                                         class="w-100 h-100" alt=""/>
+                                                                @elseif($middleFeaturePost->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                                                    @php
+                                                                        $thumbUrl = !empty($middleFeaturePost->postVideo) && !empty($middleFeaturePost->postVideo->thumbnail_image_url) ? $middleFeaturePost->postVideo->thumbnail_image_url : null;
+                                                                        $thumbImage = !empty($middleFeaturePost->postVideo) && !empty($middleFeaturePost->postVideo->uploaded_thumb) ? $middleFeaturePost->postVideo->uploaded_thumb : asset('front_web/images/default.jpg')
+                                                                    @endphp
+                                                                    <button class="common-music-icon tab-music-icon"
+                                                                            type="button">
+                                                                        <i class="icon fa-solid fa-play text-white "></i>
+                                                                    </button>
+                                                                    <img src="{{ (!empty($thumbUrl) ? $thumbUrl : $thumbImage)  }}"
+                                                                         class="w-100 h-100" alt=""/>
+                                                                @else
+                                                                    <img src="{{($middleFeaturePost->post_image) ?
+                                                                          $middleFeaturePost->post_image :" /"}}"
+                                                                         class="w-100 h-100" alt=""/>
+                                                                @endif
+                                                            </a>
+                                                            <a href="{{route('detailPage',$middleFeaturePost->slug)}}" class="overlay">
+                                                            </a>
+                                                            <div class="featured-post-content position-absolute px-30 mb-3 pb-1">
+                                                                <h3 class="text-white pb-sm-2">
+                                                                    <a href="{{ route('detailPage',$middleFeaturePost->slug) }}" class="text-white">{!!  $middleFeaturePost->title !!}</a>
+                                                                    </h3>
+                                                                <div class="desc d-sm-flex align-items-center justify-content-between">
+                                                                    <p class="fs-14 text-white mb-sm-0 mb-1">
+                                                                        {{ ucfirst(__('messages.common.'.strtolower($middleFeaturePost->created_at->format('M')))) }} {{ $middleFeaturePost->created_at->format('d, Y') }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-3 d-lg-block d-sm-flex mt-lg-0 mt-sm-5 mt-4">
+                                                        @foreach($featCatePost->where('featured', 1)->where('visibility',\App\Models\Post::VISIBILITY_ACTIVE)->skip(3)->take(2) as $posts)
+                                                            <div class="card mb-md-0 pb-md-0 mb-lg-4 pb-lg-2 mb-sm-0 pb-sm-0 mb-4 pb-sm-2 me-lg-0 pe-sm-1 me-sm-2">
+                                                                <div class="card-img-top ">
+                                                                    <a href="{{ route('detailPage',$posts->slug) }}">
+
+                                                                        @if($posts->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+                                                                            <button class="common-music-icon small-music-icon"
+                                                                                    type="button">
+                                                                                <i class="icon fa-solid fa-music text-white "></i>
+                                                                            </button>
+                                                                            <img src="{{$posts->post_image}}" class="w-100 h-100"
+                                                                                 alt=""/>
+                                                                        @elseif($posts->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE)
+                                                                            @php
+                                                                                $thumbUrl = !empty($posts->postVideo) && !empty($posts->postVideo->thumbnail_image_url) ? $posts->postVideo->thumbnail_image_url : null;
+                                                                                $thumbImage = !empty($posts->postVideo) && !empty($posts->postVideo->uploaded_thumb) ? $posts->postVideo->uploaded_thumb : asset('front_web/images/default.jpg')
+                                                                            @endphp
+                                                                            <button class="common-music-icon small-music-icon"
+                                                                                    type="button">
+                                                                                <i class="icon fa-solid fa-play text-white "></i>
+                                                                            </button>
+                                                                            <img src="{{ (!empty($thumbUrl) ? $thumbUrl : $thumbImage)  }}" class="w-100 h-100"
+                                                                                 alt=""/>
+                                                                        @else
+                                                                            <img src="{{$posts->post_image}}" class="w-100 h-100"
+                                                                                 alt=""/>
+                                                                        @endif
+                                                                    </a>
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title mb-1 fs-16 text-black fw-6">
+                                                                        <a href="{{ route('detailPage',$posts->slug) }}" class="fs-16 text-black fw-6">{!! \Illuminate\Support\Str::limit($posts->title,40,'...') !!}</a>
+                                                                    </h5>
+                                                                    <span class="card-text fs-12 text-gray">{{ ucfirst(__('messages.common.'.strtolower($posts->created_at->format('M')))) }} {{ $posts->created_at->format('d, Y') }}</span>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                @endforeach
+                                </div>
+                            </div>
+                        </section>
+                    @endif
                         <!-- end latest-news-section -->
                         @if(checkAdSpaced('index_bottom'))
                             @if(isset(getAdImageDesktop(\App\Models\AdSpaces::INDEX_BOTTOM)->code))
@@ -541,7 +766,7 @@
         </section>
 
         <!-- start featured-post-section -->
-        @if(!$featurePostCategory->isEmpty())
+        {{-- @if(!$featurePostCategory->isEmpty())
             <section class="featured-post-section py-60">
                 <div class="container">
                     <div class="section-heading pb-3">
@@ -573,7 +798,7 @@
                                                 <div class="card mb-4 pb-sm-2 me-lg-0 pe-sm-1 me-sm-2">
                                                     <div class="card-img-top ">
                                                         <a href="{{ route('detailPage',$posts->slug) }}">
-{{--                                                            <img data-src="{{$posts->post_image}}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy">--}}
+
                                                             @if($posts->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                                 <button class="common-music-icon small-music-icon"
                                                                         type="button">
@@ -613,8 +838,7 @@
                                             @endphp
                                             <div class="featured-post-image position-relative rounded-10">
                                                 <a href="{{route('detailPage',$middleFeaturePost->slug)}}">
-{{--                                                    <img data-src="{{($middleFeaturePost->post_image) ?--}}
-{{--                                                                            $middleFeaturePost->post_image :" /"}}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" />--}}
+
                                                     @if($middleFeaturePost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                         <button class="common-music-icon tab-music-icon"
                                                                 type="button">
@@ -658,7 +882,7 @@
                                                 <div class="card mb-md-0 pb-md-0 mb-lg-4 pb-lg-2 mb-sm-0 pb-sm-0 mb-4 pb-sm-2 me-lg-0 pe-sm-1 me-sm-2">
                                                     <div class="card-img-top ">
                                                         <a href="{{ route('detailPage',$posts->slug) }}">
-{{--                                                            <img data-src="{{$posts->post_image}}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy">--}}
+
                                                             @if($posts->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                                 <button class="common-music-icon small-music-icon"
                                                                         type="button">
@@ -699,7 +923,7 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
         <!-- end featured-post-section -->
 
         {{-- <!-- start blog-section -->

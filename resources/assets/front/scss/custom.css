@@ -196,7 +196,8 @@ h3 {
 }
 
 a {
-    text-decoration: none
+    text-decoration: none;
+
 }
 
 li {
@@ -561,7 +562,7 @@ form .form-control {
 
 .theme-switch-box-wrap .theme-switch-box {
     align-items: center;
-    background: #17b978;
+    background: #fc147c;
     border-radius: 1.5rem;
     display: grid;
     gap: 8px;

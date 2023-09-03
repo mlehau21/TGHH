@@ -1,13 +1,13 @@
 <div class="aside-menu-container" id="sidebar">
     <div class="aside-menu-container__aside-logo flex-column-auto">
-        <a href="{{ url('/') }}" data-turbo="false" class="text-decoration-none sidebar-logo d-flex align-items-center"
-           title="{{ (strlen(getAppName()) > 12 ) ? substr(getAppName(), 0,12).'...' : getAppName() }}">
-            <div class="image image-mini me-3">
+        <a href="{{ url('/') }}">
+            {{-- <div class="image image-mini me-3"> --}}
+            <div>
 
-            <img src="{{ $settings['logo'] }}" 
-                     class="img-fluid" alt="InfyNews-logo" width="40px" height="30px">
+            <img src="{{ $settings['logo'] }}"
+                     class="img-fluid" alt="TGHH-logo" width=auto height="40px">
             </div>
-            <span class="text-gray-900 fs-4">{{ (strlen(getAppName()) > 12 ) ? substr(getAppName(), 0,12).'...' : getAppName() }}</span>
+            {{-- <span class="text-gray-900 fs-4">{{ (strlen(getAppName()) > 12 ) ? substr(getAppName(), 0,12).'...' : getAppName() }}</span> --}}
         </a>
         <button type="button" class="btn px-0 aside-menu-container__aside-menubar d-lg-block d-none sidebar-btn">
             <i class="fa-solid fa-bars fs-1"></i>

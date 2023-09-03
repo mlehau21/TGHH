@@ -67,7 +67,7 @@ return [
     'facebook_app_id'     => env('FACEBOOK_APP_ID'),
     'facebook_app_secret' => env('FACEBOOK_APP_SECRET'),
     'facebook_redirect'   => env('FACEBOOK_REDIRECT'),
-    
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Ho_Chi_Minh',
 
     /*
     |--------------------------------------------------------------------------
@@ -193,7 +193,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,          
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -222,7 +222,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
-    
+
     'aliases' => [
     'App' => Illuminate\Support\Facades\App::class,
     'Arr' => Illuminate\Support\Arr::class,

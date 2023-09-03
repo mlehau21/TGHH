@@ -57,9 +57,9 @@
             </div>
             <div class="col-xl-7 col-md-8 col-9 ">
                 <div class="row align-items-center justify-content-end  ">
-                    {{-- <div class="col-xxl-4 col-lg-4 col-sm-6  br-gray  text-end  pe-xl-4 pe-lg-4 ">
+                    <div class="col-xxl-4 col-lg-4 col-sm-6  br-gray  text-end  pe-xl-4 pe-lg-4 ">
                         <span class="text-secondary fs-14 pe-sm-0">{{ \Carbon\Carbon::now()->isoFormat('ddd, MMM DD YYYY') }}</span>
-                    </div> --}}
+                    </div>
                     <div class="col-xl-4 col-lg-4 br-gray py-1 d-lg-block d-none ">
                         <div class="social-icon d-flex justify-content-around ">
                             <a href="{{$settings['facebook_url']}}" target="_blank"> <i
@@ -107,15 +107,17 @@
                         @else
                             <div class="d-flex">
                                 <a href="{{ route('login') }}"
-                                   class="fs-14 text-primary fw-6  login-btn d-none d-sm-block"
-                                   data-turbo="false">{{ __('messages.common.login') }}</a>
-                                <samp class="text-secondary">/</samp>
+                                   class="fs-14 text-black fw-6  login-btn d-none d-sm-block"
+                                   data-turbo="false">Đăng nhập</a>
+                                   {{-- data-turbo="false">{{ __('messages.common.login') }}</a> --}}
+                                {{-- <samp class="text-secondary">/</samp> --}}
                                 <a href="{{ route('register') }}"
-                                   class="fs-14 text-primary fw-6   login-btn d-none d-sm-block"
-                                   data-turbo="false">{{ __('auth.register') }}</a>
+                                   class="fs-14 text-black fw-6 login-btn d-none d-sm-block"
+                                   data-turbo="false">Đăng ký</a>
+                                   {{-- data-turbo="false">{{ __('auth.register') }}</a> --}}
                             </div>
                         @endif
-                        {{-- <div class="language-dropdown pe-sm-0 pe-2">
+                        <div class="language-dropdown pe-sm-0 pe-2">
                             <ul class="mb-0 ps-0">
                                 <li class="nav-item">
                                     <a class="nav-link fs-14 p-0 " href="javascript:void(0)"> {{ getFrontSelectLanguageName() }} <i class="fa-solid fa-angle-down icon fs-12"></i></a>
@@ -131,10 +133,10 @@
                                     </ul>
                                 </li>
                             </ul>
-                        </div> --}}
+                        </div>
                             {{-- <button class="dropdown border-0 bg-transparent position-relative me-2 d-lg-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <a href="javascript:void(0)"><i class="fa-solid fa-magnifying-glass fs-15"></i></a>
-                            </button> --}}
+                            </button>
                             <div class="dropdown-menu mobile-search" >
                                 <form action="{{ route('allPosts') }}" class="form search-form-box search-input">
                                     <div class="form-group border-0 search-input">
@@ -144,7 +146,7 @@
                                         </button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                         <div class="offcanvas-toggle d-lg-none d-block">
                             <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasToggle"
                                aria-controls="offcanvasToggle">
@@ -305,7 +307,7 @@
 <header class="bg-light d-lg-block d-none header">
     <div class="container">
         <div class="row align-items-center justify-content-between">
-            <div class="col-lg-11 col-12">
+            <div class="col-lg-11 col-11">
                 <nav>
                     <ul class="nav">
                         <li class="nav-item">
@@ -515,7 +517,7 @@
             <div class="col-lg-1">
                 <div class="dropdown header-icon d-lg-flex  justify-content-end d-none position-relative">
                     <button class="dropdown-toggle border-0 bg-transparent position-relative me-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <a href="javascript:void(0)"><i class="fa-solid fa-magnifying-glass fs-20 "></i></a>
+                        <a href="javascript:void(0)"><i class="fa-solid text-black fa-magnifying-glass fs-20 "></i></a>
                     </button>
                     <div class="dropdown-menu" >
                         <form action="{{ route('allPosts') }}" class="form search-form-box search-input">
