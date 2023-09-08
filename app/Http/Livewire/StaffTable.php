@@ -27,11 +27,8 @@ class StaffTable extends LivewireTableComponent
         return [
             Column::make(__('messages.user.full_name'), 'first_name')
                 ->sortable()->searchable(),
-            Column::make(__('messages.subscription.current_plan'), 'first_name')
-                ->sortable()->searchable(),
             Column::make(__('messages.staff.role'), 'roles.name')
                 ->searchable(),
-            Column::make(__('messages.staff.email_verified'), 'status'),
             Column::make(__('messages.status'), 'status'),
             Column::make(__('messages.common.action'), 'id')
                 ->addClass('custom-width-action'),
@@ -57,7 +54,7 @@ class StaffTable extends LivewireTableComponent
 
     public function query(): Builder
     {
-        return User::with('roles', 'subscription.plan')->where('type', User::STAFF);
+        return User::where('type', User::STAFF);
     }
 
     public function rowView(): string

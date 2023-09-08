@@ -6,7 +6,6 @@ use App\Models\MultiTenant;
 use App\Models\Plan;
 use App\Models\Role;
 use App\Models\SocialAccount;
-use App\Models\Subscription;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -65,19 +64,6 @@ class SocialAuthController extends Controller
 
                 /** @var User $user */
                 $user = User::create($userData)->assignRole($adminRole);
-                $plan = Plan::whereIsDefault(true)->first();
-
-                $subscription = new Subscription();
-                $subscription->plan_id = $plan->id;
-                $subscription->starts_at = Carbon::now();
-                $subscription->ends_at = Carbon::now()->addDays($plan->trial_days);
-                $subscription->plan_amount = $plan->price;
-                $subscription->plan_frequency = $plan->frequency;
-                $subscription->trial_ends_at = Carbon::now()->addDays($plan->trial_days);
-                $subscription->no_of_post = $plan->post_count;
-                $subscription->user_id = $user['id'];
-                $subscription->status = Subscription::ACTIVE;
-                $subscription->saveQuietly();
             }
 
             if (empty($existingAccount)) {

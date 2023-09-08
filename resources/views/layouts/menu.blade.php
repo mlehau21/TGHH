@@ -53,14 +53,6 @@
             <span class="aside-menu-title">{!! __('messages.post.posts') !!}</span>
         </a>
     </li>
-    <li class="nav-item {{ Request::is('admin/bulk-post*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('bulk-post-index') }}">
-        <span class="aside-menu-icon pe-3">
-           <i class="fa-solid fa-cloud-arrow-up"></i>
-        </span>
-            <span class="aside-menu-title">{!! __('messages.bulk_post.bulk_post') !!}</span>
-        </a>
-    </li>
 @endcanany
 @can('manage_emoji')
     <li class="nav-item {{ Request::is('admin/emoji*') ? 'active' : '' }}">
@@ -81,22 +73,6 @@
         </a>
     </li>
 @endcanany
-@can('cash_payment')
-    <li class="nav-item aside-item-collapse {{ Request::is(['admin/cash-payment*']) ? 'active' : '' }}">
-        <a class="nav-link aside-collapse-btn d-flex align-items-center py-3" href="{{ route('cash-payment') }}">
-        <span class="aside-menu-icon pe-3">
-            <i class="fa-solid fa-money-bill-wave"></i>
-        </span>
-            <span class="aside-menu-title">{!! __('messages.cash_payment') !!}</span>
-        </a>
-    </li>
-    <li class="nav-item {{ Request::is('admin/subscribed-user-plans*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('subscribed.user.plans') }}">
-            <span class="aside-menu-icon pe-3"><i class="fa fa-paper-plane"></i></span>
-            <span class="aside-menu-title">{{ __('messages.subscribed_user') }}</span>
-        </a>
-    </li>
-@endcan
 @can('manage_pages')
     <li class="nav-item {{ Request::is('admin/pages*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('pages.index') }}">
@@ -144,16 +120,6 @@
             <i class="fas fa-list fs-4"></i>
         </span>
             <span class="aside-menu-title">{!! __('messages.polls') !!}</span>
-        </a>
-    </li>
-@endcan
-@can('manage_plans')
-    <li class="nav-item {{ Request::is('admin/plans*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('plans.index') }}">
-        <span class="aside-menu-icon pe-3">
-            <i class="fa-solid fa-table-columns fs-4"></i>
-        </span>
-            <span class="aside-menu-title">{!! __('messages.plans.plans') !!}</span>
         </a>
     </li>
 @endcan
@@ -207,16 +173,6 @@
         </a>
     </li>
 @endcan
-@can('manage_news_letter')
-    <li class="nav-item {{ Request::is('admin/news-letter*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('news-letter.index') }}">
-        <span class="aside-menu-icon pe-3">
-            <i class="fas fa-newspaper fs-4"></i>
-        </span>
-            <span class="aside-menu-title">{!! __('messages.news_letters') !!}</span>
-        </a>
-    </li>
-@endcan
 @can('manage_comment')
     <li class="nav-item {{ Request::is('admin/post-comments*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('post-comments.index') }}">
@@ -224,16 +180,6 @@
             <i class="fas fa-comments fs-4"></i>
         </span>
             <span class="aside-menu-title">{!! __('messages.comments') !!}</span>
-        </a>
-    </li>
-@endcan
-@can('manage_mail_setting')
-    <li class="nav-item {{ Request::is('admin/mails*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('mails.index') }}">
-        <span class="aside-menu-icon pe-3">
-            <i class="fas fa-envelope fs-4"></i>
-        </span>
-            <span class="aside-menu-title">{!! __('messages.mail') !!}</span>
         </a>
     </li>
 @endcan
@@ -246,16 +192,6 @@
     </a>
 </li>
 @endif
-@can('manage_contacts')
-    <li class="nav-item {{ Request::is('admin/contacts*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('contacts.index') }}">
-        <span class="aside-menu-icon pe-3">
-            <i class="fas fa-id-badge fs-4"></i>
-        </span>
-            <span class="aside-menu-title">{!! __('messages.contacts') !!}</span>
-        </a>
-    </li>
-@endcan
 @can('manage_settings')
     <li class="nav-item {{ Request::is('admin/settings*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('setting.index') }}">

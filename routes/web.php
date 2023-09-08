@@ -3,7 +3,6 @@
 use App\Http\Controllers\AdSpacesController;
 use App\Http\Controllers\AlbumCategoriesController;
 use App\Http\Controllers\AlbumController;
-use App\Http\Controllers\CashPaymentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
@@ -14,12 +13,9 @@ use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\MailSettingController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
-use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\PlanController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
@@ -29,7 +25,6 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SocialAuthController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubCategoryController;
-use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -50,7 +45,7 @@ use Illuminate\Support\Facades\Route;
 //})->name('login');
 
 // Update profile
-Route::middleware('auth', 'xss', 'verified.user')->group(function () {
+Route::middleware('auth', 'xss')->group(function () {
     Route::get('/profile/edit', [UserController::class, 'editProfile'])->name('profile.setting');
     Route::put('/profile/update', [UserController::class, 'updateProfile'])->name('update.profile.setting');
     Route::put('/change-user-password', [UserController::class, 'changePassword'])->name('user.changePassword');
@@ -59,7 +54,7 @@ Route::middleware('auth', 'xss', 'verified.user')->group(function () {
 Route::get('/login/{provider}', [SocialAuthController::class, 'redirectToSocial'])->name('social.login');
 Route::get('/login/{provider}/callback', [SocialAuthController::class, 'handleSocialCallback']);
 
-Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(function () {
+Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
     //admin dashboard route
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/chart', [DashboardController::class, 'getChart'])->name('dashboard.chart');
@@ -80,19 +75,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::post('categories/{category}/update', [CategoryController::class, 'update'])->name('category.update');
         Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
     });
-    Route::middleware('permission:cash_payment')->group(function () {
-        Route::get('cash-payment', [CashPaymentController::class, 'index'])->name('cash-payment');
-        Route::get('subscribed-user-plans',
-            [SubscriptionController::class, 'subscribedUserPlans'])->name('subscribed.user.plans');
-        Route::get('/subscribedPlan/{id}/edit',
-            [SubscriptionController::class, 'userSubscribedPlanEdit'])->name('subscription.user.plan.edit');
-        Route::get('/subscribedPlan/{id}/update',
-            [SubscriptionController::class, 'userSubscribedPlanUpdate'])->name('subscription.user.plan.update');
-       
-        //sub category
-        Route::get('/download-attachment/{id}', [SubscriptionController::class, 'downloadAttachment']);
-    });
-    Route::get('/planSubscription/{id}', [SubscriptionController::class, 'planStatus'])->name('subscription.status');
     Route::middleware('permission:manage_sub_categories')->group(function () {
         Route::resource('sub-categories', SubCategoryController::class);
     });
@@ -126,20 +108,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::post('/payment-settings', [SettingController::class, 'paymentUpdate'])->name('payment-setting.update');
     });
 
-    // Contacts routes
-    Route::middleware('permission:manage_contacts')->group(function () {
-        Route::get('/contacts', [ContactController::class, 'listContact'])->name('contacts.index');
-        Route::get('/contacts/show/{id}', [ContactController::class, 'show'])->name('contacts.show');
-        Route::delete('/contacts/{id}', [ContactController::class, 'removeContact'])->name('Contacts.destroy');
-    });
-
-    //Mail
-    Route::middleware('permission:manage_mail_setting')->group(function () {
-        Route::resource('/mails', MailSettingController::class);
-        Route::post('/mails-verification', [MailSettingController::class, 'mail'])->name('mails-verification');
-        Route::post('/mails-contact', [MailSettingController::class, 'contactMessage'])->name('mails.contact');
-        Route::post('/mails-send-test', [MailSettingController::class, 'sendTestemail'])->name('mails-send-test');
-    });
     // Staff route
     Route::middleware('permission:manage_staff')->group(function () {
         Route::resource('staff', StaffController::class);
@@ -149,11 +117,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     // album category route
     Route::middleware('permission:manage_albums_category')->group(function () {
         Route::resource('album-categories', AlbumCategoriesController::class);
-    });
-    //Plans
-    Route::middleware('permission:manage_plans')->group(function () {
-        Route::resource('plans',PlanController::class);
-        Route::put('plans/{plan}/is_default',[PlanController::class, 'planMakeDefault'])->name('plan.make-default');
     });
     //Add-Post Route
     Route::middleware('permission:manage_all_post')->group(function () {
@@ -168,12 +131,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
         Route::get('post-type', [PostController::class, 'postType'])->name('post_type');
         Route::post('open-ai',[PostController::class, 'openAi'])->name('open_ai');
         Route::post('get-video', [PostController::class, 'getVideoByUrl'])->name('get-video-by-url');
-        Route::get('bulk-post', [PostController::class, 'bulkPost'])->name('bulk-post-index');
-        Route::get('bulk-post-ids-list', [PostController::class, 'idsList'])->name('bulk-post-ids-list');
-        Route::get('bulk-post-documentation', [PostController::class, 'Documentation'])->name('bulk-post-documentation');
-        Route::get('export', [PostController::class, 'export'])->name('export-csv');
-        Route::post('bulk-post-store', [PostController::class, 'bulkPostStore'])->name('bulk-post-store');
-       
     });
     Route::middleware('permission:manage_rss_feeds')->group(function () {
         Route::resource('rss-feed', RssFeedController::class);
@@ -219,9 +176,6 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
     Route::resource('gallery-images', GalleryController::class);
     Route::get('album-list', [GalleryController::class, 'getAlbums'])->name('album-list');
     Route::get('album-category-list', [GalleryController::class, 'getCategory'])->name('album-category-list');
-    Route::middleware('permission:manage_news_letter')->group(function () {
-        Route::resource('news-letter', NewsLetterController::class);
-    });
     
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {
@@ -233,7 +187,7 @@ Route::prefix('admin')->middleware('auth', 'xss', 'verified.user')->group(functi
 });
 Route::post('slug',[PostController::class,'slug'])->name('post-slug');
 Route::get('db-download', [DBDownloadController::class, 'DbDownload'])->name('db-download');
-Route::prefix('admin')->middleware('auth', 'role:admin', 'verified.user')->group(function () {
+Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::middleware('permission:manage_seo_tools')->group(function () {
         // SEO tools
         Route::get('seo-tools', [seoToolsController::class, 'index'])->name('seo-tools.index');

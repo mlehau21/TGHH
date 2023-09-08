@@ -8,7 +8,6 @@ use App\Models\PostGallery;
 use App\Models\PostSortList;
 use App\Models\PostVideo;
 use App\Models\Setting;
-use App\Models\Subscription;
 use App\Models\User;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\Support\PathGenerator\PathGenerator;
@@ -51,8 +50,6 @@ class CustomPathGenerator implements PathGenerator
                 return str_replace('{PARENT_DIR}', PostGallery::IMAGES, $path);
             case PostSortList::IMAGES:
                 return str_replace('{PARENT_DIR}', PostSortList::IMAGES, $path);
-            case Subscription::ATTACHMENT_PATH:
-                return str_replace('{PARENT_DIR}', Subscription::ATTACHMENT_PATH, $path);
             case 'default':
                 return '';
         }

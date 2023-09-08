@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\CheckSubscription;
 use App\Http\Middleware\CheckUserIsVerified;
 use App\Http\Middleware\SetLanguage;
 use App\Http\Middleware\XSS;
@@ -69,7 +68,6 @@ class Kernel extends HttpKernel
         'permission'       => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'xss'              => XSS::class,
         'verified.user'    => CheckUserIsVerified::class,
-        'subscription'     => CheckSubscription::class,
         'setLanguage'       => SetLanguage::class,
     ];
 }

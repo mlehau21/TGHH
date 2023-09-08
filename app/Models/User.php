@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Barryvdh\LaravelIdeHelper\Eloquent;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -85,7 +84,7 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @property-read Staff|null $staff
  */
-class User extends Authenticatable implements HasMedia, MustVerifyEmail
+class User extends Authenticatable implements HasMedia
 {
     use HasFactory, Notifiable, InteractsWithMedia, HasRoles;
 
@@ -226,11 +225,5 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
     public function staff()
     {
         return $this->hasOne(Staff::class);
-    }
-
-    public function subscription(): BelongsTo
-    {
-        return $this->belongsTo(Subscription::class, 'id', 'user_id')
-            ->where('status', Subscription::ACTIVE);
     }
 }

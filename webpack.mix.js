@@ -212,14 +212,10 @@ mix.js([
     'resources/assets/js/gallery/create_edit.js',
     'resources/assets/js/side_bar_menu_search/side_bar_menu_search.js',
     'resources/assets/js/add_post/create_edit.js',
-    'resources/assets/js/news_letter/news_letter.js',
     'resources/assets/js/contact/contact.js',
     'resources/assets/js/fullscreen/fullscreen.js',
     'resources/assets/js/rss-feed/create_edit.js',
     'resources/assets/js/ad_banner/ad_banner.js',
-    'resources/assets/js/bulk_post/bulk-post.js',
-    'resources/assets/js/plan/plans.js',
-    'resources/assets/js/subscription/upgrade.js',
     'resources/assets/js/emoji/emoji.js',
 ],'public/assets/js/pages.js').version();
 

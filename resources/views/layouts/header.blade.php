@@ -54,17 +54,6 @@
                                 {{ __('messages.user.account_setting') }}
                             </a>
                         </li>
-                        @if(Auth::user()->hasRole('customer'))
-                            <li>
-                                <a class="dropdown-item text-gray-900 cursor-pointer"
-                                   href="{{ route('subscription.index') }}">
-                            <span class="dropdown-icon me-4 text-gray-600">
-                                <i class="fa-solid fa-money-bill"></i>
-                            </span>
-                                    {{ __('messages.subscription.manage_subscription') }}
-                                </a>
-                            </li>
-                        @endif
                         <li>
                             <a class="dropdown-item text-gray-900 cursor-pointer" id="changePassword">
                                 <span class="dropdown-icon me-4 text-gray-600">

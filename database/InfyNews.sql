@@ -846,7 +846,6 @@ INSERT INTO `permissions` (`id`, `name`, `display_name`, `guard_name`, `created_
 (22, 'manage_language', 'Manage Language', 'web', '2023-03-23 08:22:10', '2023-03-23 08:22:10'),
 (23, 'manage_navigation', 'Manage Navigation', 'web', '2023-03-23 08:22:10', '2023-03-23 08:22:10'),
 (24, 'manage_seo_tools', 'Manage SEO Tools', 'web', '2023-03-23 08:22:10', '2023-03-23 08:22:10'),
-(25, 'manage_news_letter', 'Manage News Letter', 'web', '2023-03-23 08:22:10', '2023-03-23 08:22:10'),
 (26, 'manage_comment', 'Manage Comment', 'web', '2023-03-23 08:22:10', '2023-03-23 08:22:10'),
 (27, 'manage_contacts', 'Manage Contacts', 'web', '2023-03-23 08:22:10', '2023-03-23 08:22:10');
 

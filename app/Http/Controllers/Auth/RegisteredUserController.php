@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateRegisterRequest;
 use App\Models\MultiTenant;
-use App\Models\Plan;
 use App\Models\Role;
 use App\Models\Setting;
-use App\Models\Subscription;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Carbon\Carbon;
@@ -58,20 +56,6 @@ class RegisteredUserController extends Controller
                 'password'   => Hash::make($request->password),
                 'type'       => User::STAFF,
             ])->assignRole($adminRole);
-
-            $plan = Plan::whereIsDefault(true)->first();
-
-            Subscription::create([
-                'plan_id'        => $plan->id,
-                'plan_amount'    => $plan->price,
-                'plan_frequency' => Plan::MONTHLY,
-                'starts_at'      => Carbon::now(),
-                'ends_at'        => Carbon::now()->addDays($plan->trial_days),
-                'trial_ends_at'  => Carbon::now()->addDays($plan->trial_days),
-                'status'         => Subscription::ACTIVE,
-                'user_id'        => $user->id,
-                'no_of_post'     => $plan->post_count,
-            ]);
 
             DB::commit();
 

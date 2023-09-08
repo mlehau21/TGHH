@@ -11,13 +11,6 @@
         </a>
     </li>
 
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/cash-payment*')) ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/cash-payment*') ? 'active' : ''  }}"
-           href="{{ route('cash-payment') }}">
-            {{ __('messages.cash_payment') }}
-        </a>
-    </li>
-
     @can('manage_all_post')
 
         <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/posts*', 'admin/post-format*')) ? 'd-none' : '' }}">
@@ -33,24 +26,12 @@
                 {{ __('messages.add_post') }}
             </a>
         </li>
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/bulk-post*')) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('admin/bulk-post*') ? 'active' : ''  }}" href="{{ route('bulk-post-index') }}">
-                {{ __('messages.bulk_post.bulk_post') }}
-            </a>
-        </li>
     @endcan
     
     @can('manage_albums_category')
         <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/gallery-images*', 'admin/albums*','admin/album-categories*')) ? 'd-none' : '' }}">
             <a class="nav-link p-0 {{ Request::is('admin/album-categories*') ? 'active' : ''  }}" href="{{ route('album-categories.index') }}">
                 {{ __('messages.album_categories') }}
-            </a>
-        </li>
-    @endcan
-    @can('manage_plans')
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/plans*')) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('admin/plans*') ? 'active' : ''  }}" href="{{ route('plans.index') }}">
-                {{ __('messages.plans.plans') }}
             </a>
         </li>
     @endcan
@@ -143,16 +124,6 @@
             {{ __('messages.languages') }}
         </a>
     </li>
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/subscribed-user-plans*')) ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/subscribed-user-plans*') ? 'active' : ''  }}" href="{{ route('subscribed.user.plans') }}">
-            {{ __('messages.subscribed_user') }}        
-        </a>
-    </li>
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/news-letter*')) ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/news-letter*') ? 'active' : ''  }}" href="{{ route('news-letter.index') }}">
-            {{ __('messages.news_letters') }}
-        </a>
-    </li>
 
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/post-comments*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/post-comments*') ? 'active' : ''  }}" href="{{ route('post-comments.index') }}">
@@ -160,21 +131,9 @@
         </a>
     </li>
 
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/mails*')) ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/mails*') ? 'active' : ''  }}" href="{{ route('mails.index') }}">
-            {{ __('messages.mail') }}
-        </a>
-    </li>
-
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/settings*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/settings*') ? 'active' : ''  }}" href="{{ route('setting.index') }}">
             {{ __('messages.settings') }}
-        </a>
-    </li>
-
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/contacts*')) ? 'd-none' : '' }}">
-        <a class="nav-link p-0 {{ Request::is('admin/contacts*') ? 'active' : ''  }}" href="{{ route('contacts.index') }}">
-            {{ __('messages.contacts') }}
         </a>
     </li>
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('profile/edit*')) ? 'd-none' : '' }}">
@@ -208,18 +167,6 @@
             <a class="nav-link p-0 {{ Request::is('customer/post-comments*') ? 'active' : ''  }}"
                href="{{ route('customer.post-comments.index') }}">
                 {{ __('messages.comments') }}
-            </a>
-        </li>
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('customer/manage-subscription*')) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('customer/manage-subscription*') ? 'active' : ''  }}"
-               href="{{ route('subscription.index') }}">
-                {{ __('messages.subscription.manage_subscription') }}
-            </a>
-        </li>
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('customer/choose-payment-type*')) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('customer/choose-payment-type*') ? 'active' : ''  }}"
-               href="{{ route('subscription.upgrade') }}">
-                {{ __('messages.plans.plans') }}
             </a>
         </li>
     @endif
