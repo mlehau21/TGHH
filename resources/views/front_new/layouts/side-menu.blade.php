@@ -1,7 +1,7 @@
 <!-- start trending-post-section -->
 @if(!empty($getTrendingPosts))
 <section class="trending-post-section pt-100">
-    <div class="section-heading border-0 mb-2">
+    <div class="border-0 mb-2 pb-4">
         <div class="row align-items-center">
             <div class="col-12 section-heading-left">
                 <h2 class="text-black mb-0">{{ __('messages.details.trending_post') }}</h2>
@@ -99,43 +99,21 @@
 @endif
 <!-- end trending-post-section -->
 
-<!-- start hot-categories-section -->
-@if(!empty($getPopulerCategories))
-    <section class="hot-categories-section py-60 pb-4">
-        <div class="section-heading border-0 mb-30">
-            <div class="row align-items-center">
-                <div class="col-12 section-heading-left">
-                    <h2 class="text-black mb-0">{{ __('messages.details.hot_categories') }}</h2>
-                </div>
-            </div>
-        </div>
-        <div class="hot-categories-post">
-            @foreach(array_slice($getPopulerCategories,0,10) as $category)
-                <div class="post bg-light d-flex justify-content-between align-items-center px-4 pt-2 pb-2 mb-20 ">
-                    <div class="desc d-flex align-items-center">
-                        <i class="fa-solid fa-list me-4 text-primary"></i>
-                        <a href="{{ route('categoryPage',['category' => $category['slug']]) }}" class="fs-16 fw-6 text-black mb-0">{!! $category['name'] !!}</a>
-                    </div>
-                    <div class="numbers bg-white d-flex align-items-center justify-content-center rounded-circle">
-                        <a href="#" class="fs-16 fw-6 text-gray">{{ $category['posts_count'] }}</a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </section>
-@endif
-<!-- end hot-categories-section -->
 
 <!-- start popular-news-section -->
 @if(!empty(array_filter($getPopularNews)))
     <section class="popular-news-section">
-        <div class="section-heading border-0 mb-2">
+        <div class="border-0 mb-2 py-60 pb-4">
             <div class="row align-items-center">
                 <div class="col-12 section-heading-left">
                     <h2 class="text-black mb-0">{{ __('messages.details.popular_news') }}</h2>
                 </div>
             </div>
+
         </div>
+        {{-- <div class="section-heading border-0 mb-2 py-60 pb-4">
+            <h2>abc</h2>
+        </div> --}}
         <div class="popular-news-post">
             <div class="row">
                 <div class="col-lg-12 d-flex flex-wrap justify-content-between">
@@ -190,7 +168,7 @@
                             @if($loop->iteration >= 6)
                                 @break
                             @endif
-                        
+
                     @endforeach
                         @if(checkAdSpaced('popular_news_index_page'))
                             @if(isset(getAdImageDesktop(\App\Models\AdSpaces::INDEX_POPULAR_NEWS)->code))
@@ -220,7 +198,7 @@
                             </div>
                                 @endif
                         @endif
-                       
+
                 </div>
             </div>
         </div>
@@ -230,7 +208,7 @@
 <!-- end popular-news-section -->
 @if($getRecommendedPost->count() > 0)
     <section class="popular-news-section pt-5">
-        <div class="section-heading border-0 mb-2">
+        <div class=" border-0 mb-2">
             <div class="row align-items-center">
                 <div class="col-12 section-heading-left">
                     <h2 class="text-black mb-0 w-200px custom-label-laptop">{{ __('messages.details.recommended_post') }}</h2>
@@ -289,7 +267,7 @@
                         @if($loop->iteration >= 6)
                             @break
                         @endif
-                        
+
                     @endforeach
                         @if(checkAdSpaced('recommended_post_index_page'))
                             @if(isset(getAdImageDesktop(\App\Models\AdSpaces::INDEX_RECOMMENDED_POST)->code))
@@ -319,7 +297,7 @@
                             </div>
                                 @endif
                         @endif
-                    
+
                 </div>
             </div>
         </div>
@@ -329,7 +307,7 @@
 <!-- start popular-tag-section -->
 @if(count($getPopularTags))
 <section class="popular-tag-section py-4">
-    <div class="section-heading border-0 mb-30">
+    <div class=" border-0 mb-30">
         <div class="row align-items-center">
             <div class="col-12 section-heading-left">
                 <h2 class="text-black mb-0">{{ __('messages.details.popular_tags') }}</h2>
@@ -353,7 +331,7 @@
 <!-- start voting-poll-section -->
 @if(!empty($getPoll->count()))
     <section class="voting-poll-section">
-        <div class="section-heading border-0 mb-30">
+        <div class=" border-0 mb-30">
             <div class="row align-items-center">
                 <div class="col-12 section-heading-left">
                     <h2 class="text-black mb-0">{{ __('messages.details.voting_poll') }}</h2>
@@ -408,5 +386,5 @@
             </div>
         @endforeach
     </section>
-@endif  
+@endif
 <!-- end voting-poll-section -->

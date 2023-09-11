@@ -17,7 +17,7 @@
                                 @foreach($sliderPosts as $sliderPost)
                                     <div class="hero-image carousel-item @if($loop->iteration <=1) active @endif position-relative ">
                                         <a href="{{ route('detailPage',$sliderPost->slug )}}">
-{{--                                            <img data-src="{{ $sliderPost->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" alt=""/>--}}
+
                                             @if($sliderPost->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                 <button class="common-music-icon slider-music-icon" type="button">
                                                         <i class="icon fa-solid fa-music text-white"></i>
@@ -62,14 +62,13 @@
                             </button>
                         </div>
                     </div>
-                    <div class="col-lg-4 mt-lg-0  mt-sm-5 mt-4">
+                    <div class="col-lg-4 py-60 pb-4 mt-lg-0  mt-sm-5 mt-4">
                         <div class="row">
                             @foreach($headlinePosts as $row)
                                 <div class="col-sm-6 mb-4 pb-xl-1 ">
                                     <div class="card position-relative">
                                         <div class="card-img-top">
                                             <a href="{{route('detailPage',$row->slug)}}">
-{{--                                                <img data-src="{{ $row->post_image }}" src="{{ asset('front_web/images/bg-process.png') }}" alt="" class="w-100 h-100 lazy">--}}
                                                 @if($row->post_types == \App\Models\Post::AUDIO_TYPE_ACTIVE)
                                                     <button class="common-music-icon small-music-icon" type="button">
                                                         <i class="icon fa-solid fa-music text-white"></i>
@@ -108,6 +107,7 @@
         <!-- end hero section -->
         <!-- start sub-section -->
         <section class="sub-section">
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 mt-3">
@@ -569,7 +569,7 @@
                                 </div>
                             </section>
                         @endif --}}
-                        @if(!$featurePostCategory->isEmpty())
+                        {{-- @if(!$featurePostCategory->isEmpty())
                         <section class="featured-post-section py-60">
                             <div class="container">
                                 <div class="section-heading pb-3">
@@ -726,9 +726,9 @@
                                 </div>
                             </div>
                         </section>
-                    @endif
+                    @endif --}}
                         <!-- end latest-news-section -->
-                        @if(checkAdSpaced('index_bottom'))
+                        {{-- @if(checkAdSpaced('index_bottom'))
                             @if(isset(getAdImageDesktop(\App\Models\AdSpaces::INDEX_BOTTOM)->code))
                                 <div class="container index-top-desktop ad-space-url-desktop">
                                     {!! getAdImageDesktop(\App\Models\AdSpaces::INDEX_BOTTOM)->code !!}
@@ -756,7 +756,7 @@
                                     </a>
                                 </div>
                             @endif
-                        @endif
+                        @endif --}}
                     </div>
                     <div class="col-lg-4">
                         @include('front_new.layouts.side-menu')

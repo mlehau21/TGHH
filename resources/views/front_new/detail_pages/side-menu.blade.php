@@ -98,37 +98,10 @@
 @endif
 <!-- end trending-post-section -->
 
-<!-- start hot-categories-section -->
-@if(!empty(getPopulerCategories()))
-    <section class="hot-categories-section py-60">
-        <div class="section-heading border-0 mb-30">
-            <div class="row align-items-center">
-                <div class="col-12 section-heading-left">
-                    <h2 class="text-black mb-0">{{ __('messages.details.hot_categories') }}</h2>
-                </div>
-            </div>
-        </div>
-        <div class="hot-categories-post">
-            @foreach(array_slice(getPopulerCategories(),0,10) as $category)
-                <div class="post bg-light d-flex justify-content-between align-items-center px-4 pt-2 pb-2 mb-20 ">
-                    <div class="desc d-flex align-items-center">
-                        <i class="fa-solid fa-list me-4 text-primary"></i>
-                        <a href="{{ route('categoryPage',['category' => $category['slug']]) }}" class="fs-16 fw-6 text-black mb-0">{!! $category['name'] !!}</a>
-                    </div>
-                    <div class="numbers bg-white d-flex align-items-center justify-content-center rounded-circle">
-                        <a href="#" class="fs-16 fw-6 text-gray">{{ $category['posts_count'] }}</a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-    </section>
-@endif
-<!-- end hot-categories-section -->
-
 <!-- start popular-news-section -->
 @if(!empty(getPopularNews()))
 <section class="popular-news-section">
-    <div class="section-heading border-0 mb-2">
+    <div class="section-heading border-0 py-60 pb-4 mb-2">
         <div class="row align-items-center">
             <div class="col-12 section-heading-left">
                 <h2 class="text-black mb-0">{{ __('messages.details.popular_news') }}</h2>
@@ -187,7 +160,7 @@
                             @break
                         @endif
                 @endforeach
-                    
+
             </div>
             @if(checkAdSpaced('popular_news'))
                 @if(isset(getAdImageDesktop(\App\Models\AdSpaces::ALL_DETAILS_POPULAR_NEWS)->code))
@@ -243,7 +216,7 @@
             @endif
         @endforeach
     </div>
-   
+
 </section>
 @endif
 @if(checkAdSpaced('details_side'))
