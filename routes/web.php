@@ -61,7 +61,7 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
 
     Route::get('/generate-sitemap', function () {
         \Illuminate\Support\Facades\Artisan::call('generate:sitemap');
-        
+
         dump("Sitemap generated successfully");
 
         sleep(2);
@@ -176,7 +176,7 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
     Route::resource('gallery-images', GalleryController::class);
     Route::get('album-list', [GalleryController::class, 'getAlbums'])->name('album-list');
     Route::get('album-category-list', [GalleryController::class, 'getCategory'])->name('album-category-list');
-    
+
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {
         Route::resource('emoji', EmojiController::class);
@@ -192,7 +192,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
         // SEO tools
         Route::get('seo-tools', [seoToolsController::class, 'index'])->name('seo-tools.index');
         Route::Post('seo-tools', [seoToolsController::class, 'update'])->name('seo-tools.update');
-    }); 
+    });
 
     // logs view route
 //    Route::get('logs', [LogViewerController::class, 'index']);
@@ -220,9 +220,9 @@ Route::middleware('xss','setLanguage')->group(function () {
 
     Route::get('/contact-save', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
-    
+
     Route::get('profile/{user}', [LandingPageController::class, 'profileDashboard'])->name('userDetails');
-    
+
     Route::get('follow/{user}',[FollowersController::class,'store'])->name('followUser');
     Route::get('nu-follow/{user}',[FollowersController::class,'unFollow'])->name('UnFollowUser');
 
@@ -234,7 +234,7 @@ Route::middleware('xss','setLanguage')->group(function () {
 
     //reaction
     Route::post('post-reaction', [LandingPageController::class, 'postReaction'])->name('post-reaction');
-    
+
     //cookie
     Route::get('cookie', [LandingPageController::class, 'declineCookie'])->name('declineCookie');
 

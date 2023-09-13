@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateSettingRequest;
 use App\Models\PaymentGateway;
-use App\Models\Plan;
+// use App\Models\Plan;
 use App\Models\Setting;
 use App\Repositories\SettingRepository;
 use Illuminate\Contracts\Foundation\Application;
@@ -65,9 +65,9 @@ class SettingController extends AppBaseController
                    'site_key'   => 'required',
                    'secret_key' => 'required',
                ]);
-           } 
+           }
        }
-       
+
         $id = Auth::id();
         $this->settingRepository->update($input, $id);
 
@@ -76,24 +76,24 @@ class SettingController extends AppBaseController
         return Redirect::back();
     }
 
-    public function paymentUpdate(Request $request)
-    {
+    // public function paymentUpdate(Request $request)
+    // {
 
-        $paymentGateways = $request->payment_gateway;
+    //     $paymentGateways = $request->payment_gateway;
 
-        PaymentGateway::query()->delete();
+    //     PaymentGateway::query()->delete();
 
-        if (isset($paymentGateways)) {
-            foreach ($paymentGateways as $paymentGateway) {
-                PaymentGateway::updateOrCreate(['payment_gateway_id' => $paymentGateway],
-                    [
-                        'payment_gateway' => Plan::PAYMENT_METHOD[$paymentGateway],
-                    ]);
-            }
-            Flash::success(__('messages.placeholder.settings_updated_successfully'));
+    //     if (isset($paymentGateways)) {
+    //         foreach ($paymentGateways as $paymentGateway) {
+    //             PaymentGateway::updateOrCreate(['payment_gateway_id' => $paymentGateway],
+    //                 [
+    //                     'payment_gateway' => Plan::PAYMENT_METHOD[$paymentGateway],
+    //                 ]);
+    //         }
+    //         Flash::success(__('messages.placeholder.settings_updated_successfully'));
 
-            return Redirect::back();
-        }
-    }
+    //         return Redirect::back();
+    //     }
+    // }
 
 }

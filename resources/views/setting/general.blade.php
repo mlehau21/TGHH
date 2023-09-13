@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-   
+
     <div class="container-fluid">
         @include('setting.setting_menu')
         <div class="card">
@@ -64,7 +64,7 @@
                         {{ Form::select('rss_feed_update_time', \App\Models\Setting::AUTO_UPDATE_RSS_FEED,  $setting['rss_feed_update_time']??null, ['class' => 'form-select ', 'id' => 'selectRssFeed','data-dropdown-parent'=>'#kt_account_profile_details_form', 'placeholder' => __('messages.setting.select_time'), 'data-control' => 'select2','required','aria-label'=>"Select a Rss Feed",'data-control'=>"select2"]) }}
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-4">
                         <label for="exampleInputImage" class="form-label">{{__('messages.setting.logo')}}: </label>
@@ -87,10 +87,10 @@
                                     <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                           data-bs-toggle="tooltip"
                                           data-placement="top" data-bs-original-title="{{__('messages.common.change_logo')}}">
-                        <label> 
-                            <i class="fa-solid fa-pen" id="profileImageIcon"></i> 
-                            <input type="file" name="logo" class="image-upload d-none" accept="image/*"/> 
-                        </label> 
+                        <label>
+                            <i class="fa-solid fa-pen" id="profileImageIcon"></i>
+                            <input type="file" name="logo" class="image-upload d-none" accept="image/*"/>
+                        </label>
                     </span>
                                 </div>
                             </div>
@@ -119,10 +119,10 @@
                                     <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                           data-bs-toggle="tooltip"
                                           data-placement="top" data-bs-original-title="{{__('messages.common.change_favicon')}}">
-                        <label> 
-                            <i class="fa-solid fa-pen" id="profileImageIcon"></i> 
-                            <input type="file" name="favicon" class="image-upload d-none" accept="image/*"/> 
-                        </label> 
+                        <label>
+                            <i class="fa-solid fa-pen" id="profileImageIcon"></i>
+                            <input type="file" name="favicon" class="image-upload d-none" accept="image/*"/>
+                        </label>
                     </span>
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                 <div class="card-body   p-3">
                     <div class="row mb-6">
                         <div class="table-responsive px-0">
-                            <table>
+                            {{-- <table>
                                 <tbody class="d-flex flex-wrap">
                                 @foreach(\App\Models\Plan::PAYMENT_METHOD as $key => $paymentGateway)
                                     @if(checkPaymentGateway($key))
@@ -161,7 +161,7 @@
                                                            id="{{$key}}" {{in_array($paymentGateway, $selectedPaymentGateways) ?'checked':''}} />
                                                     <label class="form-label" for="{{$key}}">
                                                        {{__('messages.setting.'.$paymentGateway)}}
-{{--                                                        {{$paymentGateway}}--}}
+
                                                     </label>
                                                 </div>
                                             </td>
@@ -169,7 +169,7 @@
                                     @endif
                                 @endforeach
                                 </tbody>
-                            </table>
+                            </table> --}}
                         </div>
                     </div>
                 </div>
