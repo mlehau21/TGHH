@@ -8,7 +8,7 @@
 @section('content')
     <div class="home-page">
         <!-- start hero section -->
-        <section class="hero-section pt-60">
+        <section class="hero-section ">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-8">

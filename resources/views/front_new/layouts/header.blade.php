@@ -57,7 +57,7 @@
             </div>
             <div class="col-xl-7 col-md-8 col-9 ">
                 <div class="row align-items-center justify-content-end  ">
-                    <div class="col-xxl-4 col-lg-4 col-sm-6  br-gray  text-end  pe-xl-4 pe-lg-4 ">
+                    {{-- <div class="col-xxl-4 col-lg-4 col-sm-6  br-gray  text-end  pe-xl-4 pe-lg-4 ">
                         <span class="text-secondary fs-14 pe-sm-0">{{ \Carbon\Carbon::now()->isoFormat('ddd, MMM DD YYYY') }}</span>
                     </div>
                     <div class="col-xl-4 col-lg-4 br-gray py-1 d-lg-block d-none ">
@@ -69,7 +69,26 @@
                             <a href="{{$settings['pinterest_url']}}" target="_blank"> <i class="fa-brands fa-pinterest text-secondary fs-18"></i></a>
                             <a href="{{$settings['instagram_url']}}" target="_blank"> <i class="fa-brands fa-instagram text-secondary fs-18"></i></a>
                         </div>
-                    </div>
+                    </div> --}}
+
+                    <div class="col-xl-4 col-lg-4 br-gray py-1 d-lg-block d-none">
+                        <div class="dropdown header-icon d-lg-flex  justify-content-end d-none position-relative">
+                            <button class="dropdown-toggle border-0 bg-transparent position-relative me-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:void(0)"><i class="fa-solid text-black fa-magnifying-glass fs-20 "></i></a>
+                            </button>
+                            <div class="dropdown-menu" >
+                                <form action="{{ route('allPosts') }}" class="form search-form-box search-input">
+                                    <div class="form-group border-0 search-input">
+                                        <input type="text" name="search" id="search" placeholder="{{__('messages.search')}}" class="form-control bg-light rt-search-control custom-input-control search-input mb-0" value="">
+                                        <button type="submit" class="search-submit custom-submit search-input">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                </div>
                     <div class="col-xl-4 col-lg-4 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
                         @if(getLogInUser())
                             <div class="language-dropdown ms-2 d-none d-sm-block">
@@ -148,6 +167,7 @@
                                 </form>
                             </div> --}}
                         <div class="offcanvas-toggle d-lg-none d-block">
+
                             <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasToggle"
                                aria-controls="offcanvasToggle">
                                 <i class="fa-solid fa-bars "></i>
@@ -305,7 +325,9 @@
 
 <!-- start header section -->
 <header class="bg-light d-lg-block d-none header">
+
     <div class="container">
+
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-11 col-11">
                 <nav>
