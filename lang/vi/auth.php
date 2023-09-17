@@ -1,48 +1,51 @@
-<?php
-
-return [
-    'save' => 'Save',
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'full_name' => 'Full Name',
-    'email' => 'Email',
-    'password' => 'Password',
-    'confirm_password' => 'Confirm Password',
-    'remember_me' => 'Remember Me',
-    'sign_in' => 'Sign In',
-    'sign_out' => 'Sign out',
-    'register' => 'Register',
-    'login' => [
-        'title' => 'Sign in to start your session',
-        'forgot_password' => 'I forgot my password',
-        'register_membership' => 'Register a new membership',
-    ],
-    'registration' => [
-        'title' => 'Register a new membership',
-        'i_agree' => 'I agree to',
-        'terms' => 'the terms',
-        'have_membership' => 'I already have a membership',
-    ],
-    'forgot_password' => [
-        'title' => 'Enter Email to reset password',
-        'send_pwd_reset' => 'Send Password Reset Link',
-    ],
-    'reset_password' => [
-        'title' => 'Reset your password',
-        'reset_pwd_btn' => 'Reset Password',
-    ],
-    'app' => [
-        'member_since' => 'Member since',
-        'messages' => 'Messages',
-        'settings' => 'Settings',
-        'lock_account' => 'Lock Account',
-        'profile' => 'Profile',
-        'online' => 'Online',
-        'search' => 'Search',
-        'create' => 'Create',
-        'export' => 'Export',
-        'print' => 'Print',
-        'reset' => 'Reset',
-        'reload' => 'Reload',
-    ],
-];
+<?php return array (
+  'save' => 'Lưu',
+  'failed' => 'Những thông tin xác thực này không khớp với hồ sơ của chúng tôi.',
+  'throttle' => 'Đăng nhập quá nhiều, hãy thử lại sau :seconds giây',
+  'full_name' => 'Tên đầy đủ',
+  'email' => 'Email',
+  'password' => 'Mật khẩu',
+  'confirm_password' => 'Xác nhận mật khẩu',
+  'remember_me' => 'Ghi nhớ',
+  'sign_in' => 'Đăng nhập',
+  'sign_out' => 'Đăng xuất',
+  'register' => 'Đăng ký',
+  'login' => 
+  array (
+    'title' => 'Đăng nhập',
+    'forgot_password' => 'Tôi quên mật khẩu',
+    'register_membership' => 'Đăng ký tài khoản mới',
+  ),
+  'registration' => 
+  array (
+    'title' => 'Đăng ký tài khoản mới',
+    'i_agree' => 'Tôi đồng ý',
+    'terms' => 'Các điều khoản',
+    'have_membership' => 'Tôi đã đăng ký',
+  ),
+  'forgot_password' => 
+  array (
+    'title' => 'Nhập emaild dể đăng nhập',
+    'send_pwd_reset' => 'Send Password Reset Link',
+  ),
+  'reset_password' => 
+  array (
+    'title' => 'Đổi mật khẩu',
+    'reset_pwd_btn' => 'Đặt lại mật khẩu',
+  ),
+  'app' => 
+  array (
+    'member_since' => 'Đăng ký từ',
+    'messages' => 'Tin nhắn',
+    'settings' => 'Cài đặt',
+    'lock_account' => 'Khóa tài khoản',
+    'profile' => 'Hồ sơ',
+    'online' => 'Online',
+    'search' => 'Tìm',
+    'create' => 'Tạo',
+    'export' => 'Xuất',
+    'print' => 'In',
+    'reset' => 'Đặt lại',
+    'reload' => 'Tải lại',
+  ),
+)?>
