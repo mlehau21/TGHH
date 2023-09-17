@@ -70,7 +70,7 @@
                             <a href="{{$settings['instagram_url']}}" target="_blank"> <i class="fa-brands fa-instagram text-secondary fs-18"></i></a>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-4 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
+                    <div class="col-xl-4 col-lg-4 col-sm-6  d-flex flex-wrap justify-content-sm-between justify-content-end align-items-center">
                         @if(getLogInUser())
                             <div class="language-dropdown ms-2 d-none d-sm-block">
                                 <a class="nav-link p-0 fs-14 pe-3" href="javascript:void(0)"
@@ -108,13 +108,13 @@
                             <div class="d-flex">
                                 <a href="{{ route('login') }}"
                                    class="fs-14 text-black fw-6  login-btn d-none d-sm-block"
-                                   data-turbo="false">Đăng nhập</a>
-                                   {{-- data-turbo="false">{{ __('messages.common.login') }}</a> --}}
-                                {{-- <samp class="text-secondary">/</samp> --}}
+                                   {{-- data-turbo="false">Đăng nhập</a> --}}
+                                   data-turbo="false">{{ __('messages.common.login') }}</a>
+                                <samp class="text-secondary">/</samp>
                                 <a href="{{ route('register') }}"
                                    class="fs-14 text-black fw-6 login-btn d-none d-sm-block"
-                                   data-turbo="false">Đăng ký</a>
-                                   {{-- data-turbo="false">{{ __('auth.register') }}</a> --}}
+                                   {{-- data-turbo="false">Đăng ký</a> --}}
+                                   data-turbo="false">{{ __('auth.register') }}</a>
                             </div>
                         @endif
                         <div class="language-dropdown pe-sm-0 pe-2">
