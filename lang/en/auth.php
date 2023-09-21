@@ -10,6 +10,8 @@ return [
     'confirm_password' => 'Confirm Password',
     'remember_me' => 'Remember Me',
     'sign_in' => 'Sign In',
+    'group' => 'Group',
+    'forum' => 'Forum',
     'sign_out' => 'Sign out',
     'register' => 'Register',
     'login' => [

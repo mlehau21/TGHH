@@ -1,6 +1,6 @@
 <!-- start trending-post-section -->
 @if(!empty($getTrendingPosts))
-<section class="trending-post-section pt-100">
+<section class="trending-post-section ">
     <div class="border-0 mb-2 pb-4">
         <div class="row align-items-center">
             <div class="col-12 section-heading-left">
