@@ -414,7 +414,7 @@ return [
         'related_post' => 'Related Post',
         'home' => 'Home',
         'group' => 'Group',
-        'Forum' => 'Forum',
+        'forum' => 'Forum',
         'article' => 'Article',
         'gallery' => 'Gallery',
         'sort' => 'Sort',

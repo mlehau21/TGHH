@@ -200,7 +200,11 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 
 Route::get('group', function () {
     return view('front_new.group');
-});
+})->name('group');
+
+Route::get('forum', function () {
+    return view('front_new.forum');
+})->name('forum');
 
 Route::middleware('xss','setLanguage')->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('front.home');

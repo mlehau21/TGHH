@@ -75,12 +75,12 @@
                 <div class="row align-items-center justify-content-end">
 
                     <div class="col-xxl-3 col-lg-4 col-sm-6  br-gray  text-center  pe-xl-4 pe-lg-4 ">
-                        <a href="{{ route('register') }}"
+                        <a href="{{ route('group') }}"
                     class="fs-14 text-black fw-6 login-btn d-none d-sm-block"
                     data-turbo="false">{{ __('auth.group') }}</a>
                     </div>
                     <div class="col-xl-3 col-lg-4 br-gray  text-center  pe-xl-4 pe-lg-4 ">
-                        <a href="{{ route('register') }}"
+                        <a href="{{ route('forum') }}"
                     class="fs-14 text-black fw-6 login-btn d-none d-sm-block"
                     data-turbo="false">{{ __('auth.forum') }}</a>
                     </div>
