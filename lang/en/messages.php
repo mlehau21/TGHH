@@ -219,7 +219,7 @@ return [
         'change_cover_image' => 'Change Cover Image',
         'image_error_excel' =>       'The image must be a file of type: png, jpg, jpeg, pdf,excel',
         'pending' => 'Pending'
-      
+
     ],
     'user' => [
         'profile_details' => 'Profile Details',
@@ -391,7 +391,7 @@ return [
         'article_with_open_ai' => 'Write your content using OpenAI',
         'publish_post'  => 'Publish Post',
         'select_post' => 'Select Post'
-        
+
     ],
     'comment' => [
         'comments' => 'Comments',
@@ -413,6 +413,8 @@ return [
         'previous_post' => 'Previous Post',
         'related_post' => 'Related Post',
         'home' => 'Home',
+        'group' => 'Group',
+        'Forum' => 'Forum',
         'article' => 'Article',
         'gallery' => 'Gallery',
         'sort' => 'Sort',

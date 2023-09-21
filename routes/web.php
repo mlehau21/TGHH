@@ -198,6 +198,9 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 //    Route::get('logs', [LogViewerController::class, 'index']);
 });
 
+Route::get('group', function () {
+    return view('front_new.group');
+});
 
 Route::middleware('xss','setLanguage')->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('front.home');
