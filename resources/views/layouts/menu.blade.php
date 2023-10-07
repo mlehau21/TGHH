@@ -83,16 +83,6 @@
         </a>
     </li>
 @endcan
-@can('manage_menu')
-    <li class="nav-item {{ Request::is('admin/menus*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('menus.index') }}">
-        <span class="aside-menu-icon pe-3">
-            <i class="fas fa-bars fs-4"></i>
-        </span>
-            <span class="aside-menu-title">{!! __('messages.menus') !!}</span>
-        </a>
-    </li>
-@endcan
 @can('manage_rss_feeds')
 <li class="nav-item {{ Request::is('admin/rss-feed*') ? 'active' : '' }}">
     <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('rss-feed.index') }}">

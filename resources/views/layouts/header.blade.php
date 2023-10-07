@@ -3,16 +3,6 @@
     <button type="button" class="btn px-0 aside-menu-container__aside-menubar d-block d-xl-none sidebar-btn">
         <i class="fa-solid fa-bars fs-1"></i>
     </button>
-    <nav class="navbar navbar-expand-xl navbar-light top-navbar d-xl-flex d-block px-3 px-xl-0 py-4 py-xl-0 "
-         id="nav-header">
-        <div class="container-fluid">
-            <div class="navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    @include('layouts.sub_menu')
-                </ul>
-            </div>
-        </div>
-    </nav>
     <ul class="nav align-items-center">
         <li class="px-sm-3 px-2">
             <a href="#" id="gotoFullScreen" title="Fullscreen"><i class="fas fa-expand fs-2"></i></a>
