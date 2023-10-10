@@ -503,7 +503,7 @@ function getTrendingPost()
     arsort($postsCont);
     $postIds = array_keys($postsCont);
 
-    $posts_order =  DB::select('SELECT p.id, count(pr.id) qr_count, count(pc.id) qc_count
+    $posts_order =  DB::select('SELECT p.id, (count(pr.id) + count(pc.id)) qc_count
                                 FROM posts p
                                 LEFT JOIN post_reactions pr 
                                 ON p.id = pr.post_id
@@ -511,7 +511,7 @@ function getTrendingPost()
                                 ON p.id = pc.post_id
                                 WHERE p.id IN ('. implode(',',$postIds) .')
                                 group by p.id
-                                order by qr_count desc, qc_count desc');
+                                order by qc_count desc');
     $id_order_posts = [];
     foreach($posts_order as $row) {
         array_push($id_order_posts, $row->id);
