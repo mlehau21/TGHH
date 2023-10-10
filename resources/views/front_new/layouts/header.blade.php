@@ -445,7 +445,7 @@
                         {{-- <li class="nav-item">
                             <a class="nav-link fs-14 fw-6 {{ ((Request::is('g')) || (Request::is('g/*'))) ? 'active' : '' }}" href="{{route('galleryPage')}}">{{ __('messages.details.gallery') }}</a>
                         </li> --}}
-                        @if($nav['navigationsCount'] >= 6)
+                        @if($nav['navigationsCount'] >= 11)
                             <li class="nav-item dropdown">
                                 <a class="nav-link" aria-current="page" href="#">
                                     <i class="fa-solid fa-ellipsis "></i>
@@ -538,7 +538,7 @@
                                 </ul>
                             </li>
                         @endif
-                        @if($nav['navigationsCount'] <= 5)
+                        @if($nav['navigationsCount'] <= 11)
                             <li class="nav-item">
                                 <a class="nav-link fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active': '' }}" href="{{route('contact.index')}}">{{ __('messages.details.contact_us') }}</a>
                             </li>
