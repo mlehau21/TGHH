@@ -502,11 +502,32 @@ function getTrendingPost()
     $postsCont = array_count_values($posts);
     arsort($postsCont);
     $postIds = array_keys($postsCont);
-    $posts = Post::with('category', 'postVideo')->whereVisibility(Post::VISIBILITY_ACTIVE)->whereIn('id', $postIds)->get()->groupBy('id')->toArray();
+
+    $posts_order =  DB::select('SELECT p.id, count(pr.id) qr_count, count(pc.id) qc_count
+                                FROM qs.posts p
+                                LEFT JOIN qs.post_reactions pr 
+                                ON p.id = pr.post_id
+                                LEFT JOIN qs.comments pc
+                                ON p.id = pc.post_id
+                                WHERE p.id IN ('. implode(',',$postIds) .')
+                                group by p.id
+                                order by qr_count desc, qc_count desc');
+    $id_order_posts = [];
+    foreach($posts_order as $row) {
+        array_push($id_order_posts, $row->id);
+    }
+
+    $posts = Post::with('category', 'postVideo')
+            ->whereVisibility(Post::VISIBILITY_ACTIVE)
+            ->whereIn('id', $id_order_posts)
+            ->get()
+            ->groupBy('id')
+            ->toArray();
+    
     static $trendingPosts = [];
     $cnt = 1;
     if (empty($trendingPosts)) {
-        foreach ($postsCont as $id => $total) {
+        foreach ($posts as $id => $total) {
             if ($cnt > 6) {
                 break;
             }
