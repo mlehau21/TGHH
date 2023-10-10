@@ -527,18 +527,16 @@ function getTrendingPost()
     static $trendingPosts = [];
     $cnt = 1;
     if (empty($trendingPosts)) {
-        foreach ($id_order_posts as $id => $total) {
+        foreach ($id_order_posts as $key => $id) {
             if ($cnt > 6) {
                 break;
             }
-
             if (! empty($posts[$id][0])) {
                 $trendingPosts[$id] = $posts[$id][0];
                 $cnt++;
             }
         }
     }
-
     return $trendingPosts;
 }
 
