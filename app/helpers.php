@@ -527,7 +527,7 @@ function getTrendingPost()
     static $trendingPosts = [];
     $cnt = 1;
     if (empty($trendingPosts)) {
-        foreach ($posts as $id => $total) {
+        foreach ($id_order_posts as $id => $total) {
             if ($cnt > 6) {
                 break;
             }
