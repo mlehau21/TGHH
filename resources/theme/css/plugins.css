@@ -783,6 +783,7 @@ select + .select2-container--bootstrap-5 {
 
 .toast-progress {
   opacity: 1;
+  display: none;
 }
 
 .toast-success > .toast-progress {
