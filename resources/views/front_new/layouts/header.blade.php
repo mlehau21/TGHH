@@ -364,10 +364,15 @@
                         </li>
                         @php
                             $nav = getNavigationDetails();
+                            $max = 0;
                         @endphp
-                        @if($nav['navigationsCount'] >= 0 && $nav['navigationsCount'] <= 10)
+                        @if($nav['navigationsCount'] >= 0)
                             @foreach($nav['navigations'] as $key => $navigation)
-                                @if($navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||                                                                         $navigation->navigationable_type == \App\Models\Menu::class )
+                                @if($navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||                                                                    $navigation->navigationable_type == \App\Models\Menu::class )
+                                    @if($max > 5)
+                                        @php continue; @endphp
+                                    @endif 
+
                                     @php
                                         $isSubNav = count($nav['navigationsTakeData'][$navigation->id]) > 0;
                                         $subNavLangs = $nav['navigationsTakeData'][$navigation->id] ;
@@ -441,6 +446,9 @@
                                         @endif
                                     </li>
                                 @endif
+                                @php
+                                    $max++
+                                @endphp
                             @endforeach
                         @endif
                         {{-- <li class="nav-item">
@@ -539,7 +547,7 @@
                                 </ul>
                             </li>
                         @endif -->
-                        <!-- @if($nav['navigationsCount'] <= 11)
+                        @if($nav['navigationsCount'] <= 11)
                             <li class="nav-item">
                                 <a class="nav-link fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active': '' }}" href="{{route('contact.index')}}">{{ __('messages.details.contact_us') }}</a>
                             </li>
@@ -559,7 +567,7 @@
                                     </ul>
                                 @endif
                             </li>
-                        @endif -->
+                        @endif
                     </ul>
                 </nav>
             </div>
