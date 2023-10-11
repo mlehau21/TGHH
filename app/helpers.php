@@ -231,7 +231,6 @@ function getNavigationDetails(): array
         }
     }
 
-    $data['navigations'] = collect($data['menus'])->take(6);
     //child
     $data['navigationsTakeData'] = [];
     foreach ($data['navigations'] as $item) {
