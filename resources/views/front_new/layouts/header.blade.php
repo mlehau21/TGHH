@@ -369,7 +369,7 @@
                         @if($nav['navigationsCount'] >= 0)
                             @foreach($nav['navigations'] as $key => $navigation)
                                 @if($navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||                                                                    $navigation->navigationable_type == \App\Models\Menu::class )
-                                    @if($max > 5)
+                                    @if($max > 7)
                                         @php continue; @endphp
                                     @endif 
 
@@ -547,10 +547,6 @@
                                 </ul>
                             </li>
                         @endif -->
-                        @if($nav['navigationsCount'] <= 11)
-                            <li class="nav-item">
-                                <a class="nav-link fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active': '' }}" href="{{route('contact.index')}}">{{ __('messages.details.contact_us') }}</a>
-                            </li>
                             <li class="nav-item dropdown">
                                 @if($nav['pages']->count() > 0)
                                 <a class="nav-link fs-14 fw-6 {{ 'Pages' == ucfirst(last(request()->segments())) ? 'active': '' }}" href="javascript:void(0)">{{ __('messages.pages') }}
@@ -567,7 +563,6 @@
                                     </ul>
                                 @endif
                             </li>
-                        @endif
                     </ul>
                 </nav>
             </div>
