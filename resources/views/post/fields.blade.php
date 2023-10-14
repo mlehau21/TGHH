@@ -399,18 +399,6 @@
             </div>
         </div>
     @endif
-    @if(getLogInUserId() == App\Models\User::ADMIN)
-        <div class="card mb-6">
-            <div class="card-body">
-                <div class="col-lg-12 px-0">
-                    <div class="mb-5">
-                        {{ Form::label('created_by', __('messages.common.created_by').':', ['class' => 'form-label mb-3']) }}
-                        {{ Form::select('created_by',$allStaff, isset($post) ? $post->created_by :null, ['class' => 'form-select form-select-solid', 'placeholder' =>  __('messages.common.created_by'),'id'=>'postCreatedBy', 'data-control' => 'select2']) }}
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
     <div class="card mb-6">
         <div class="card-body">
             <h6 class="mb-5">{{__('messages.post.category')}}</h6>
