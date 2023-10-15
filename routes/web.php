@@ -11,6 +11,7 @@ use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\DBDownloadController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MenuController;
@@ -198,9 +199,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 //    Route::get('logs', [LogViewerController::class, 'index']);
 });
 
-Route::get('group', function () {
-    return view('front_new.group');
-})->name('group');
+Route::get('group', [GroupController::class, 'index'])->name('group');
 
 Route::get('forum', function () {
     return view('front_new.forum');

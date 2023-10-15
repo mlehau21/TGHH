@@ -23,7 +23,7 @@
                     <div class="col-lg-4 col-sm-6 mb-4 pb-md-3">
                         <div class="gallery-post mb-2">
                             <a href="{{route('galleryPage',$gallery->album_id)}}" data-turbo="false">
-{{--                                <img data-src="{{ !empty($gallery->gallery_image['0']) ? $gallery->gallery_image['0']: asset('front_web/images/default.jpg') }}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" />--}}
+                                    {{--                                <img data-src="{{ !empty($gallery->gallery_image['0']) ? $gallery->gallery_image['0']: asset('front_web/images/default.jpg') }}" alt="" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy" />--}}
                                 <img src="{{ !empty($gallery->gallery_image['0']) ? $gallery->gallery_image['0']: asset('front_web/images/default.jpg') }}" alt="" class="w-100 h-100" />
                             </a>
                         </div>
