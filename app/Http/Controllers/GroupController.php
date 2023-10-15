@@ -11,15 +11,11 @@ class GroupController extends Controller
 {
     public function index()
     {
-        // $url = 'https://graph.facebook.com/v18.0/2199166670415368/feed?fields=message,created_time,link,picture,attachments{media},comments.limit(3)&limit=10&access_token=' . env('FACEBOOK_ACCESS_TOKEN');
-        // $ch = curl_init($url);
-        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        // $response = curl_exec($ch);
-
-        // dd(json_decode($response));
-        $response = FBPost::latest()->paginate(20);
-        dd($response);
-        return view('front_new.group', ['posts' => $response]);
+        $url = 'https://graph.facebook.com/v18.0/2199166670415368/feed?fields=message,created_time,link,picture,attachments{media},comments.limit(3)&limit=10&access_token=' . env('FACEBOOK_ACCESS_TOKEN');
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        return view('front_new.group', ['posts' => json_decode($response)]);
     }
 
     public function store()
