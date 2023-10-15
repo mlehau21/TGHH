@@ -23,6 +23,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ $settings['favicon'] }}">
     <link href="{{ mix('css/front-third-party.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ mix('css/front-pages.css') }}" rel="stylesheet" type="text/css">
+    @yield('pageCss')
     {{-- <style>
         bground {
           background-color:  #fe127e !important;
