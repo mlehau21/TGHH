@@ -46,7 +46,7 @@
                                 </textarea>
                             </div>
                         </div>
-                        <div class="row mb-5">
+                        {{-- <div class="row mb-5">
                             {{ Form::label('manual_payment_guide',__('messages.setting.manual_payment_guide').':',
                                      ['class'=>'form-label fw-bold fs-6']) }}
                             <div class="col-lg-12 fv-row">
@@ -55,7 +55,7 @@
                                     {!! $setting['manual_payment_guide']??null!!}
                                  </textarea>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="d-flex justify-content-start">
                             {{ Form::submit(__('messages.user.save_changes'),['class' => 'btn btn-primary']) }}
                         </div>

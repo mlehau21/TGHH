@@ -40,11 +40,11 @@ class SettingController extends AppBaseController
     public function index(Request $request)
     {
         $setting = Setting::pluck('value', 'key')->toArray();
-        $selectedPaymentGateways = PaymentGateway::pluck('payment_gateway')->toArray();
+        // $selectedPaymentGateways = PaymentGateway::pluck('payment_gateway')->toArray();
         $sectionName = ($request->get('section') === null) ? 'general' : $request->get('section');
 
         return view("setting.$sectionName",
-            compact('sectionName', 'setting', 'selectedPaymentGateways'));
+            compact('sectionName', 'setting'));
     }
 
     /**
