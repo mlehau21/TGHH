@@ -29,6 +29,7 @@
             /* Rounded corners */
             border-color: #FF5733;
             /* Change border color on hover */
+            transition: all 0.5s;
             transform: scale(1.03);
             /* Scale up the card on hover */
             z-index: 1;
@@ -68,6 +69,10 @@
         .card-footer ul li {
             margin-bottom: 10px;
         }
+
+        .card-img-top {
+            object-fit: fill;
+        }
     </style>
     </head>
 @endsection
@@ -85,35 +90,42 @@
                 </div>
                 <div class="gallery-post-section pt-4">
                     <div class="row">
-
-                        @forelse($posts->data as $post)
+                        @php
+                            $serial = 1;
+                        @endphp
+                        @forelse($posts as $post)
                             @if (isset($post->picture) || isset($post->message))
                                 <div class="col-lg-4 col-sm-6 mb-4 pb-md-3">
-                                    <div class="card custom-card mb-4">
-                                        @if (isset($post->attachments->data[0]->media->image->src))
-                                            <img src="{{ $post->attachments->data[0]->media->image->src }}"
-                                                class="card-img-top" alt="Post Image">
+                                    <div class="card custom-card mb-4 h-100">
+                                        @if (isset($post->image))
+                                            <img src="{{ $post->image }}"
+                                                class="card-img-top" alt="Post Image" height="309">
                                         @endif
                                         @isset($post->message)
                                             <div class="card-body">
                                                 <div class="p-3">
                                                     <p class="card-text">{{ $post->message }}</p>
                                                     <p class="card-text"><small
-                                                            class="text-muted">{{ \Carbon\Carbon::parse($post->created_time)->diffForHumans() }}</small>
+                                                            class="text-muted">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
                                                     </p>
-                                                    <a href="{{ $post->link }}" class="btn btn-primary">Read More</a>
+                                                    <a href="{{ $post->link }}" target="_blank" class="btn btn-primary">Read
+                                                        More</a>
                                                 </div>
                                             </div>
                                         @endisset
-                               
-                                        @if (isset($post->comments->data))
+
+                                        @if (isset($post->comment))
                                             <div class="card-footer">
                                                 <h5>Comments:</h5>
+
                                                 <ul>
-                                                    @foreach ($post->comments->data as $comment)
+                                                    @foreach ($post->comment as $index => $comment)
                                                         <li>
-                                                            {{-- <strong>{{ $comment->from->name }}:</strong> --}}
-                                                            {{ $comment->message }}
+                                                            <strong>{{ $index+1 }}:</strong>
+                                                            {{ $comment->comment }}
+                                                            <span class="text-muted small">
+                                                                {{ \Carbon\Carbon::parse($comment->created_time)->diffForHumans() }}
+                                                            </span>
                                                         </li>
                                                     @endforeach
                                                 </ul>

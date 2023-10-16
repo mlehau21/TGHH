@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('message');
             $table->timestamp('created_time');
             $table->string('link');
-            $table->string('image')->nullable(); // Store the image URL
+            $table->string('image', 1000)->nullable(); // Store the image URL
             $table->integer('height')->nullable();
             $table->integer('width')->nullable();
             $table->string('post_id');

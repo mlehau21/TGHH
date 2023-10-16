@@ -12,8 +12,8 @@ class FBPost extends Model
 
     protected $guarded = [];
 
-    public function command()
+    public function comment()
     {
-        return $this->belongsTo(FBPostCommand::class, 'command_id');
+        return $this->hasMany(FBPostCommand::class, 'post_id');
     }
 }
