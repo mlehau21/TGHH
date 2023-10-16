@@ -19,14 +19,15 @@ class GroupController extends Controller
     {
         $ENV_TOKEN = env('FACEBOOK_ACCESS_TOKEN');
         $ENV_GROUP_ID = env('FACEBOOK_GROUP_ID');
+        $LIMIT = env("FACEBOOK_DATA_LIMIT");
 
-        $url = "https://graph.facebook.com/v18.0/{$ENV_GROUP_ID}/feed?fields=message,created_time,link,picture,attachments{media},comments.limit(3)&limit=10&access_token={$ENV_TOKEN}";
+        $url = "https://graph.facebook.com/v18.0/{$ENV_GROUP_ID}/feed?fields=message,created_time,link,picture,attachments{media},comments.limit(3)&limit={$LIMIT}&access_token={$ENV_TOKEN}";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         $decodeData = json_decode($response, true);
-
-        if (!isset($decodeData->error->code)) {
+        
+        if (!isset($decodeData['error']['code'])) {
             foreach ($decodeData['data'] as $single) {
                 if (isset($single['picture']) || isset($single['message'])) {
                     $facebookPost = FBPost::where('post_id', $single['id'])->first();
