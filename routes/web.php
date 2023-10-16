@@ -12,6 +12,7 @@ use App\Http\Controllers\DBDownloadController;
 use App\Http\Controllers\FollowersController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GroupPostBackend;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\MenuController;
@@ -122,6 +123,7 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
     //Add-Post Route
     Route::middleware('permission:manage_all_post')->group(function () {
         Route::resource('posts', PostController::class);
+        Route::get('fb-posts', [GroupPostBackend::class, 'index']);
         Route::post('posts/language', [PostController::class, 'language'])->name('posts.language');
         Route::post('posts/category', [PostController::class, 'category'])->name('posts.category');
         Route::post('posts-subcategory', [PostController::class, 'categoryFilter'])->name('posts.categoryFilter');
@@ -200,6 +202,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 });
 
 Route::get('group', [GroupController::class, 'index'])->name('group');
+Route::get('group/store', [GroupController::class, 'store'])->name('group.store');
 
 Route::get('forum', function () {
     return view('front_new.forum');

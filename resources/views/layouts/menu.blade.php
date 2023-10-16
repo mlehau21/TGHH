@@ -53,6 +53,14 @@
             <span class="aside-menu-title">{!! __('messages.post.posts') !!}</span>
         </a>
     </li>
+    <li class="nav-item {{ Request::is('admin/fb-posts') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ url('/admin/fb-posts') }}">
+        <span class="aside-menu-icon pe-3">
+            <i class="fas fa-paste fs-4"></i>
+        </span>
+            <span class="aside-menu-title">FB Posts</span>
+        </a>
+    </li>
 @endcanany
 @can('manage_emoji')
     <li class="nav-item {{ Request::is('admin/emoji*') ? 'active' : '' }}">
