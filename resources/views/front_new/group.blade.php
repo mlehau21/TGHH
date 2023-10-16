@@ -114,7 +114,7 @@
                                             </div>
                                         @endisset
 
-                                        @if (isset($post->comment))
+                                        @if (isset($post->comment) && count($post->comment) > 0)
                                             <div class="card-footer">
                                                 <h5>Comments:</h5>
 
