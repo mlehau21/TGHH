@@ -95,6 +95,7 @@
                         @endphp
                         @forelse($posts as $post)
                             @if (isset($post->picture) || isset($post->message))
+                            @dd($post->created_time)
                                 <div class="col-lg-4 col-sm-6 mb-4 pb-md-3">
                                     <div class="card custom-card mb-4 h-100">
                                         @if (isset($post->image))
@@ -106,7 +107,7 @@
                                                 <div class="p-3">
                                                     <p class="card-text">{{ $post->message }}</p>
                                                     <p class="card-text"><small
-                                                            class="text-muted">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</small>
+                                                            class="text-muted">{{ \Carbon\Carbon::parse($post->created_time)->diffForHumans() }}</small>
                                                     </p>
                                                     <a href="{{ $post->link }}" target="_blank" class="btn btn-primary">Read
                                                         More</a>
