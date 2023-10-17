@@ -95,7 +95,6 @@
                         @endphp
                         @forelse($posts as $post)
                             @if (isset($post->picture) || isset($post->message))
-                            @dd($post->created_time)
                                 <div class="col-lg-4 col-sm-6 mb-4 pb-md-3">
                                     <div class="card custom-card mb-4 h-100">
                                         @if (isset($post->image))
