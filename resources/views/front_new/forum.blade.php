@@ -1,4 +1,3 @@
-
 @extends('front_new.layouts.app')
 
 @section('title')
@@ -74,8 +73,27 @@
             font-size: 14px;
             color: #777;
         }
+
+        /* .author-info.avater-top {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #dddddd42;
+            border-radius: 25px;
+            color: white;
+            z-index: 1;
+            padding-right: 15px;
+        }
+
+        .image-container {
+            position: relative;
+        }
+
+        img.profile-picture.avater-top {
+            border: 1px solid #ddd;
+        } */
     </style>
-</head>
+    </head>
 @endsection
 
 @section('content')
@@ -89,16 +107,19 @@
                         <div class="col-lg-12 pb-md-3">
                             <div class="card custom-card mb-4 h-100">
                                 <div class="image-container">
-                                    <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg" class="card-img-top" alt="Post Image">
-                                </div>
-                                <div class="post-content">
-                                    <div class="author-info">
-                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg" class="profile-picture" alt="Profile Picture">
+                                    <div class="author-info avater-top">
+                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                            class="profile-picture avater-top" alt="Profile Picture">
                                         <span class="author-name">John Doe</span>
                                         <span class="created-time">Posted 2 hours ago</span>
                                     </div>
+                                    <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                        class="card-img-top" alt="Post Image">
+                                </div>
+                                <div class="post-content">
                                     <h2 class="post-title">Sample Forum Post Title</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tincidunt libero ac aliquam.</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tincidunt libero
+                                        ac aliquam.</p>
                                     <div class="d-flex justify-content-between">
                                         <!-- Like button with Font Awesome heart icon -->
                                         <button class="btn btn-primary">
@@ -111,7 +132,8 @@
                                             <li class="comment">
                                                 <div class="comment-details">
                                                     <div class="author-info">
-                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg" class="profile-picture" alt="Profile Picture">
+                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                                            class="profile-picture" alt="Profile Picture">
                                                         <span class="author-name">John Doe</span>
                                                         <span class="created-time">Posted 2 hours ago</span>
                                                     </div>
@@ -121,7 +143,8 @@
                                             <li class="comment">
                                                 <div class="comment-details">
                                                     <div class="author-info">
-                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg" class="profile-picture" alt="Profile Picture">
+                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                                            class="profile-picture" alt="Profile Picture">
                                                         <span class="author-name">John Doe</span>
                                                         <span class="created-time">Posted 2 hours ago</span>
                                                     </div>
@@ -172,5 +195,4 @@
             });
         });
     </script> --}}
-
 @endsection
