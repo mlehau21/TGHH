@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CustomerDashboardController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,9 @@ Route::prefix('customer')->middleware('auth', 'xss')->group(function () {
     Route::post('posts-subcategory', [PostController::class, 'categoryFilter'])->name('posts.categoryFilter');
     Route::post('posts/language', [PostController::class, 'language'])->name('posts.language');
     Route::post('posts/category', [PostController::class, 'category'])->name('posts.category');
+
+
+    //forum 
+
+    Route::get('forums', [ForumController::class, "index"])->name('forums.index');
 });

@@ -74,24 +74,37 @@
             color: #777;
         }
 
-        /* .author-info.avater-top {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: #dddddd42;
-            border-radius: 25px;
-            color: white;
-            z-index: 1;
-            padding-right: 15px;
-        }
+        @media (max-width: 576px) {
+            span.like-info {
+                display: block;
+                font-size: 12px;
+            }
 
-        .image-container {
-            position: relative;
-        }
+            .like-text,
+            .comment-text {
+                display: none;
+                padding: 3px 8px;
+            }
 
-        img.profile-picture.avater-top {
-            border: 1px solid #ddd;
-        } */
+            .like-info,
+            .comment-info {
+                font-size: 12px;
+            }
+
+            .main-command {
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: flex-end;
+            }
+
+            span.author-name {
+                font-size: 13px;
+            }
+
+            span.created-time {
+                font-size: 10px;
+            }
+        }
     </style>
     </head>
 @endsection
@@ -105,8 +118,8 @@
                 <div class="gallery-post-section pt-4">
                     <div class="row">
                         <div class="col-lg-12 pb-md-3">
-                            <div class="card custom-card mb-4 h-100">
-                                <div class="image-container">
+                            <div class="card custom-card mb-4 h-100 border">
+                                <div class="image-container p-2">
                                     <div class="author-info avater-top">
                                         <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
                                             class="profile-picture avater-top" alt="Profile Picture">
@@ -116,18 +129,31 @@
                                     <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
                                         class="card-img-top" alt="Post Image">
                                 </div>
-                                <div class="post-content">
+                                <div class="post-content p-2">
                                     <h2 class="post-title">Sample Forum Post Title</h2>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tincidunt libero
                                         ac aliquam.</p>
+                                    <hr>
+
                                     <div class="d-flex justify-content-between">
                                         <!-- Like button with Font Awesome heart icon -->
-                                        <button class="btn btn-primary">
-                                            <i class="fas fa-heart"></i> Like
-                                        </button>
-                                        <button class="btn btn-secondary toggle-comments">Comment</button>
+                                        <div>
+                                            <button class="btn btn-light" style="color:#fc147c">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span class="like-text">Like</span>
+                                            </button>
+                                            <span class="like-info">Mehedi and 50 others</span>
+                                        </div>
+                                        <div class="main-command">
+                                            <span class="comment-info">50 comments</span>
+                                            <button class="btn btn-secondary toggle-comments"><i
+                                                    class="fas fa-comments text-white"></i>
+                                                <span class="comment-text">Comment</span>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="comments comment-section">
+
+                                    <div class="comments comment-section border p-2">
                                         <ul>
                                             <li class="comment">
                                                 <div class="comment-details">
@@ -138,6 +164,21 @@
                                                         <span class="created-time">Posted 2 hours ago</span>
                                                     </div>
                                                     <p class="comment-text">Comment 1</p>
+                                                    <div class="comment-actions">
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span class="like-text">Like</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-edit"></i>
+                                                            <span class="like-text">Edit</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#c60000d3">
+                                                            <i class="fas fa-trash"></i>
+                                                            <span class="like-text">Delete</span>
+                                                        </button>
+
+                                                    </div>
                                                 </div>
                                             </li>
                                             <li class="comment">
@@ -148,12 +189,240 @@
                                                         <span class="author-name">John Doe</span>
                                                         <span class="created-time">Posted 2 hours ago</span>
                                                     </div>
-                                                    <p class="comment-text">Comment 2</p>
+                                                    <p class="comment-text">Comment 1</p>
+                                                    <div class="comment-actions">
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span class="like-text">Like</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-edit"></i>
+                                                            <span class="like-text">Edit</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#c60000d3">
+                                                            <i class="fas fa-trash"></i>
+                                                            <span class="like-text">Delete</span>
+                                                        </button>
+
+                                                    </div>
                                                 </div>
                                             </li>
                                             <!-- Add more comments as needed -->
                                         </ul>
                                         <button class="btn btn-info see-more-btn" style="display: block;">See More</button>
+                                    </div>
+
+
+                                    <div class="comment-form">
+                                        <form>
+                                            <div class="form-group border">
+                                                <textarea class="form-control comment-input" placeholder="Add a comment"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 pb-md-3">
+                            <div class="card custom-card mb-4 h-100 border">
+                                <div class="image-container p-2">
+                                    <div class="author-info avater-top">
+                                        <img src="http://127.0.0.1:8000/uploads/post%20image/25/66a8f2d61fb960e6cdd044d628659e1f.jpg"
+                                            class="profile-picture avater-top" alt="Profile Picture">
+                                        <span class="author-name">John Doe</span>
+                                        <span class="created-time">Posted 2 hours ago</span>
+                                    </div>
+                                    <img src="http://127.0.0.1:8000/uploads/post%20image/25/66a8f2d61fb960e6cdd044d628659e1f.jpg"
+                                        class="card-img-top" alt="Post Image">
+                                </div>
+                                <div class="post-content p-2">
+                                    <h2 class="post-title">Sample Forum Post Title</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tincidunt libero
+                                        ac aliquam.</p>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <!-- Like button with Font Awesome heart icon -->
+                                        <div>
+                                            <button class="btn btn-light" style="color:#fc147c">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span class="like-text">Like</span>
+                                            </button>
+                                            <span class="like-info">Mehedi and 50 others</span>
+                                        </div>
+                                        <div class="main-command">
+                                            <span class="comment-info">50 comments</span>
+                                            <button class="btn btn-secondary toggle-comments"><i
+                                                    class="fas fa-comments text-white"></i>
+                                                <span class="comment-text">Comment</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="comments comment-section border p-2">
+                                        <ul>
+                                            <li class="comment">
+                                                <div class="comment-details">
+                                                    <div class="author-info">
+                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                                            class="profile-picture" alt="Profile Picture">
+                                                        <span class="author-name">John Doe</span>
+                                                        <span class="created-time">Posted 2 hours ago</span>
+                                                    </div>
+                                                    <p class="comment-text">Comment 1</p>
+                                                    <div class="comment-actions">
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span class="like-text">Like</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-edit"></i>
+                                                            <span class="like-text">Edit</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#c60000d3">
+                                                            <i class="fas fa-trash"></i>
+                                                            <span class="like-text">Delete</span>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="comment">
+                                                <div class="comment-details">
+                                                    <div class="author-info">
+                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                                            class="profile-picture" alt="Profile Picture">
+                                                        <span class="author-name">John Doe</span>
+                                                        <span class="created-time">Posted 2 hours ago</span>
+                                                    </div>
+                                                    <p class="comment-text">Comment 1</p>
+                                                    <div class="comment-actions">
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span class="like-text">Like</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-edit"></i>
+                                                            <span class="like-text">Edit</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#c60000d3">
+                                                            <i class="fas fa-trash"></i>
+                                                            <span class="like-text">Delete</span>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- Add more comments as needed -->
+                                        </ul>
+                                        <button class="btn btn-info see-more-btn" style="display: block;">See
+                                            More</button>
+                                    </div>
+
+                                    <div class="comment-form">
+                                        <form>
+                                            <div class="form-group border">
+                                                <textarea class="form-control comment-input" placeholder="Add a comment"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 pb-md-3">
+                            <div class="card custom-card mb-4 h-100 border">
+                                <div class="image-container p-2">
+                                    <div class="author-info avater-top">
+                                        <img src="http://127.0.0.1:8000/uploads/post%20image/34/230115-miss-universe-usa-cc-1247a-37ef65.jpg"
+                                            class="profile-picture avater-top" alt="Profile Picture">
+                                        <span class="author-name">John Doe</span>
+                                        <span class="created-time">Posted 2 hours ago</span>
+                                    </div>
+                                    <img src="http://127.0.0.1:8000/uploads/post%20image/34/230115-miss-universe-usa-cc-1247a-37ef65.jpg"
+                                        class="card-img-top" alt="Post Image">
+                                </div>
+                                <div class="post-content p-2">
+                                    <h2 class="post-title">Sample Forum Post Title</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tincidunt libero
+                                        ac aliquam.</p>
+                                    <hr>
+                                    <div class="d-flex justify-content-between">
+                                        <!-- Like button with Font Awesome heart icon -->
+                                        <div>
+                                            <button class="btn btn-light" style="color:#fc147c">
+                                                <i class="fas fa-thumbs-up"></i>
+                                                <span class="like-text">Like</span>
+                                            </button>
+                                            <span class="like-info">Mehedi and 50 others</span>
+                                        </div>
+                                        <div class="main-command">
+                                            <span class="comment-info">50 comments</span>
+                                            <button class="btn btn-secondary toggle-comments"><i
+                                                    class="fas fa-comments text-white"></i>
+                                                <span class="comment-text">Comment</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="comments comment-section border p-2">
+                                        <ul>
+                                            <li class="comment">
+                                                <div class="comment-details">
+                                                    <div class="author-info">
+                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                                            class="profile-picture" alt="Profile Picture">
+                                                        <span class="author-name">John Doe</span>
+                                                        <span class="created-time">Posted 2 hours ago</span>
+                                                    </div>
+                                                    <p class="comment-text">Comment 1</p>
+                                                    <div class="comment-actions">
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span class="like-text">Like</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-edit"></i>
+                                                            <span class="like-text">Edit</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#c60000d3">
+                                                            <i class="fas fa-trash"></i>
+                                                            <span class="like-text">Delete</span>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="comment">
+                                                <div class="comment-details">
+                                                    <div class="author-info">
+                                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                                            class="profile-picture" alt="Profile Picture">
+                                                        <span class="author-name">John Doe</span>
+                                                        <span class="created-time">Posted 2 hours ago</span>
+                                                    </div>
+                                                    <p class="comment-text">Comment 1</p>
+                                                    <div class="comment-actions">
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-thumbs-up"></i>
+                                                            <span class="like-text">Like</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                            <i class="fas fa-edit"></i>
+                                                            <span class="like-text">Edit</span>
+                                                        </button>
+                                                        <button class="btn btn-light" style="color:#c60000d3">
+                                                            <i class="fas fa-trash"></i>
+                                                            <span class="like-text">Delete</span>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <!-- Add more comments as needed -->
+                                        </ul>
+                                        <button class="btn btn-info see-more-btn" style="display: block;">See
+                                            More</button>
                                     </div>
                                     <div class="comment-form">
                                         <form>
