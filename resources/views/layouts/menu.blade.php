@@ -91,6 +91,16 @@
         </a>
     </li>
 @endcan
+{{-- @can('manage_pages') --}}
+    <li class="nav-item {{ Request::is('customer/forums*') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('forum.index') }}">
+        <span class="aside-menu-icon pe-3">
+            <i class="fas fa-file fs-4"></i>
+        </span>
+            <span class="aside-menu-title">Forum</span>
+        </a>
+    </li>
+{{-- @endcan --}}
 @can('manage_menu')
     <li class="nav-item {{ Request::is('admin/menus*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('menus.index') }}">

@@ -169,7 +169,7 @@
                                                             <i class="fas fa-thumbs-up"></i>
                                                             <span class="like-text">Like</span>
                                                         </button>
-                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                        <button class="btn btn-light" style="color: blue">
                                                             <i class="fas fa-edit"></i>
                                                             <span class="like-text">Edit</span>
                                                         </button>
@@ -195,7 +195,7 @@
                                                             <i class="fas fa-thumbs-up"></i>
                                                             <span class="like-text">Like</span>
                                                         </button>
-                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                        <button class="btn btn-light" style="color: blue">
                                                             <i class="fas fa-edit"></i>
                                                             <span class="like-text">Edit</span>
                                                         </button>
@@ -275,7 +275,7 @@
                                                             <i class="fas fa-thumbs-up"></i>
                                                             <span class="like-text">Like</span>
                                                         </button>
-                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                        <button class="btn btn-light" style="color: blue">
                                                             <i class="fas fa-edit"></i>
                                                             <span class="like-text">Edit</span>
                                                         </button>
@@ -301,7 +301,7 @@
                                                             <i class="fas fa-thumbs-up"></i>
                                                             <span class="like-text">Like</span>
                                                         </button>
-                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                        <button class="btn btn-light" style="color: blue">
                                                             <i class="fas fa-edit"></i>
                                                             <span class="like-text">Edit</span>
                                                         </button>
@@ -381,7 +381,7 @@
                                                             <i class="fas fa-thumbs-up"></i>
                                                             <span class="like-text">Like</span>
                                                         </button>
-                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                        <button class="btn btn-light" style="color: blue">
                                                             <i class="fas fa-edit"></i>
                                                             <span class="like-text">Edit</span>
                                                         </button>
@@ -407,7 +407,7 @@
                                                             <i class="fas fa-thumbs-up"></i>
                                                             <span class="like-text">Like</span>
                                                         </button>
-                                                        <button class="btn btn-light" style="color:#fc147c">
+                                                        <button class="btn btn-light" style="color: blue">
                                                             <i class="fas fa-edit"></i>
                                                             <span class="like-text">Edit</span>
                                                         </button>
