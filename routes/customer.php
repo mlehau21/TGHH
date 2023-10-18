@@ -28,4 +28,5 @@ Route::prefix('customer')->middleware('auth', 'xss')->group(function () {
 
     //forum 
     Route::get('forums', [ForumController::class, "index"])->name('forum.index');
+    Route::get('forums/add-forum', [ForumController::class, "create"])->name('forum.create');
 });

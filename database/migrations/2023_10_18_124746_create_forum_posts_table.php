@@ -20,6 +20,7 @@ return new class extends Migration
             $table->tinyInteger("file_type")->default(0)->comment('0=no-file; 1=image; 2=video');
             $table->string("title")->nullable();
             $table->string("description", 1000)->nullable();
+            $table->boolean("active_status")->default(0);
             $table->foreignId('created_by');
             $table->foreignId('updated_by')->nullable();
             $table->softDeletes();
