@@ -37,17 +37,6 @@
                 <div class="ms-0 ms-md-2 mb-3 mb-md-0">
                 </div>
             </div>
-
-            <div class="d-md-flex">
-                <div class="d-flex align-items-center">
-                    <div>
-                        <a href="#" wire:click.prevent="bulkDelete" wire:key="bulk-action-bulkDelete"
-                            class="btn btn-danger">
-                            Delete
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
         @include('flash::message')
         <div>
