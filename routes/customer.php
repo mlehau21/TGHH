@@ -34,4 +34,5 @@ Route::prefix('customer')->middleware('auth', 'xss')->group(function () {
     Route::get('forum/view/{post_id}', [ForumController::class, "show"]);
     Route::get('forum/active-status/{post_id}/{post_status}', [ForumController::class, "activeInactive"]);
     Route::post('forum-update', [ForumController::class, "update"])->name('forum.update');
+    Route::get('forum/delete/{post_id}', [ForumController::class, "delete"]);
 });

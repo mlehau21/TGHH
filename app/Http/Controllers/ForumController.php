@@ -169,4 +169,11 @@ class ForumController extends Controller
             Flash::success('Oops! There is a problem!');
         }
     }
+
+    public function delete($post_id)
+    {
+        ForumPost::findOrFail($post_id)->delete();
+        Flash::success('Forum Deleted Successfull!');
+        return redirect()->back();
+    }
 }

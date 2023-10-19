@@ -165,7 +165,7 @@
                                                 @endif
                                             </ul>
                                         </div>
-                                        <a href="javascript:void(0)" data-id="38" data-bs-toggle="tooltip"
+                                        <a href="{{ url('customer/forum/delete/'. $post->id) }}" data-id="38" data-bs-toggle="tooltip"
                                             data-bs-placement="top" data-bs-trigger="hover" data-bs-original-title="Delete"
                                             class="btn px-2 text-danger fs-3 delete-posts-btn">
                                             <svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false"
