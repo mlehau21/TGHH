@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\FBPost;
 use App\Models\ForumPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +12,7 @@ class ForumController extends Controller
 {
     public function index()
     {
-        $data['posts'] = FBPost::latest()->get();
+        $data['posts'] = ForumPost::latest()->get();
         return view('forum.index', $data);
     }
 

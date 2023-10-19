@@ -10,6 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\DBDownloadController;
 use App\Http\Controllers\FollowersController;
+use App\Http\Controllers\ForumControllerFrontend;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupPostBackend;
@@ -201,12 +202,11 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 //    Route::get('logs', [LogViewerController::class, 'index']);
 });
 
+
 Route::get('group', [GroupController::class, 'index'])->name('group');
 Route::get('group/store', [GroupController::class, 'store'])->name('group.store');
 
-Route::get('forum', function () {
-    return view('front_new.forum');
-})->name('forum');
+Route::get('forums', [ForumControllerFrontend::class, 'index'])->name('forum');
 
 Route::middleware('xss','setLanguage')->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('front.home');

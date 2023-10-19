@@ -16,4 +16,9 @@ class ForumPost extends Model
     {
         return $this->hasMany(ForumLike::class, 'post_id');
     }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

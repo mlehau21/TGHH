@@ -62,10 +62,10 @@
                                                 aria-hidden="true" data-select2-id="select2-data-postCreatedBy">
                                                 <option selected="selected" value=""
                                                     data-select2-id="select2-data-22-wg6h">File Type</option>
-                                                <option value="0" data-select2-id="select2-data-26-lzou">No File
+                                                <option value="0" data-select2-id="select2-data-26-lzou" @if(old('file_type') == '0') selected @endif>No File
                                                 </option>
-                                                <option value="1" data-select2-id="select2-data-26-lzou">Photo</option>
-                                                <option value="1" data-select2-id="select2-data-27-732r">Video</option>
+                                                <option value="1" data-select2-id="select2-data-26-lzou" @if(old('file_type') == '1') selected @endif>Photo</option>
+                                                <option value="2" data-select2-id="select2-data-27-732r" @if(old('file_type') == '2') selected @endif>Video</option>
                                             </select>
                                             @error('file_type')
                                                 <strong class="text-danger">{{ $message }}</strong>
@@ -79,13 +79,13 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <div class="mb-5 col-lg-12">
-                                            <label for="image" class="form-label mb-3">File</label>
-                                            <input type="file" class="form-control" id="additionalImage"
-                                                accept=".png, .jpg, .jpeg,.webp,.svg" name="file">
+                                            <label for="file" class="form-label mb-3">File</label>
+                                            <input type="file" class="form-control" id="additionalFile" name="file" accept="image/*, video/*">
+                                            <!-- The "accept" attribute specifies the types of files that can be selected. "image/*" allows images, and "video/*" allows videos. -->
                                         </div>
                                         <div class="mb-5 col-lg-12">
                                             <div class="row">
-                                                <div id="preview" class="additional-images">
+                                                <div id="preview" class="additional-files">
                                                 </div>
                                             </div>
                                         </div>
@@ -96,6 +96,7 @@
                                     @enderror
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success">Save</button>

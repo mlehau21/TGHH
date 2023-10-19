@@ -27,8 +27,7 @@
                 </div>
 
 
-                <a href="{{ url('customer/forums/add-forum') }}" type="button"
-                    class="btn btn-primary mx-2 ms-auto">
+                <a href="{{ url('customer/forums/add-forum') }}" type="button" class="btn btn-primary mx-2 ms-auto">
                     Add Forum
                 </a>
                 <a href="#" type="button" class="btn btn-danger delete-post-btn d-none ">
@@ -62,7 +61,11 @@
                             </th>
 
                             <th class="">
-                                Message
+                                Title
+                            </th>
+
+                            <th class="">
+                                Created By
                             </th>
 
                             <th class="" style="cursor:pointer;">
@@ -97,18 +100,24 @@
                                     {{ $index + 1 }}
                                 </td>
                                 <td class="d-flex">
-                                    <div class="d-flex align-items-center">
-                                        <div class=" position-relative overflow-hidden">
-                                            <a href="{{ $post->link }}" data-lightbox="image-38">
-                                                <img src="{{ $post->image }}" class="float-start  width-custom">
-                                            </a>
-                                        </div>
-
-                                    </div>
+                                    @if ($post->file_type == 1)
+                                        <img width="100" src="{{ asset($post->file) }}" alt="Image">
+                                    @elseif ($post->file_type == 2)
+                                        <video width="100" controls>
+                                            <source src="{{ asset($post->file) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @else
+                                        <strong>No file</strong>
+                                    @endif
                                 </td>
 
                                 <td style="width: 50%">
-                                    {{ $post->message }}
+                                    {{ $post->title }}
+                                </td>
+
+                                <td>
+                                    {{ $post->owner->first_name }} {{ $post->owner->last_name }}
                                 </td>
 
                                 <td>
