@@ -84,5 +84,6 @@
 </div>
 
 @include('profile.changePassword')
+
 </body>
 </html>

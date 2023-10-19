@@ -71,7 +71,6 @@
                             <th class="" style="cursor:pointer;">
                                 <div class="d-flex align-items-center">
                                     <span>Created At</span>
-
                                     <span class="relative d-flex align-items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="ms-1" style="width:1em;height:1em;"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,12 +124,8 @@
                                 </td>
 
                                 <td>
-                                    <label
-                                        class="form-check form-switch form-check-custom form-check-solid form-switch-sm d-flex justify-content-start cursor-pointer">
-                                        <input type="checkbox" name="status" class="form-check-input  cursor-pointer"
-                                            value="1" wire:click="updateHeadline(37)" checked="">
-                                        <span class="custom-switch-indicator"></span>
-                                    </label>
+                                    <span
+                                        class="badge bg-{{ $post->active_status == 1 ? 'success' : 'danger' }}">{{ $post->active_status == 1 ? 'Active' : 'Inactive' }}</span>
                                 </td>
                                 <td>
                                     <div class="action-btn d-flex option align-items-center">
@@ -142,41 +137,36 @@
                                             <ul class="dropdown-menu min-width-220" aria-labelledby="dropdownMenuButton1"
                                                 style="">
                                                 <li>
-                                                    <a href="http://127.0.0.1:8000/admin/posts/38/edit"
+                                                    <a href="{{ url('customer/forum/edit/' . $post->id) }}"
                                                         class="dropdown-item posts-edit-btn px-3 py-1 text-decoration-none">
                                                         Edit
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="http://127.0.0.1:8000/admin/posts/38"
+                                                    <a href="{{ url('customer/forum/view/' . $post->id) }}"
                                                         class="dropdown-item px-3 py-1 text-decoration-none">
                                                         View
                                                     </a>
                                                 </li>
-
-                                                <li>
-                                                    <a href="#" class="dropdown-item px-3 py-1 text-decoration-none"
-                                                        wire:click="updateBreaking(38)">
-                                                        Add to Breaking
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item px-3 py-1 text-decoration-none"
-                                                        wire:click="updateSlider(38)">
-                                                        Add to Slider
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item px-3 py-1 text-decoration-none"
-                                                        wire:click="updateRecommended(38)">
-                                                        Add to Recommended
-                                                    </a>
-                                                </li>
+                                                @if (!$post->active_status == 1)
+                                                    <li>
+                                                        <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 1) }}"
+                                                            class="dropdown-item px-3 py-1 text-decoration-none">
+                                                            Active
+                                                        </a>
+                                                    </li>
+                                                @else
+                                                    <li>
+                                                        <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 0) }}"
+                                                            class="dropdown-item px-3 py-1 text-decoration-none bg-danger">
+                                                            Inactive
+                                                        </a>
+                                                    </li>
+                                                @endif
                                             </ul>
                                         </div>
                                         <a href="javascript:void(0)" data-id="38" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-trigger="hover"
-                                            data-bs-original-title="Delete"
+                                            data-bs-placement="top" data-bs-trigger="hover" data-bs-original-title="Delete"
                                             class="btn px-2 text-danger fs-3 delete-posts-btn">
                                             <svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false"
                                                 data-prefix="fas" data-icon="trash" role="img"
@@ -199,6 +189,5 @@
         </div>
     </div>
 @endsection
-{{-- @section('page_js') --}}
-{{--    <script src="{{mix('assets/js/add_post/create_edit.js')}}"></script> --}}
-{{-- @endsection --}}
+@section('page_js')
+@endsection

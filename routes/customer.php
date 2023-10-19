@@ -30,4 +30,8 @@ Route::prefix('customer')->middleware('auth', 'xss')->group(function () {
     Route::get('forums', [ForumController::class, "index"])->name('forum.index');
     Route::get('forums/add-forum', [ForumController::class, "create"])->name('forum.create');
     Route::post('forum-store', [ForumController::class, "store"])->name('forum.store');
+    Route::get('forum/edit/{post_id}', [ForumController::class, "edit"]);
+    Route::get('forum/view/{post_id}', [ForumController::class, "show"]);
+    Route::get('forum/active-status/{post_id}/{post_status}', [ForumController::class, "activeInactive"]);
+    Route::post('forum-update', [ForumController::class, "update"])->name('forum.update');
 });
