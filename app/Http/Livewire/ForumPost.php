@@ -12,11 +12,13 @@ class ForumPost extends Component
 {
     public $comment;
     public $showCommentStatus;
+    public $show_post_id = null;
+    public $is_exists_post_like;
     public function getForumsProperty()
     {
         return Model::with('owner', 'forum_likes', 'forum_comments')
             ->latest()
-            ->simplePaginate(5);
+            ->simplePaginate(1);
     }
 
     public function commentAdd($post_id)
@@ -39,23 +41,31 @@ class ForumPost extends Component
     public function postLike($post_id)
     {
         if (Auth::id()) {
-            ForumLike::create([
-                'user_id' => Auth::id(),
-                'post_id' => $post_id,
-                'like_status' => 1,
-                'created_by' => Auth::id(),
-            ]);
+            $this->is_exists_post_like = ForumLike::where("post_id", $post_id)->where('user_id',Auth::id())->first();
+            if ($this->is_exists_post_like) {
+                $this->is_exists_post_like->delete();
+            } else {
+                ForumLike::create([
+                    'user_id' => Auth::id(),
+                    'post_id' => $post_id,
+                    'like_status' => 1,
+                    'created_by' => Auth::id(),
+                ]);
+            }
+            
         } else {
             return redirect('login');
         }
     }
 
-    public function showComment()
+    public function showComment($post_id)
     {
         if ($this->showCommentStatus == 1) {
             $this->showCommentStatus = 0;
+            $this->show_post_id = $post_id;
         } else {
             $this->showCommentStatus = 1;
+            $this->show_post_id = $post_id;
         }
     }
 

@@ -32,12 +32,35 @@
                                     <button wire:click.prevent="postLike({{ $post->id }})" class="btn btn-light"
                                         style="color:#fc147c">
                                         <i class="fas fa-thumbs-up"></i>
-                                        <span class="like-text">Like</span>
+                                        @php
+                                            $i_liked = null;
+                                            if (auth()->check()) {
+                                                $i_liked = $post->forum_likes->where('created_by', auth()->user()->id)->first();
+                                            }
+                                        @endphp
+                                        <span class="like-text">Like{{ $i_liked ? 'd' : '' }}</span>
                                     </button>
                                     <span class="like-info">
-                                        @if ($post->forum_likes->count())
-                                            {{ $post->forum_likes->count() }}
-                                            other{{ $post->forum_likes->count() == 1 ? '' : 's' }}
+                                        @if (auth()->check())
+                                            @if ($post->forum_likes->count() > 1)
+                                                {{ $i_liked ? 'You And' : '' }}
+                                                {{ $post->forum_likes->count()-1 }}
+                                                other{{ $post->forum_likes->count() == 2 ? '' : 's' }}
+                                            @else
+                                                @if ($post->forum_likes->where('user_id', auth()->user()->id)->first())
+                                                    You Liked This.
+                                                @else
+                                                    @if ($post->forum_likes->count() == 1)
+                                                        {{ $post->forum_likes->count() }}
+                                                        other{{ $post->forum_likes->count() == 1 ? '' : 's' }}
+                                                    @endif
+                                                @endif
+                                            @endif
+                                        @else
+                                            @if ($post->forum_likes->count() == 1)
+                                                {{ $post->forum_likes->count() }}
+                                                other{{ $post->forum_likes->count() == 1 ? '' : 's' }}
+                                            @endif
                                         @endif
                                     </span>
                                 </div>
@@ -48,15 +71,15 @@
                                             comment{{ $post->forum_comments->count() == 1 ? '' : 's' }}
                                         @endif
                                     </span>
-                                    <button wire:click.prevent="showComment"
+                                    <button wire:click.prevent="showComment({{ $post->id }})"
                                         class="btn btn-secondary toggle-comments"><i
                                             class="fas fa-comments text-white"></i>
                                         <span class="comment-text">Comment</span>
                                     </button>
                                 </div>
                             </div>
-                            @if ($showCommentStatus == 1)
-                            @livewire('forum-comment-component', ['post_id' => $post->id])
+                            @if ($showCommentStatus == 1 && $post->id == $show_post_id)
+                                @livewire('forum-comment-component', ['post_id' => $post->id])
                             @endif
 
 
@@ -75,6 +98,6 @@
             </div>
         @empty
         @endforelse
-
+            <div>{{ $posts->links() }}</div>
     </div>
 </div>
