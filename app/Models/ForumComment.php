@@ -16,6 +16,11 @@ class ForumComment extends Model
     {
         return $this->belongsTo(ForumComment::class, 'post_id');
     }
+    
+    public function forum_comment_likes()
+    {
+        return $this->belongsTo(ForumCommentLike::class, 'comment_id');
+    }
     public function owner()
     {
         return $this->belongsTo(User::class, 'created_by');

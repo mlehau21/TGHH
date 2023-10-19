@@ -7,9 +7,12 @@ use App\Models\ForumLike;
 use Livewire\Component;
 use App\Models\ForumPost as Model;
 use Illuminate\Support\Facades\Auth;
+use Livewire\WithPagination;
 
 class ForumPost extends Component
 {
+    use WithPagination; 
+    protected $paginationTheme = 'bootstrap';
     public $comment;
     public $showCommentStatus;
     public $show_post_id = null;

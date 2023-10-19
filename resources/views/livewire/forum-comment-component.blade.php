@@ -6,16 +6,22 @@
                     <div class="author-info">
                         <img src="{{ $comment->owner->photo ? asset($comment->owner->photo) : asset('forum/avater.png') }}"
                             class="profile-picture" alt="Profile Picture">
-                        <span
-                            class="author-name">{{ $comment->owner->first_name }}</span>
+                        <span class="author-name">{{ $comment->owner->first_name }}</span>
                         <span class="created-time">Posted
                             {{ $comment->created_at->diffForHumans() }}</span>
                     </div>
                     <p class="comment-text">{{ $comment->message }}</p>
                     <div class="comment-actions">
-                        <button class="btn btn-light" style="color:#fc147c">
+                        <button wire:click.prevent="postCommentLike({{ $comment->id }})" class="btn btn-light"
+                            style="color:#fc147c">
                             <i class="fas fa-thumbs-up"></i>
-                            <span class="like-text">Like</span>
+                            @php
+                                $i_liked_comment = null;
+                                if (auth()->check()) {
+                                    $i_liked_comment = $comment->forum_comment_likes()->where('created_by', auth()->user()->id)->first();
+                                }
+                            @endphp
+                            <span class="like-text">Like{{ $i_liked_comment ? 'd' : '' }}</span>
                         </button>
                         <button class="btn btn-light" style="color: blue">
                             <i class="fas fa-edit"></i>

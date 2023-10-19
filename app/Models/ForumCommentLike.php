@@ -11,9 +11,13 @@ class ForumCommentLike extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
-    
+
     public function forum_comment()
     {
         return $this->belongsTo(ForumComment::class, 'comment_id');
+    }
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
