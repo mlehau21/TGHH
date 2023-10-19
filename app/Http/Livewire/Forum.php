@@ -9,14 +9,15 @@ class Forum extends Component
 {
     public function getForumsProperty()
     {
-        return ForumPost::with('owner')->latest()->simplePaginate(5);
+        return ForumPost::with('owner','forum_likes', 'forum_comments')->latest()->simplePaginate(5);
     }
+  
     public function render()
     {
         $data['posts'] = $this->forums;
-
         return view('livewire.forum', $data)
-        ->layout('front_new.layouts.app')
-        ->section('content');
+            ->layout('front_new.layouts.app')
+            ->section('content');
     }
+
 }

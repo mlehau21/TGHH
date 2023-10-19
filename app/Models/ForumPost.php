@@ -17,6 +17,11 @@ class ForumPost extends Model
         return $this->hasMany(ForumLike::class, 'post_id');
     }
 
+    public function forum_comments()
+    {
+        return $this->hasMany(ForumComment::class, 'post_id');
+    }
+
     public function owner()
     {
         return $this->belongsTo(User::class, 'created_by');

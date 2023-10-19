@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id");
             $table->foreignId("post_id");
-            $table->boolean("comment_status")->default(0)->comment('0=unlike; 1=like');
+            $table->string("message", 1000);
             $table->foreignId('created_by');
             $table->foreignId('updated_by')->nullable();
             $table->softDeletes();
