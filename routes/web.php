@@ -29,6 +29,7 @@ use App\Http\Controllers\SocialAuthController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Forum;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -206,7 +207,7 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 Route::get('group', [GroupController::class, 'index'])->name('group');
 Route::get('group/store', [GroupController::class, 'store'])->name('group.store');
 
-Route::get('forums', [ForumControllerFrontend::class, 'index'])->name('forum');
+Route::get('forums', Forum::class)->name('forum');
 
 Route::middleware('xss','setLanguage')->group(function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('front.home');
