@@ -18,10 +18,17 @@
                             @php
                                 $i_liked_comment = null;
                                 if (auth()->check()) {
-                                    $i_liked_comment = $comment->forum_comment_likes()->where('created_by', auth()->user()->id)->first();
+                                    $i_liked_comment = \App\Models\ForumCommentLike::where('comment_id', $comment->id);
+
+                                    $check_like = $i_liked_comment->where('created_by', auth()->user()->id)
+                                        ->first();
                                 }
                             @endphp
-                            <span class="like-text">Like{{ $i_liked_comment ? 'd' : '' }}</span>
+                            @if ($check_like)
+                                <span class="like-text">Liked ({{ $i_liked_comment->count() }})</span>
+                            @else
+                                <span class="like-text">Like</span>
+                            @endif
                         </button>
                         <button class="btn btn-light" style="color: blue">
                             <i class="fas fa-edit"></i>
