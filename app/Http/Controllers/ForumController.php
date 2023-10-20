@@ -13,7 +13,12 @@ class ForumController extends Controller
 {
     public function index()
     {
-        $data['posts'] = ForumPost::latest()->get();
+        if (auth()->user()->getRoleNames()[0] != "admin") {
+            $data['posts'] = ForumPost::latest()->where('created_by', auth()->user()->id)->paginate(10);
+        } else {
+            $data['posts'] = ForumPost::latest()->paginate(10);
+        }
+        
         return view('forum.index', $data);
     }
 

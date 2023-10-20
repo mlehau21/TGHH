@@ -148,6 +148,7 @@
                                                         View
                                                     </a>
                                                 </li>
+                                                @if (auth()->user()->getRoleNames()[0] == "admin")
                                                 @if (!$post->active_status == 1)
                                                     <li>
                                                         <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 1) }}"
@@ -162,6 +163,8 @@
                                                             Inactive
                                                         </a>
                                                     </li>
+                                                @endif
+                                                    
                                                 @endif
                                             </ul>
                                         </div>
