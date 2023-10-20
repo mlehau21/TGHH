@@ -78,7 +78,7 @@
                                     </button>
                                 </div>
                             </div>
-                            @if ($showCommentStatus == 1 && $post->id == $show_post_id)
+                            @if (in_array($post->id, $showCommentStatus) && $post->id == $show_post_id)
                                 @livewire('forum-comment-component', ['post_id' => $post->id])
                             @endif
 

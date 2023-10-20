@@ -11,12 +11,16 @@ use Livewire\WithPagination;
 
 class ForumPost extends Component
 {
-    use WithPagination; 
+    use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $comment;
-    public $showCommentStatus;
+    public $showCommentStatus = [];
     public $show_post_id = null;
     public $is_exists_post_like;
+
+    public function mount()
+    {
+    }
     public function getForumsProperty()
     {
         return Model::with('owner', 'forum_likes', 'forum_comments')
@@ -44,7 +48,9 @@ class ForumPost extends Component
     public function postLike($post_id)
     {
         if (Auth::id()) {
-            $this->is_exists_post_like = ForumLike::where("post_id", $post_id)->where('user_id',Auth::id())->first();
+            $this->is_exists_post_like = ForumLike::where('post_id', $post_id)
+                ->where('user_id', Auth::id())
+                ->first();
             if ($this->is_exists_post_like) {
                 $this->is_exists_post_like->delete();
             } else {
@@ -55,7 +61,6 @@ class ForumPost extends Component
                     'created_by' => Auth::id(),
                 ]);
             }
-            
         } else {
             return redirect('login');
         }
@@ -63,13 +68,14 @@ class ForumPost extends Component
 
     public function showComment($post_id)
     {
-        if ($this->showCommentStatus == 1) {
-            $this->showCommentStatus = 0;
+        if (in_array($post_id, $this->showCommentStatus)) {
             $this->show_post_id = $post_id;
+            $this->showCommentStatus = array_slice($this->showCommentStatus, $post_id);
         } else {
-            $this->showCommentStatus = 1;
             $this->show_post_id = $post_id;
+            array_push($this->showCommentStatus, $post_id);
         }
+       
     }
 
     public function render()

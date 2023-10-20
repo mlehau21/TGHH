@@ -17,6 +17,7 @@
                             <i class="fas fa-thumbs-up"></i>
                             @php
                                 $i_liked_comment = null;
+                                $check_like=null;
                                 if (auth()->check()) {
                                     $i_liked_comment = \App\Models\ForumCommentLike::where('comment_id', $comment->id);
 
