@@ -98,6 +98,7 @@ class ForumController extends Controller
     public function show($post_id)
     {
         $data['post'] = ForumPost::findOrFail($post_id);
+        return view('forum.view_forum', $data);
     }
     public function activeInactive($post_id, $status)
     {

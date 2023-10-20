@@ -92,7 +92,7 @@
     </li>
 @endcan
 @can('manage_forum')
-    <li class="nav-item {{ Request::is('customer/forums*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('customer/forums*', 'customer/forum/view*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('forum.index') }}">
         <span class="aside-menu-icon pe-3">
             <i class="fas fa-file fs-4"></i>
