@@ -84,7 +84,7 @@
 
 
                             <div class="comment-form">
-                                <form wire:submit.prevent='commentAdd({{ $post->id }})'>
+                                <form wire:submit.prevent='{{ $isUpdateComment ? "commentUpdate($post->id)" : "commentAdd($post->id)" }}'>
 
                                     <div class="form-group border">
                                         <textarea class="form-control comment-input" wire:model.defer='comment' placeholder="Add a comment"></textarea>

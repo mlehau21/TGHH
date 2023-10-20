@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Comment;
 use App\Models\ForumComment;
 use App\Models\ForumCommentLike;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,9 @@ class ForumCommentComponent extends Component
 {
     public $page = 1;
     public $post_id;
+    public $refresh = true;
     public $is_exists_post_comment_like;
+    protected $listeners = ['forumCommentRefresh'];
 
     public function loadMore()
     {
@@ -36,6 +39,20 @@ class ForumCommentComponent extends Component
         } else {
             return redirect('login');
         }
+    }
+
+    public function editComment($comment_id)
+    {
+        $this->emit('editComment', $comment_id);
+    }
+    public function deleteComment($comment_id)
+    {
+        ForumComment::findOrFail($comment_id)->delete();
+    }
+
+    public function forumCommentRefresh()
+    {
+        $this->refresh = true;
     }
 
     public function render()

@@ -17,13 +17,19 @@ class ForumPost extends Component
     public $showCommentStatus = [];
     public $show_post_id = null;
     public $is_exists_post_like;
+    public $isUpdateComment = false;
+    protected $listeners = ['editComment'];
 
-    public function mount()
+    public function editComment($comment_id)
     {
+        $comment = ForumComment::findOrFail($comment_id);
+        $this->comment = $comment->message;
+        $this->isUpdateComment = true;
     }
     public function getForumsProperty()
     {
         return Model::with('owner', 'forum_likes', 'forum_comments')
+            ->where('active_status', 1)
             ->latest()
             ->simplePaginate(1);
     }
@@ -40,6 +46,25 @@ class ForumPost extends Component
                 ]);
                 $this->comment = null;
             }
+        } else {
+            return redirect('login');
+        }
+    }
+
+    public function commentUpdate($post_id)
+    {
+        if (Auth::id()) {
+            if ($this->comment) {
+                ForumComment::findOrFail($post_id)->update([
+                    'user_id' => Auth::id(),
+                    'post_id' => $post_id,
+                    'message' => $this->comment,
+                    'created_by' => Auth::id(),
+                ]);
+                $this->comment = null;
+                $this->isUpdateComment = false;
+            }
+            $this->emit('forumCommentRefresh');
         } else {
             return redirect('login');
         }

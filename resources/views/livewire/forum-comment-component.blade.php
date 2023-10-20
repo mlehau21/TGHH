@@ -17,12 +17,10 @@
                             <i class="fas fa-thumbs-up"></i>
                             @php
                                 $i_liked_comment = null;
-                                $check_like=null;
+                                $check_like = null;
                                 if (auth()->check()) {
                                     $i_liked_comment = \App\Models\ForumCommentLike::where('comment_id', $comment->id);
-
-                                    $check_like = $i_liked_comment->where('created_by', auth()->user()->id)
-                                        ->first();
+                                    $check_like = $i_liked_comment->where('created_by', auth()->user()->id)->first();
                                 }
                             @endphp
                             @if ($check_like)
@@ -31,15 +29,18 @@
                                 <span class="like-text">Like</span>
                             @endif
                         </button>
-                        <button class="btn btn-light" style="color: blue">
-                            <i class="fas fa-edit"></i>
-                            <span class="like-text">Edit</span>
-                        </button>
-                        <button class="btn btn-light" style="color:#c60000d3">
-                            <i class="fas fa-trash"></i>
-                            <span class="like-text">Delete</span>
-                        </button>
-
+                        @if ($check_like)
+                            <button wire:click.prevent="editComment({{ $comment->id }})" class="btn btn-light" style="color: blue">
+                                <i class="fas fa-edit"></i>
+                                <span class="like-text">Edit</span>
+                            </button>
+                        @endif
+                        @if ($check_like)
+                            <button wire:click.prevent="deleteComment({{ $comment->id }})" class="btn btn-light" style="color:#c60000d3">
+                                <i class="fas fa-trash"></i>
+                                <span class="like-text">Delete</span>
+                            </button>
+                        @endif
                     </div>
                 </div>
             </li>
