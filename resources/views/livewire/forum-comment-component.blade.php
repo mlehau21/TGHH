@@ -23,10 +23,10 @@
                                 if (auth()->check()) {
                                     $i_liked_comment = \App\Models\ForumCommentLike::where('comment_id', $comment->id);
                                     $check_like = $i_liked_comment->where('created_by', auth()->user()->id)->first();
-                                    
-                                    $post_comment = \App\Models\ForumComment::where('created_by', auth()->user()->id)->first();
+                                    $post_comment = $comment->created_by == auth()->user()->id;
                                 
                                 }
+                                $manage_forum = auth()->user()->can('manage_forum');
                             @endphp
                             @if ($check_like)
                                 <span class="like-text">Liked ({{ $i_liked_comment->count() }})</span>
@@ -34,13 +34,13 @@
                                 <span class="like-text">Like</span>
                             @endif
                         </button>
-                        @if ($check_like || $post_comment)
+                        @if ($post_comment || $manage_forum)
                             <button wire:click.prevent="editComment({{ $comment->id }})" class="btn btn-light" style="color: blue">
                                 <i class="fas fa-edit"></i>
                                 <span class="like-text">Edit</span>
                             </button>
                         @endif
-                        @if ($check_like || $post_comment)
+                        @if ($post_comment || $manage_forum)
                             <button wire:click.prevent="deleteComment({{ $comment->id }})" class="btn btn-light" style="color:#c60000d3">
                                 <i class="fas fa-trash"></i>
                                 <span class="like-text">Delete</span>
