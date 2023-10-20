@@ -43,7 +43,8 @@ class ForumCommentComponent extends Component
 
     public function editComment($comment_id)
     {
-        $this->emit('editComment', $comment_id);
+        info($comment_id);
+        $this->emitUp('editComment', $comment_id);
     }
     public function deleteComment($comment_id)
     {

@@ -53,6 +53,7 @@ class ForumPost extends Component
 
     public function commentUpdate($post_id)
     {
+        info($post_id);
         if (Auth::id()) {
             if ($this->comment) {
                 ForumComment::findOrFail($post_id)->update([
