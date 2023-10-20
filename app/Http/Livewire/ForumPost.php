@@ -31,7 +31,7 @@ class ForumPost extends Component
         return Model::with('owner', 'forum_likes', 'forum_comments')
             ->where('active_status', 1)
             ->latest()
-            ->simplePaginate(1);
+            ->simplePaginate(env('FORUM_PAGINATION_LIMIT'));
     }
 
     public function commentAdd($post_id)
@@ -46,6 +46,7 @@ class ForumPost extends Component
                 ]);
                 $this->comment = null;
             }
+            $this->emit('forumCommentRefresh');
         } else {
             return redirect('login');
         }

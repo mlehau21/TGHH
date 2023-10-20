@@ -44,7 +44,6 @@ class ForumCommentComponent extends Component
     public function editComment($comment_id)
     {
         session()->put('id', $comment_id);
-        info($comment_id);
         $this->emitUp('editComment', $comment_id);
     }
     public function deleteComment($comment_id)
@@ -59,7 +58,7 @@ class ForumCommentComponent extends Component
 
     public function render()
     {
-        $data['comments'] = ForumComment::with('forum_comment_likes')->where('post_id', $this->post_id)->paginate(2, ['*'], 'page', $this->page);
+        $data['comments'] = ForumComment::with('forum_comment_likes')->where('post_id', $this->post_id)->paginate(env('FORUM_COMMENT_PAGINATION_LIMIT'), ['*'], 'page', $this->page);
         return view('livewire.forum-comment-component', $data);
     }
 }
