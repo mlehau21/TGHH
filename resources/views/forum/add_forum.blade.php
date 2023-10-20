@@ -28,7 +28,7 @@
                                         <div class="p-0">
                                             <div class="mb-5">
                                                 <label for="title" class="form-label required">Title:</label>
-                                                <input class="form-control" placeholder="Title" required=""
+                                                <input class="form-control" placeholder="Title"
                                                     id="postTitle" name="title" type="text"
                                                     value="{{ old('title') }}">
                                                 @error('title')
@@ -40,7 +40,7 @@
                                             <div class="mb-5">
                                                 <label for="short_description" class="form-label required ">
                                                     Description:</label>
-                                                <textarea class="form-control" id="description" placeholder="Short Description" required="" rows="3"
+                                                <textarea class="form-control" id="description" placeholder="Short Description" rows="3"
                                                     name="description" cols="50">{{ old('description') }}</textarea>
                                                 @error('description')
                                                     <strong class="text-danger">{{ $message }}</strong>
