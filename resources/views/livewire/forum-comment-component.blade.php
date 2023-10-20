@@ -34,7 +34,7 @@
                                 <span class="like-text">Like</span>
                             @endif
                         </button>
-                        @if ($post_comment || $manage_forum)
+                        @if ($post_comment)
                             <button wire:click.prevent="editComment({{ $comment->id }})" class="btn btn-light" style="color: blue">
                                 <i class="fas fa-edit"></i>
                                 <span class="like-text">Edit</span>
