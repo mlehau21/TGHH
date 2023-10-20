@@ -11,12 +11,19 @@ use Illuminate\Support\Facades\File;
 
 class ForumController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $title = $request->title;
         if (auth()->user()->getRoleNames()[0] != "admin") {
-            $data['posts'] = ForumPost::latest()->where('created_by', auth()->user()->id)->paginate(10);
+            $data['posts'] = ForumPost::latest()->where('created_by', auth()->user()->id)
+            ->when($title, function($query) use ($title){
+                $query->where('title','like', "%". $title."%");
+            })->paginate(10);
         } else {
-            $data['posts'] = ForumPost::latest()->paginate(10);
+            $data['posts'] = ForumPost::latest()
+            ->when($title, function($query) use ($title){
+                $query->where('title', $title);
+            })->paginate(10);
         }
         
         return view('forum.index', $data);

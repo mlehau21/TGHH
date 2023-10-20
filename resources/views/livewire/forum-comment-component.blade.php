@@ -23,7 +23,7 @@
                                 if (auth()->check()) {
                                     $i_liked_comment = \App\Models\ForumCommentLike::where('comment_id', $comment->id);
                                     $check_like = $i_liked_comment->where('created_by', auth()->user()->id)->first();
-                                    $admin = auth()->user()->getRoleNames()[0] == "admin";
+                                    
                                     $post_comment = \App\Models\ForumComment::where('created_by', auth()->user()->id)->first();
                                 
                                 }
@@ -34,13 +34,13 @@
                                 <span class="like-text">Like</span>
                             @endif
                         </button>
-                        @if ($check_like || $admin || $post_comment)
+                        @if ($check_like || $post_comment)
                             <button wire:click.prevent="editComment({{ $comment->id }})" class="btn btn-light" style="color: blue">
                                 <i class="fas fa-edit"></i>
                                 <span class="like-text">Edit</span>
                             </button>
                         @endif
-                        @if ($check_like || $admin || $post_comment)
+                        @if ($check_like || $post_comment)
                             <button wire:click.prevent="deleteComment({{ $comment->id }})" class="btn btn-light" style="color:#c60000d3">
                                 <i class="fas fa-trash"></i>
                                 <span class="like-text">Delete</span>

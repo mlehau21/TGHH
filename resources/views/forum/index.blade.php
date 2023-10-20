@@ -20,7 +20,7 @@
                                     </path>
                                 </svg><!-- <i class="fa-solid fa-magnifying-glass"></i> Font Awesome fontawesome.com -->
                             </span>
-                            <input wire:model="filters.search" placeholder="Search" type="search" class="form-control ps-8"
+                            <input placeholder="Search" type="search" class="form-control ps-8"
                                 aria-label="Search">
                         </div>
                     </form>
@@ -148,7 +148,7 @@
                                                         View
                                                     </a>
                                                 </li>
-                                                @if (auth()->user()->getRoleNames()[0] == "admin")
+                                                @can('manage_forum')
                                                 @if (!$post->active_status == 1)
                                                     <li>
                                                         <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 1) }}"
@@ -165,7 +165,7 @@
                                                     </li>
                                                 @endif
                                                     
-                                                @endif
+                                                @endcan
                                             </ul>
                                         </div>
                                         <a href="{{ url('customer/forum/delete/'. $post->id) }}" data-id="38" data-bs-toggle="tooltip"
@@ -188,6 +188,9 @@
                     </tbody>
 
                 </table>
+                <div>
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </div>
