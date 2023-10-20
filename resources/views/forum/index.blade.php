@@ -20,8 +20,7 @@
                                     </path>
                                 </svg><!-- <i class="fa-solid fa-magnifying-glass"></i> Font Awesome fontawesome.com -->
                             </span>
-                            <input placeholder="Search" type="search" class="form-control ps-8"
-                                aria-label="Search">
+                            <input placeholder="Search" type="search" class="form-control ps-8" aria-label="Search">
                         </div>
                     </form>
                 </div>
@@ -136,12 +135,14 @@
                                             </button>
                                             <ul class="dropdown-menu min-width-220" aria-labelledby="dropdownMenuButton1"
                                                 style="">
-                                                <li>
-                                                    <a href="{{ url('customer/forum/edit/' . $post->id) }}"
-                                                        class="dropdown-item posts-edit-btn px-3 py-1 text-decoration-none">
-                                                        Edit
-                                                    </a>
-                                                </li>
+                                                @if ($post->created_by == auth()->user()->id)
+                                                    <li>
+                                                        <a href="{{ url('customer/forum/edit/' . $post->id) }}"
+                                                            class="dropdown-item posts-edit-btn px-3 py-1 text-decoration-none">
+                                                            Edit
+                                                        </a>
+                                                    </li>
+                                                @endif
                                                 <li>
                                                     <a href="{{ url('customer/forum/view/' . $post->id) }}"
                                                         class="dropdown-item px-3 py-1 text-decoration-none">
@@ -149,27 +150,27 @@
                                                     </a>
                                                 </li>
                                                 @can('manage_forum')
-                                                @if (!$post->active_status == 1)
-                                                    <li>
-                                                        <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 1) }}"
-                                                            class="dropdown-item px-3 py-1 text-decoration-none">
-                                                            Active
-                                                        </a>
-                                                    </li>
-                                                @else
-                                                    <li>
-                                                        <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 0) }}"
-                                                            class="dropdown-item px-3 py-1 text-decoration-none bg-danger">
-                                                            Inactive
-                                                        </a>
-                                                    </li>
-                                                @endif
-                                                    
+                                                    @if (!$post->active_status == 1)
+                                                        <li>
+                                                            <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 1) }}"
+                                                                class="dropdown-item px-3 py-1 text-decoration-none">
+                                                                Active
+                                                            </a>
+                                                        </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 0) }}"
+                                                                class="dropdown-item px-3 py-1 text-decoration-none bg-danger">
+                                                                Inactive
+                                                            </a>
+                                                        </li>
+                                                    @endif
                                                 @endcan
                                             </ul>
                                         </div>
-                                        <a href="{{ url('customer/forum/delete/'. $post->id) }}" data-id="38" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-trigger="hover" data-bs-original-title="Delete"
+                                        <a href="{{ url('customer/forum/delete/' . $post->id) }}" data-id="38"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+                                            data-bs-original-title="Delete"
                                             class="btn px-2 text-danger fs-3 delete-posts-btn">
                                             <svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false"
                                                 data-prefix="fas" data-icon="trash" role="img"
