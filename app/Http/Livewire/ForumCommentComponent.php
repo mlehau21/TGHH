@@ -58,7 +58,7 @@ class ForumCommentComponent extends Component
 
     public function render()
     {
-        $data['comments'] = ForumComment::with('forum_comment_likes')->where('post_id', $this->post_id)->paginate(env('FORUM_COMMENT_PAGINATION_LIMIT'), ['*'], 'page', $this->page);
+        $data['comments'] = ForumComment::latest()->with('forum_comment_likes')->where('post_id', $this->post_id)->paginate(env('FORUM_COMMENT_PAGINATION_LIMIT'), ['*'], 'page', $this->page);
         return view('livewire.forum-comment-component', $data);
     }
 }
