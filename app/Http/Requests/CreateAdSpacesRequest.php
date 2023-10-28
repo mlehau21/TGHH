@@ -25,8 +25,8 @@ class CreateAdSpacesRequest extends FormRequest
     public function rules()
     {
         return [
-            'ad_banner.1' => 'dimensions:min_width=350,min_height=290',
-            'ad_banner.0' => 'dimensions:min_width=1600,min_height=300',
+            // 'ad_banner.1' => 'dimensions:min_width=350,min_height=290',
+            // 'ad_banner.0' => 'dimensions:min_width=1600,min_height=300',
             'height' => 'required|numeric',
             'width' => 'required|numeric',
         ];
