@@ -230,8 +230,8 @@ function getNavigationDetails(): array
             $data['menus'][] = $menu;
         }
     }
-
-    $data['navigations'] = collect($data['menus'])->take(6);
+    
+    $data['navigations'] = collect($data['menus'])->take(8);
     //child
     $data['navigationsTakeData'] = [];
     foreach ($data['navigations'] as $item) {

@@ -35,6 +35,7 @@
     <!-- CSS Libraries -->
     @yield('page_css')
     @yield('css')
+    @stack('css')
     @livewireStyles
 
     @livewireScripts
