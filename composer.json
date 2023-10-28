@@ -16,6 +16,7 @@
         "facebook/graph-sdk": "^5.1",
         "gerardojbaez/money": "^0.3.1",
         "guzzlehttp/guzzle": "^7.2",
+        "intervention/image": "^2.7",
         "jenssegers/agent": "^2.6",
         "laracasts/flash": "^3.2",
         "laravel/framework": "^9.45",

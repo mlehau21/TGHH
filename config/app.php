@@ -198,7 +198,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -265,6 +265,7 @@ return [
     'Datatables' => \Yajra\DataTables\Facades\DataTables::class,
     'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
     'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+    'Image' => Intervention\Image\Facades\Image::class
     ],
 
 ];

@@ -62,7 +62,6 @@ class AdSpacesController extends Controller
     public function store(CreateAdSpacesRequest $request)
     {
         $input = $request->all();
-
         $this->adSpacesRepository->store($input);
         Flash::success(__('messages.placeholder.adSpaces_updated_successfully'));
 

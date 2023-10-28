@@ -37,14 +37,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  */
 class AdSpaces extends Model implements HasMedia
 {
-    use HasFactory,InteractsWithMedia;
+    use HasFactory, InteractsWithMedia;
 
-    protected $fillable = [
-        'ad_spaces',
-        'img_size',
-        'ad_url',
-        'code',
-    ];
+    protected $fillable = ['ad_spaces', 'img_size', 'ad_url', 'code'];
 
     const IMAGE_POST = 'post image';
 
@@ -97,8 +92,8 @@ class AdSpaces extends Model implements HasMedia
     {
         /** @var Media $media */
         $media = $this->getMedia(self::IMAGE_POST)->first();
-        if (! empty($media)) {
-            return $media->getFullUrl();
+        if (!empty($media)) {
+            return $media->getFullUrl('thumb');
         }
         if ($this->ad_spaces == AdSpaces::HEADER) {
             return asset('images/1300.png');
@@ -109,5 +104,23 @@ class AdSpaces extends Model implements HasMedia
         if ($this->ad_view == AdSpaces::MOBILE) {
             return asset('images/350_290.png');
         }
+    }
+
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->width($this->getWidthForConversion())
+            ->height($this->getHeightForConversion())
+            ->sharpen(10);
+    }
+
+    protected function getWidthForConversion()
+    {
+        return request('width', 800);
+    }
+
+    protected function getHeightForConversion()
+    {
+        return request('height', 320);
     }
 }
