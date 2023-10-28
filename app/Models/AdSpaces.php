@@ -116,11 +116,13 @@ class AdSpaces extends Model implements HasMedia
 
     protected function getWidthForConversion()
     {
+        info(request('width', 800));
         return request('width', 800);
     }
 
     protected function getHeightForConversion()
     {
-        return request('height', 320);
+        info(request('height', 120));
+        return request('height', 120);
     }
 }

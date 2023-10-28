@@ -13,9 +13,9 @@
                 {{ Form::label('name',__('messages.ad_space.ad_url').':',   ['class'=>'form-label required fs-6']) }}
                 {{ Form::url('ad-url[]',!empty($adBanner) ? $adBanner[0]->ad_url:'', ['class' => 'form-control','placeholder'=>__('messages.ad_space.ad_url')]) }}
                 <label for="height" class='form-label required fs-6'>Height</label>
-                <input type="number" id="height" name="height" class="form-control" placeholder="Please Enter Banner Height">
+                <input type="number" value="300" id="height" name="height" class="form-control" placeholder="Please Enter Banner Height">
                 <label for="width" class='form-label required fs-6'>Width</label>
-                <input type="number" id="width" name="width" class="form-control" placeholder="Please Enter Banner Width">
+                <input type="number" value="1600" id="width" name="width" class="form-control" placeholder="Please Enter Banner Width">
                 <div class="my-5">
                     <div class="font-weight-bolder">{{__('messages.allowed_file_size')}}</div>
                 <input type="hidden" value="{{App\Models\AdSpaces::DESKTOP}}" name="ad_view[]">
@@ -48,6 +48,10 @@
             <div>
                 {{ Form::label('name',__('messages.ad_space.ad_url').':',   ['class'=>'form-label required fs-6']) }}
                 {{ Form::url('ad-url[]',!empty($adBanner) ? $adBanner[1]->ad_url:'', ['class' => 'form-control','placeholder'=>__('messages.ad_space.ad_url')]) }}
+                <label for="height" class='form-label required fs-6'>Height</label>
+                <input type="number" value="300" id="height" name="height" class="form-control" placeholder="Please Enter Banner Height">
+                <label for="width" class='form-label required fs-6'>Width</label>
+                <input type="number" value="1600" id="width" name="width" class="form-control" placeholder="Please Enter Banner Width">
                 <div class="my-5">
                     <div class="font-weight-bolder">{{__('messages.allowed_file_size')}} 350 X 290</div>
                 <input type="hidden" value="{{App\Models\AdSpaces::MOBILE}}" name="ad_view[]">
