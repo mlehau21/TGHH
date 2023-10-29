@@ -34,7 +34,7 @@ class CreateAdSpacesRequest extends FormRequest
     {
         return [
             'ad_banner.1.dimensions' => __('messages.placeholder.mobile_view_image_dimensions_must_be_350X290'),
-            'ad_banner.0.dimensions' => __('messages.placeholder.desktop_view_image_dimensions_must_be_1600X300'),
+            'ad_banner.0.dimensions' => __('messages.placeholder.desktop_view_image_dimensions_must_be_800X130'),
         ];
     }
 }
