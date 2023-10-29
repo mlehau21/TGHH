@@ -9,8 +9,8 @@
     @else
         <div class="container index-top-desktop">
             <a href="{{ getAdImageDesktop(\App\Models\AdSpaces::HEADER)->ad_url }}" target="_blank">
-                <img src="{{ asset(getAdImageDesktop(\App\Models\AdSpaces::HEADER)->ad_banner) }}" width="1300" height="260"
-                    class="img-fluid">
+                <img src="{{ asset(getAdImageDesktop(\App\Models\AdSpaces::HEADER)->ad_banner) }}"
+                     width="100%" height="300">
             </a>
         </div>
     @endif

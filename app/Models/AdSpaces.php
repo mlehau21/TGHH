@@ -93,7 +93,7 @@ class AdSpaces extends Model implements HasMedia
         /** @var Media $media */
         $media = $this->getMedia(self::IMAGE_POST)->first();
         if (!empty($media)) {
-            return $media->getFullUrl('thumb');
+            return $media->getFullUrl();
         }
         if ($this->ad_spaces == AdSpaces::HEADER) {
             return asset('images/1300.png');
@@ -106,23 +106,4 @@ class AdSpaces extends Model implements HasMedia
         }
     }
 
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('thumb')
-            ->width($this->getWidthForConversion())
-            ->height($this->getHeightForConversion())
-            ->sharpen(10);
-    }
-
-    protected function getWidthForConversion()
-    {
-        info(request('width', 800));
-        return request('width', 800);
-    }
-
-    protected function getHeightForConversion()
-    {
-        info(request('height', 120));
-        return request('height', 120);
-    }
 }

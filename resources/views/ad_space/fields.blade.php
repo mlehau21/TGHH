@@ -1,7 +1,9 @@
 <div>
-    <div class="col-lg-6 col-md-12 my-5">
-        {{ Form::label('ad-space', __('messages.ad_space.select_ad_space') . ' :', ['class' => 'form-label required']) }}
-        {{ Form::select('ad-space', App\Models\AdSpaces::AD_SPACE, $sectionID, ['class' => 'form-select', 'id' => 'AdSpace', 'data-control' => 'select2', 'required']) }}
+    <div class="row">
+        <div class="col-lg-6 col-md-12 my-5">
+            {{ Form::label('ad-space', __('messages.ad_space.select_ad_space') . ' :', ['class' => 'form-label required']) }}
+            {{ Form::select('ad-space', App\Models\AdSpaces::AD_SPACE, $sectionID, ['class' => 'form-select', 'id' => 'AdSpace', 'data-control' => 'select2', 'required']) }}
+        </div>
     </div>
     <hr>
     <div class="row">
@@ -10,14 +12,11 @@
             <div class="col-lg-6 col-md-12">
                 <div>
                     <div>
-                        <label for="height" class='form-label required fs-6'>Height</label>
-                        <input type="number" value="300" id="height" name="height" class="form-control"
-                            placeholder="Please Enter Banner Height">
-                        <label for="width" class='form-label required fs-6'>Width</label>
-                        <input type="number" value="1600" id="width" name="width" class="form-control"
-                            placeholder="Please Enter Banner Width">
+                        {{ Form::label('name', __('messages.ad_space.ad_url') . ':', ['class' => 'form-label required fs-6']) }}
+                        {{ Form::url('ad-url[]', !empty($adBanner) ? $adBanner[0]->ad_url : '', ['class' => 'form-control', 'placeholder' => __('messages.ad_space.ad_url')]) }}
+
                         <div class="my-5">
-                            <div class="font-weight-bolder">{{ __('messages.allowed_file_size') }}</div>
+                            <div class="font-weight-bolder">{{ __('messages.allowed_file_size') }} 1600 X 300</div>
                             <input type="hidden" value="{{ App\Models\AdSpaces::DESKTOP }}" name="ad_view[]">
                             <input type="file" class="form-control" id="adBannerImageDesktop"
                                 accept=".png, .jpg, .jpeg,.webp,.svg" name="ad_banner[]"
@@ -37,8 +36,6 @@
             </div>
 
             <div class="col-lg-6 col-md-12">
-                {{ Form::label('name', __('messages.ad_space.ad_url') . ':', ['class' => 'form-label required fs-6']) }}
-                {{ Form::url('ad-url[]', !empty($adBanner) ? $adBanner[0]->ad_url : '', ['class' => 'form-control', 'placeholder' => __('messages.ad_space.ad_url')]) }}
                 {{ Form::label('name', __('messages.ad_space.ad_code') . ':', ['class' => 'form-label required fs-6']) }}
                 <textarea rows="10" cols="100" name="ad-code[]">{{ !empty($adBanner[0]->code) ? $adBanner[0]->code : '' }}</textarea>
             </div>
@@ -51,12 +48,7 @@
                     <div>
                         {{ Form::label('name', __('messages.ad_space.ad_url') . ':', ['class' => 'form-label required fs-6']) }}
                         {{ Form::url('ad-url[]', !empty($adBanner) ? $adBanner[1]->ad_url : '', ['class' => 'form-control', 'placeholder' => __('messages.ad_space.ad_url')]) }}
-                        <label for="height" class='form-label required fs-6'>Height</label>
-                        <input type="number" value="300" id="height" name="height" class="form-control"
-                            placeholder="Please Enter Banner Height">
-                        <label for="width" class='form-label required fs-6'>Width</label>
-                        <input type="number" value="1600" id="width" name="width" class="form-control"
-                            placeholder="Please Enter Banner Width">
+
                         <div class="my-5">
                             <div class="font-weight-bolder">{{ __('messages.allowed_file_size') }} 350 X 290</div>
                             <input type="hidden" value="{{ App\Models\AdSpaces::MOBILE }}" name="ad_view[]">

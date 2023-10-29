@@ -25,10 +25,8 @@ class CreateAdSpacesRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'ad_banner.1' => 'dimensions:min_width=350,min_height=290',
-            // 'ad_banner.0' => 'dimensions:min_width=1600,min_height=300',
-            'height' => 'required|numeric',
-            'width' => 'required|numeric',
+            'ad_banner.1' => 'dimensions:max_width=350,max_height=290',
+            'ad_banner.0' => 'dimensions:max_width=1600,max_height=300',
         ];
     }
 
@@ -36,7 +34,7 @@ class CreateAdSpacesRequest extends FormRequest
     {
         return [
             'ad_banner.1.dimensions' => __('messages.placeholder.mobile_view_image_dimensions_must_be_350X290'),
-            'ad_banner.0.dimensions' => __('messages.placeholder.desktop_view_image_dimensions_must_be_800X130'),
+            'ad_banner.0.dimensions' => __('messages.placeholder.desktop_view_image_dimensions_must_be_1600X300'),
         ];
     }
 }
