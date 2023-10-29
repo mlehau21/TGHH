@@ -834,7 +834,7 @@ return [
         'your_plan_is_expired_Please_choose_a_plan_to_continue_the_services' => 'Your plan is expired. Please choose a plan to continue the services',
         'your_account_is_currently_disabled_please_contact_to_administrator' => 'Your account is currently disabled, please contact to administrator.',
         'mobile_view_image_dimensions_must_be_350X290'                       => 'Mobile View image Dimensions must be 350X290',
-        'desktop_view_image_dimensions_must_be_800X130'                      => 'Desktop View image Dimensions must be 1600X300',
+        'desktop_view_image_dimensions_must_be_1600X300'                      => 'Desktop View image Dimensions must be 1600X300',
         'the_upload_csv_file_field_is_required'                             => 'The Upload CSV File field is required.',
         'the_iso_code_field_is_required'                                     => 'The ISO Code field is required',
         'gallery_title_must_not_be_greater_than_190_characters'              => 'Gallery Title must not be greater than 190 characters',
