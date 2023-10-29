@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
             DB::beginTransaction();
 
 //            $userDefaultLanguage = Setting::where('key', 'user_default_language')->first()->value ?? 'en';
-            $adminRole = Role::whereName('customer')->first();
+            $adminRole = Role::whereName('user')->first();
             $user = User::create([
                 'first_name' => $request->first_name,
                 'last_name'  => $request->last_name,
