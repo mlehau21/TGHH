@@ -10,7 +10,7 @@
                 <div class="mb-3 mb-sm-0">
 
                 </div>
-                <a href="{{ url('customer/forums') }}" type="button" class="btn btn-primary mx-2 ms-auto">
+                <a href="{{ url('user/forums') }}" type="button" class="btn btn-primary mx-2 ms-auto">
                     Forums List
                 </a>
             </div>
@@ -18,7 +18,7 @@
         @include('flash::message')
         <div>
             <div class="overflow-y-visible">
-                <form action="{{ url('customer/forum-update') }}" enctype="multipart/form-data" method="POST">
+                <form action="{{ url('user/forum-update') }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-8">

@@ -1,6 +1,6 @@
 <div class="row">
 
-    {{-- @if (!empty($staff->roles[0]) ? $staff->roles[0]->name != 'customer' : true) --}}
+    {{-- @if (!empty($staff->roles[0]) ? $staff->roles[0]->name != 'user' : true) --}}
     <div class="col-lg-6">
         <P><strong>First Name:</strong> {{ isset($staff) ? $staff->first_name : null }}</P>
         <P><strong>Last Name:</strong> {{ isset($staff) ? $staff->last_name : null }}</P>

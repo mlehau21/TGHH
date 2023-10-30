@@ -73,10 +73,10 @@ class PostRepository extends BaseRepository
 
             $input['featured'] = (isset($input['featured'])) ? Post::FEATURED_ACTIVE : Post::FEATURED_DEACTIVE;
             if (!isset($input['status'])) {
-                if (Auth::user()->hasRole('customer')) {
+                if (Auth::user()->hasRole('user')) {
                     $input['visibility'] = (isset($input['visibility'])) ? (($postVisibilityCount < getloginuserplan()->no_of_post) ? Post::VISIBILITY_ACTIVE : Post::VISIBILITY_DEACTIVE) : Post::VISIBILITY_DEACTIVE;
                 }
-                if (!Auth::user()->hasRole('customer')) {
+                if (!Auth::user()->hasRole('user')) {
                     $input['visibility'] = (isset($input['visibility'])) ? Post::VISIBILITY_ACTIVE : Post::VISIBILITY_DEACTIVE;
 
                 }
@@ -179,10 +179,10 @@ class PostRepository extends BaseRepository
 
             $input['featured'] = (isset($input['featured'])) ? Post::FEATURED_ACTIVE : Post::FEATURED_DEACTIVE;
 
-            if (Auth::user()->hasRole('customer')) {
+            if (Auth::user()->hasRole('user')) {
                 $input['visibility'] = (isset($input['visibility'])) ? (($postVisibilityCount < getloginuserplan()->no_of_post) ? Post::VISIBILITY_ACTIVE : Post::VISIBILITY_DEACTIVE) : Post::VISIBILITY_DEACTIVE;
             }
-            if (!Auth::user()->hasRole('customer')) {
+            if (!Auth::user()->hasRole('user')) {
                 $input['visibility'] = (isset($input['visibility'])) ? Post::VISIBILITY_ACTIVE : Post::VISIBILITY_DEACTIVE;
 
             }

@@ -93,7 +93,7 @@ class ForumController extends Controller
 
         if ($post) {
             Flash::success('Forum created successfully!');
-            return redirect('/customer/forums');
+            return redirect('/user/forums');
         } else {
             Flash::success('Oops! There is a problem!');
         }
@@ -180,7 +180,7 @@ class ForumController extends Controller
 
         if ($post) {
             Flash::success('Forum created successfully!');
-            return redirect('/customer/forums');
+            return redirect('/user/forums');
         } else {
             Flash::success('Oops! There is a problem!');
         }

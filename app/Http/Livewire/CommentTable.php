@@ -40,10 +40,10 @@ class CommentTable extends LivewireTableComponent
 
     public function query(): Builder
     {
-        if (!Auth::user()->hasRole('customer')) {
+        if (!Auth::user()->hasRole('user')) {
             return Comment::with('posts');
         }
-        if (Auth::user()->hasRole('customer')) {
+        if (Auth::user()->hasRole('user')) {
             $post = Post::whereCreatedBy(getLogInUserId())->pluck('id');
 
             return Comment::with('posts')->whereIn('post_id', $post);

@@ -8,27 +8,40 @@
 @endcan
 
 @can('manage_post')
-    <li
-        class="nav-item {{ Request::is('customer/post-format*', 'customer/customer-posts*', 'customer/post-type*') ? 'active' : '' }}">
-        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('customer-posts.index') }}">
-            <span class="aside-menu-icon pe-3">
-                <i class="fas fa-paste fs-4"></i>
-            </span>
-            <span class="aside-menu-title">{!! __('messages.post.posts') !!}</span>
-        </a>
-    </li>
+    @if (Auth::user()->hasRole('user'))
+        <li class="nav-item {{ Request::is('user/post-format*', 'user/user-posts*', 'user/post-type*') ? 'active' : '' }}">
+            <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('user-posts.index') }}">
+                <span class="aside-menu-icon pe-3">
+                    <i class="fas fa-paste fs-4"></i>
+                </span>
+                <span class="aside-menu-title">{!! __('messages.post.posts') !!}</span>
+            </a>
+        </li>
+    @endif
 @endcan
-@can('post_comments')
-    <li class="nav-item {{ Request::is('customer/post-comments*') ? 'active' : '' }}">
+{{-- @can('post_comments')
+@if (Auth::user()->hasRole('user'))
+    <li class="nav-item {{ Request::is('user/post-comments*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page"
-            href="{{ route('customer.post-comments.index') }}">
+            href="{{ route('user.post-comments.index') }}">
             <span class="aside-menu-icon pe-3">
                 <i class="fas fa-comments fs-4"></i>
             </span>
             <span class="aside-menu-title">{!! __('messages.comments') !!}</span>
         </a>
     </li>
-@endcan
+    @else 
+    <li class="nav-item {{ Request::is('admin/post-comments*') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page"
+            href="{{ route('admin.post-comments.index') }}">
+            <span class="aside-menu-icon pe-3">
+                <i class="fas fa-comments fs-4"></i>
+            </span>
+            <span class="aside-menu-title">{!! __('messages.comments') !!}</span>
+        </a>
+    </li>
+    @endif
+@endcan --}}
 
 @can('manage_staff')
     <li class="nav-item {{ Request::is('admin/staff*') ? 'active' : '' }}">
@@ -53,14 +66,14 @@
 @endcanany
 
 @canany(['fb_posts'])
-<li class="nav-item {{ Request::is('admin/fb-posts') ? 'active' : '' }}">
-    <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ url('/admin/fb-posts') }}">
-        <span class="aside-menu-icon pe-3">
-            <i class="fas fa-paste fs-4"></i>
-        </span>
-        <span class="aside-menu-title">FB Posts</span>
-    </a>
-</li>
+    <li class="nav-item {{ Request::is('admin/fb-posts') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ url('/admin/fb-posts') }}">
+            <span class="aside-menu-icon pe-3">
+                <i class="fas fa-paste fs-4"></i>
+            </span>
+            <span class="aside-menu-title">FB Posts</span>
+        </a>
+    </li>
 @endcanany
 
 @can('manage_emoji')
@@ -93,7 +106,7 @@
     </li>
 @endcan
 {{-- @can('manage_forum') --}}
-<li class="nav-item {{ Request::is('customer/forums*', 'customer/forum/view*') ? 'active' : '' }}">
+<li class="nav-item {{ Request::is('user/forums*', 'user/forum/view*') ? 'active' : '' }}">
     <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('forum.index') }}">
         <span class="aside-menu-icon pe-3">
             <i class="fas fa-file fs-4"></i>
@@ -194,6 +207,17 @@
     </li>
 @endcan
 @can('manage_comment')
+@if (Auth::user()->hasRole('user'))
+    <li class="nav-item {{ Request::is('user/post-comments*') ? 'active' : '' }}">
+        <a class="nav-link d-flex align-items-center py-3" aria-current="page"
+            href="{{ route('user.post-comments.index') }}">
+            <span class="aside-menu-icon pe-3">
+                <i class="fas fa-comments fs-4"></i>
+            </span>
+            <span class="aside-menu-title">{!! __('messages.comments') !!}</span>
+        </a>
+    </li>
+    @else 
     <li class="nav-item {{ Request::is('admin/post-comments*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page"
             href="{{ route('post-comments.index') }}">
@@ -203,6 +227,7 @@
             <span class="aside-menu-title">{!! __('messages.comments') !!}</span>
         </a>
     </li>
+    @endif
 @endcan
 @can('manage_ad')
     <li class="nav-item {{ Request::is('admin/ad-spaces*') ? 'active' : '' }}">

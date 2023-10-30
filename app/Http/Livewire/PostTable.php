@@ -62,7 +62,7 @@ class PostTable extends LivewireTableComponent
 
     public function query(): Builder
     {
-        if (Auth::user()->hasRole('customer')) {
+        if (Auth::user()->hasRole('user')) {
             $query = Post::withoutGlobalScope(AuthoriseUserActivePostScope::class)->withoutGlobalScope(LanguageScope::class)
                 ->withoutGlobalScope(PostDraftScope::class)->with('language:id,name',
                     'category:id,name')->whereCreatedBy(getLogInUserId());
@@ -131,7 +131,7 @@ class PostTable extends LivewireTableComponent
 
             $this->dispatchBrowserEvent('error', $message);
         }else{
-            if (Auth::user()->hasRole('customer')) {
+            if (Auth::user()->hasRole('user')) {
 
                 if ($postVisibilityCount < getloginuserplan()->plan->post_count) {
                     $post->update([

@@ -1,39 +1,38 @@
-'use strict';
+"use strict";
 
-document.addEventListener('turbo:load', loadCommentData)
+document.addEventListener("turbo:load", loadCommentData);
 
 function loadCommentData() {
-    let comments = 'comment'
-    listen('click', '.comment-delete-btn', function (event) {
-        let deleteCommentId = $(event.currentTarget).data('id');
-        let role = $('#loginUserRole').val()
-        let url
+    let comments = "comment";
+    listen("click", ".comment-delete-btn", function (event) {
+        let deleteCommentId = $(event.currentTarget).data("id");
+        let role = $("#loginUserRole").val();
+        let url;
         if (role) {
-            url = route('customer.post-comments.destroy',deleteCommentId)
+            url = route("user.post-comments.destroy", deleteCommentId);
         } else {
-            url = route('post-comments.destroy',deleteCommentId)
+            url = route("post-comments.destroy", deleteCommentId);
         }
-        deleteItem(url,  Lang.get('messages.comment.comment'));
+        deleteItem(url, Lang.get("messages.comment.comment"));
     });
-};
+}
 
-$(document).on('change', '.set-comment-btn', function (e) {
-    let role = $('#loginUserRole').val()
-    const status = ($(this).prop('checked')) ? 0 : 1;
-    let url
-    if(role){
-        url = route('customer.comment-status', status)
-    }else{
-        url = route('admin.comment-status',status)
+$(document).on("change", ".set-comment-btn", function (e) {
+    let role = $("#loginUserRole").val();
+    const status = $(this).prop("checked") ? 0 : 1;
+    let url;
+    if (role) {
+        url = route("user.comment-status", status);
+    } else {
+        url = route("admin.comment-status", status);
     }
     $.ajax({
         url: url,
-        type: 'GET',
+        type: "GET",
         success: function (result) {
             if (result.success) {
                 displaySuccessMessage(result.message);
             }
-        }
+        },
     });
 });
-

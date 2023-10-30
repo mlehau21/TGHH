@@ -26,7 +26,7 @@
                 </div>
 
 
-                <a href="{{ url('customer/forums/add-forum') }}" type="button" class="btn btn-primary mx-2 ms-auto">
+                <a href="{{ url('user/forums/add-forum') }}" type="button" class="btn btn-primary mx-2 ms-auto">
                     Add Forum
                 </a>
                 <a href="#" type="button" class="btn btn-danger delete-post-btn d-none ">
@@ -137,14 +137,14 @@
                                                 style="">
                                                 @if ($post->created_by == auth()->user()->id)
                                                     <li>
-                                                        <a href="{{ url('customer/forum/edit/' . $post->id) }}"
+                                                        <a href="{{ url('user/forum/edit/' . $post->id) }}"
                                                             class="dropdown-item posts-edit-btn px-3 py-1 text-decoration-none">
                                                             Edit
                                                         </a>
                                                     </li>
                                                 @endif
                                                 <li>
-                                                    <a href="{{ url('customer/forum/view/' . $post->id) }}"
+                                                    <a href="{{ url('user/forum/view/' . $post->id) }}"
                                                         class="dropdown-item px-3 py-1 text-decoration-none">
                                                         View
                                                     </a>
@@ -152,14 +152,14 @@
                                                 @can('manage_forum')
                                                     @if (!$post->active_status == 1)
                                                         <li>
-                                                            <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 1) }}"
+                                                            <a href="{{ url('user/forum/active-status/' . $post->id . '/' . 1) }}"
                                                                 class="dropdown-item px-3 py-1 text-decoration-none">
                                                                 Active
                                                             </a>
                                                         </li>
                                                     @else
                                                         <li>
-                                                            <a href="{{ url('customer/forum/active-status/' . $post->id . '/' . 0) }}"
+                                                            <a href="{{ url('user/forum/active-status/' . $post->id . '/' . 0) }}"
                                                                 class="dropdown-item px-3 py-1 text-decoration-none bg-danger">
                                                                 Inactive
                                                             </a>
@@ -168,7 +168,7 @@
                                                 @endcan
                                             </ul>
                                         </div>
-                                        <a href="{{ url('customer/forum/delete/' . $post->id) }}" data-id="38"
+                                        <a href="{{ url('user/forum/delete/' . $post->id) }}" data-id="38"
                                             data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
                                             data-bs-original-title="Delete"
                                             class="btn px-2 text-danger fs-3 delete-posts-btn">

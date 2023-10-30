@@ -252,4 +252,4 @@ Route::middleware('xss','setLanguage')->group(function () {
 
 require __DIR__.'/auth.php';
 require __DIR__.'/upgrade.php';
-require __DIR__.'/customer.php';
+require __DIR__.'/user.php';

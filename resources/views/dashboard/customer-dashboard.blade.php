@@ -13,7 +13,7 @@
                 <div class="col-12">
                     <div class="row">
                         <div class="col-xxl-3 col-xl-4 col-sm-6 widget">
-                            <a href="{{ route('customer-posts.index') }}"
+                            <a href="{{ route('user-posts.index') }}"
                                class="bg-info shadow-md rounded-10 p-xxl-10 px-5 py-10 d-flex align-items-center justify-content-between my-sm-3 my-2 text-decoration-none">
                                 <div class="bg-blue-300 widget-icon rounded-10 me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-file fs-1-xl text-white"></i>

@@ -131,13 +131,13 @@
                                 </a>
                                 <ul class="nav submenu language-menu" aria-labelledby="dropdownMenuButton1">
                                     <li class="nav-item languageSelection">
-                                        @if (Auth::user()->hasRole('customer'))
+                                        @if (Auth::user()->hasRole('user'))
                                             <a class="nav-link fs-14 d-flex align-items-center" data-turbo="false"
-                                                href="{{ route('customer.dashboard') }}">
+                                                href="{{ route('user.dashboard') }}">
                                                 {{ __('messages.details.admin_panel') }}
                                             </a>
                                         @endif
-                                        @if (!Auth::user()->hasRole('customer'))
+                                        @if (!Auth::user()->hasRole('user'))
                                             <a class="nav-link fs-14 d-flex align-items-center" data-turbo="false"
                                                 href="{{ route('admin.dashboard') }}">
                                                 {{ __('messages.details.admin_panel') }}

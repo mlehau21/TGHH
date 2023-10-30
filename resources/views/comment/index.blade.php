@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
         <div class="d-flex flex-column">
-            {{ Form::hidden('id',Auth::user()->hasRole('customer'),['id' => 'loginUserRole']) }}
+            {{ Form::hidden('id',Auth::user()->hasRole('user'),['id' => 'loginUserRole']) }}
             @include('flash::message')
             <livewire:comment-table/>
         </div>

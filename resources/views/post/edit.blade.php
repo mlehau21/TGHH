@@ -11,12 +11,12 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-end mb-5">
             <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">@yield('title')</h1>
-            @if(Auth::user()->hasRole('customer'))
-                <a class="btn btn-outline-primary float-end" href="{{ route('customer-posts.index')}}">
+            @if(Auth::user()->hasRole('user'))
+                <a class="btn btn-outline-primary float-end" href="{{ route('user-posts.index')}}">
                     {{ __('messages.common.back') }}
                 </a>
             @endif
-            @if(!Auth::user()->hasRole('customer'))
+            @if(!Auth::user()->hasRole('user'))
                 <a class="btn btn-outline-primary float-end" href="{{ route('posts.index')}}">
                     {{ __('messages.common.back') }}
                 </a>
@@ -34,10 +34,10 @@
     {{ Form::hidden('postEditCategoryId',$post->category_id,['id' => 'postEditCategoryId']) }}
     {{ Form::hidden('postEditSubCategoryId',$post->sub_category_id,['id' => 'postEditSubCategoryId']) }}
 
-    @if(Auth::user()->hasRole('customer'))
-        {{ Form::open(['route' => ['customer-posts.update', $post->id],'files' => 'true','method'=>'put','id' => 'updatePostForm']) }}
+    @if(Auth::user()->hasRole('user'))
+        {{ Form::open(['route' => ['user-posts.update', $post->id],'files' => 'true','method'=>'put','id' => 'updatePostForm']) }}
     @endif
-    @if(!Auth::user()->hasRole('customer'))
+    @if(!Auth::user()->hasRole('user'))
         {{Form::open(['route' =>['posts.update', $post->id],'files' => 'true','method'=>'put','id' => 'updatePostForm']) }}
     @endif
     @csrf

@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-end mb-5">
             <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">@yield('title')</h1>
-            @if(Auth::user()->hasRole('customer'))
-                <a class="btn btn-outline-primary float-end" href="{{ route('customer-posts.index')}}">
+            @if(Auth::user()->hasRole('user'))
+                <a class="btn btn-outline-primary float-end" href="{{ route('user-posts.index')}}">
                     {{ __('messages.common.back') }}
                 </a>
             @endif
-            @if(!Auth::user()->hasRole('customer'))
+            @if(!Auth::user()->hasRole('user'))
                 <a class="btn btn-outline-primary float-end" href="{{ route('posts.index')}}">
                     {{ __('messages.common.back') }}
                 </a>

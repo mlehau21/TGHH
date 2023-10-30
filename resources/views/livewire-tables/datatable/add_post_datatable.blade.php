@@ -23,7 +23,7 @@
                 @include('livewire-tables::bootstrap-5.includes.reorder')
                 @include('livewire-tables::bootstrap-5.includes.search')
               
-                <a href="{{ Auth::user()->hasRole('customer') ? route('customer.post_type',['section' => $addRouteSection]) : route('post_type',['section' => $addRouteSection])}}" type="button" class="btn btn-primary mx-2 ms-auto">
+                <a href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => $addRouteSection]) : route('post_type',['section' => $addRouteSection])}}" type="button" class="btn btn-primary mx-2 ms-auto">
                     {{ $addButtonText }}
                 </a>
                 <a href="#" type="button" class="btn btn-danger delete-post-btn d-none " >

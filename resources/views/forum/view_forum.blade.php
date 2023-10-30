@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="d-sm-flex justify-content-between mb-3 livewire-search-box  mb-5">
             <div class="d-sm-flex align-items-center w-100 text-end">
-                <a href="{{ url('customer/forums') }}" type="button" class="btn btn-primary mx-2 ms-auto">
+                <a href="{{ url('user/forums') }}" type="button" class="btn btn-primary mx-2 ms-auto">
                      Forums List
                 </a>
             </div>

@@ -67,8 +67,8 @@ function getLogInUserId()
 function getDashboardURL()
 {
 
-    if (Auth::user()->hasRole('customer')) {
-        return RouteServiceProvider::CUSTOMER;
+    if (Auth::user()->hasRole('user')) {
+        return RouteServiceProvider::USER;
     }
     if (Auth::user()->hasRole('clinic_admin')) {
         return RouteServiceProvider::HOME;

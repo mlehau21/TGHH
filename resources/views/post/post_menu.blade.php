@@ -4,8 +4,8 @@
 @endif
 <div class="row">
     <div class="col-sm-12 d-flex mb-10">
-        @if(Auth::user()->hasRole('customer'))
-            <a href="{{ route('customer-posts.index') }}" class="btn btn-primary ms-auto post-btn">
+        @if(Auth::user()->hasRole('user'))
+            <a href="{{ route('user-posts.index') }}" class="btn btn-primary ms-auto post-btn">
                 {{ __('messages.post.posts') }}</a>
         @else
             <a href="{{ route('posts.index') }}" class="btn btn-primary ms-auto post-btn">
@@ -21,7 +21,7 @@
 <div class="row justify-content-center g-5">
     <div class="col-xl-4 col-sm-6">
         <a class="nav-link text-active-primary p-0 {{ (isset($sectionName) && $sectionName == 'article') ? 'active' : ''}}"
-           href="{{ Auth::user()->hasRole('customer') ? route('customer.post_type',['section' => 'article/create']) : route('post_type',['section' => 'article/create']) }}">
+           href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => 'article/create']) : route('post_type',['section' => 'article/create']) }}">
             <div class="card add-post-card">
                 <div class="card-body">
                     <div class="col-lg-12">
@@ -39,7 +39,7 @@
     </div>
     <div class="col-xl-4 col-sm-6">
         <a class="nav-link text-active-primary p-0 {{ (isset($sectionName) && $sectionName == 'gallery') ? 'active' : ''}}"
-           href="{{ Auth::user()->hasRole('customer') ? route('customer.post_type',['section' => 'gallery/create']) : route('post_type',['section' => 'gallery/create']) }}">
+           href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => 'gallery/create']) : route('post_type',['section' => 'gallery/create']) }}">
             <div class="card add-post-card">
                 <div class="card-body">
                     <div class="col-lg-12">
@@ -57,7 +57,7 @@
     </div>
     <div class="col-xl-4 col-sm-6">
         <a class="nav-link text-active-primary p-0 {{ (isset($sectionName) && $sectionName == 'sort_list') ? 'active' : ''}}"
-           href="{{ Auth::user()->hasRole('customer') ? route('customer.post_type',['section' => 'sort_list/create']) : route('post_type',['section' => 'sort_list/create']) }}">
+           href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => 'sort_list/create']) : route('post_type',['section' => 'sort_list/create']) }}">
             <div class="card add-post-card">
                 <div class="card-body">
                     <div class="col-lg-12">
@@ -75,7 +75,7 @@
     </div>
     <div class="col-xl-4 col-sm-6">
         <a class="nav-link text-active-primary p-0 {{ (isset($sectionName) && $sectionName == 'open_ai') ? 'active' : ''}}"
-           href="{{ Auth::user()->hasRole('customer') ? route('customer.post_type',['section' => 'open_ai/create']) : route('post_type',['section' => 'open_ai/create']) }}">
+           href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => 'open_ai/create']) : route('post_type',['section' => 'open_ai/create']) }}">
             <div class="card add-post-card">
                 <div class="card-body">
                     <div class="col-lg-12">
@@ -93,7 +93,7 @@
     </div>
     <div class="col-xl-4 col-sm-6">
         <a class="nav-link text-active-primary p-0 {{ (isset($sectionName) && $sectionName == 'video') ? 'active' : ''}}"
-           href="{{ Auth::user()->hasRole('customer') ? route('customer.post_type',['section' => 'video/create']) : route('post_type',['section' => 'video/create']) }}">
+           href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => 'video/create']) : route('post_type',['section' => 'video/create']) }}">
             <div class="card add-post-card">
                 <div class="card-body">
                     <div class="col-lg-12">
@@ -111,7 +111,7 @@
     </div>
     <div class="col-xl-4 col-sm-6">
         <a class="nav-link text-active-primary p-0 {{ (isset($sectionName) && $sectionName == 'audio') ? 'active' : ''}}"
-           href="{{ Auth::user()->hasRole('customer') ? route('customer.post_type',['section' => 'audio/create']) : route('post_type',['section' => 'audio/create']) }}">
+           href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => 'audio/create']) : route('post_type',['section' => 'audio/create']) }}">
             <div class="card add-post-card">
                 <div class="card-body">
                     <div class="col-lg-12">

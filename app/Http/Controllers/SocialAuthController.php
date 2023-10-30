@@ -59,7 +59,7 @@ class SocialAuthController extends Controller
                 $userData['email_verified_at'] = Carbon::now();
                 $userData['password'] = bcrypt(Str::random(40));
                 $userData['type'] = User::STAFF;
-                $adminRole = Role::whereName('customer')->first();
+                $adminRole = Role::whereName('user')->first();
 
 
                 /** @var User $user */

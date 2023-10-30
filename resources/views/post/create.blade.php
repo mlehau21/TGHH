@@ -11,12 +11,12 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between align-items-end mb-5">
             <h1 class="d-flex align-items-center text-dark fw-bolder fs-3 my-1">@yield('title')</h1>
-            @if(Auth::user()->hasRole('customer'))
-                <a class="btn btn-outline-primary float-end" href="{{ route('customer.post_format')}}">
+            @if(Auth::user()->hasRole('user'))
+                <a class="btn btn-outline-primary float-end" href="{{ route('user.post_format')}}">
                     {{ __('messages.common.back') }}
                 </a>
             @endif
-            @if(!Auth::user()->hasRole('customer'))
+            @if(!Auth::user()->hasRole('user'))
                 <a class="btn btn-outline-primary float-end" href="{{ route('post_format')}}">
                     {{ __('messages.common.back') }}
                 </a>
@@ -39,10 +39,10 @@
         </div>
        
         
-        @if(Auth::user()->hasRole('customer'))
-            {{ Form::open(['route' => 'customer-posts.store','files' => 'true','method'=>'POST','id' => 'createPostForm']) }}
+        @if(Auth::user()->hasRole('user'))
+            {{ Form::open(['route' => 'user-posts.store','files' => 'true','method'=>'POST','id' => 'createPostForm']) }}
         @endif
-        @if(!Auth::user()->hasRole('customer'))
+        @if(!Auth::user()->hasRole('user'))
             {{Form::open(['route' => 'posts.store','files' => 'true','method'=>'POST','id' => 'createPostForm']) }}
         @endif
         <input type="hidden" id="postSectionType" name="post_types"

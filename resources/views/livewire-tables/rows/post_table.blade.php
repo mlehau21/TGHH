@@ -72,13 +72,13 @@
             </button>
             <ul class="dropdown-menu min-width-220" aria-labelledby="dropdownMenuButton1">
                 <li>
-                    @if(Auth::user()->hasRole('customer'))
-                        <a href="{{route('customer-posts.edit', $row['id'])}}"
+                    @if(Auth::user()->hasRole('user'))
+                        <a href="{{route('user-posts.edit', $row['id'])}}"
                            class="dropdown-item posts-edit-btn px-3 py-1 text-decoration-none">
                             {{__('messages.common.edit')}}
                         </a>
                     @endif
-                    @if(!Auth::user()->hasRole('customer'))
+                    @if(!Auth::user()->hasRole('user'))
                         <a href="{{route('posts.edit', $row['id'])}}"
                            class="dropdown-item posts-edit-btn px-3 py-1 text-decoration-none">
                             {{__('messages.common.edit')}}
@@ -86,14 +86,14 @@
                     @endif
                 </li>
                 <li>
-                    @if(!Auth::user()->hasRole('customer'))
+                    @if(!Auth::user()->hasRole('user'))
                         <a href="{{route('posts.show',$row['id'])}}"
                            class="dropdown-item px-3 py-1 text-decoration-none">
                             {{__('messages.common.view')}}
                         </a>
                     @endif
-                    @if(Auth::user()->hasRole('customer'))
-                        <a href="{{route('customer-posts.show',$row['id'])}}"
+                    @if(Auth::user()->hasRole('user'))
+                        <a href="{{route('user-posts.show',$row['id'])}}"
                            class="dropdown-item px-3 py-1 text-decoration-none">
                             {{__('messages.common.view')}}
                         </a>

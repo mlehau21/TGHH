@@ -49,7 +49,7 @@
             </div>
         </div>
         <div>
-            {{ Form::hidden('id',Auth::user()->hasRole('customer'),['id' => 'loginUserRole']) }}
+            {{ Form::hidden('id',Auth::user()->hasRole('user'),['id' => 'loginUserRole']) }}
             <div class="overflow-auto">
                 <livewire:post-table/>
             </div>

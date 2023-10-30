@@ -119,12 +119,12 @@ class PostController extends AppBaseController
         $this->PostRepository->store($input);
 
         Flash::success(__('messages.placeholder.post_created_successfully'));
-        if (!Auth::user()->hasRole('customer')) {
+        if (!Auth::user()->hasRole('user')) {
             return redirect(route('posts.index'));
         }
 
-        if (Auth::user()->hasRole('customer')) {
-            return redirect(route('customer-posts.index'));
+        if (Auth::user()->hasRole('user')) {
+            return redirect(route('user-posts.index'));
         }
     }
 
@@ -187,9 +187,9 @@ if ($request->get('section') != null) {
         $allStaff = User::where('type', User::STAFF)->pluck('first_name', 'id');
 
         if ($sectionName == Post::POST_FORMAT) {
-            if (Auth::user()->hasRole('customer'))
+            if (Auth::user()->hasRole('user'))
             {
-                return redirect()->route('customer.post_format');
+                return redirect()->route('user.post_format');
             }
             return redirect()->route(Post::POST_FORMAT);
         } elseif ($sectionName == Post::GALLERY_CREATE) {
@@ -271,12 +271,12 @@ if ($request->get('section') != null) {
         $this->PostRepository->update($input, $input['id']);
 
         Flash::success(__('messages.placeholder.post_updated_successfully'));
-        if (!Auth::user()->hasRole('customer')) {
+        if (!Auth::user()->hasRole('user')) {
             return redirect(route('posts.index'));
         }
 
-        if (Auth::user()->hasRole('customer')) {
-            return redirect(route('customer-posts.index'));
+        if (Auth::user()->hasRole('user')) {
+            return redirect(route('user-posts.index'));
         }
  
     }

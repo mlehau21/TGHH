@@ -142,30 +142,30 @@
         </a>
     </li>
 
-    @if(Auth::user()->hasRole('customer'))
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('customer/dashboard*')) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('customer/dashboard*') ? 'active' : ''  }}"
-               href="{{ route('customer.dashboard') }}">
+    @if(Auth::user()->hasRole('user'))
+        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('user/dashboard*')) ? 'd-none' : '' }}">
+            <a class="nav-link p-0 {{ Request::is('user/dashboard*') ? 'active' : ''  }}"
+               href="{{ route('user.dashboard') }}">
                 {{ __('messages.dashboard') }}
             </a>
         </li>
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('customer/customer-posts*', 'customer/post-format*')) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('customer/customer-posts*') ? 'active' : ''  }}"
-               href="{{ route('customer-posts.index') }}">
+        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('user/user-posts*', 'user/post-format*')) ? 'd-none' : '' }}">
+            <a class="nav-link p-0 {{ Request::is('user/user-posts*') ? 'active' : ''  }}"
+               href="{{ route('user-posts.index') }}">
                 {{ __('messages.post.posts') }}
             </a>
         </li>
     @endif
-    @if(Auth::user()->hasRole('customer'))
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is(['customer/customer-posts*','customer/post-format*','customer/post-type*'])) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is(['customer/post-format*','customer/post-type*']) ? 'active' : ''  }}"
-               href="{{ route('customer.post_format') }}">
+    @if(Auth::user()->hasRole('user'))
+        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is(['user/user-posts*','user/post-format*','user/post-type*'])) ? 'd-none' : '' }}">
+            <a class="nav-link p-0 {{ Request::is(['user/post-format*','user/post-type*']) ? 'active' : ''  }}"
+               href="{{ route('user.post_format') }}">
                 {{ __('messages.add_post') }}
             </a>
         </li>
-        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('customer/post-comments*')) ? 'd-none' : '' }}">
-            <a class="nav-link p-0 {{ Request::is('customer/post-comments*') ? 'active' : ''  }}"
-               href="{{ route('customer.post-comments.index') }}">
+        <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('user/post-comments*')) ? 'd-none' : '' }}">
+            <a class="nav-link p-0 {{ Request::is('user/post-comments*') ? 'active' : ''  }}"
+               href="{{ route('user.post-comments.index') }}">
                 {{ __('messages.comments') }}
             </a>
         </li>
