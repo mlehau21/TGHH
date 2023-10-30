@@ -6,6 +6,7 @@ use App\Http\Requests\CreateRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\User;
 use App\Repositories\RoleRepository;
 use Exception;
 use Illuminate\Contracts\Foundation\Application;
@@ -15,6 +16,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
 use Laracasts\Flash\Flash;
 
 class RoleController extends AppBaseController
@@ -97,14 +100,15 @@ class RoleController extends AppBaseController
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        $role = Role::where('name', $request->display_name)->first();
+        $input['name'] = str_replace(' ', '_', strtolower($request->get('display_name')));
+
+        $role = Role::where('name', $input['name'])->first();
         if (!$request->permission_id && $role) {
-            // Delete associated permissions
-            $role->permissions()->detach();
+            DB::table('role_has_permissions')->where('role_id', $role->id)->delete();
+            Artisan::call('optimize:clear');
             return redirect(route('roles.index'));
         }
         
-        $input['name'] = str_replace(' ', '_', strtolower($request->get('display_name')));
         $roleExists = Role::where('name', $input['name'])
             ->where('id', '!=', $role->id)
             ->exists();
