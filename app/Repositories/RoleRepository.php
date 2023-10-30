@@ -15,9 +15,7 @@ class RoleRepository extends BaseRepository
     /**
      * @var array
      */
-    protected $fieldSearchable = [
-        'name',
-    ];
+    protected $fieldSearchable = ['name'];
 
     /**
      * Return searchable fields
@@ -59,7 +57,7 @@ class RoleRepository extends BaseRepository
         /** @var Role $role */
         $role = Role::create($input);
 
-        if (isset($input['permission_id']) && ! empty($input['permission_id'])) {
+        if (isset($input['permission_id']) && !empty($input['permission_id'])) {
             $role->permissions()->sync($input['permission_id']);
         }
 
@@ -82,7 +80,7 @@ class RoleRepository extends BaseRepository
             'name' => $str,
             'display_name' => $input['display_name'],
         ]);
-        if (isset($input['permission_id']) && ! empty($input['permission_id'])) {
+        if (isset($input['permission_id']) && !empty($input['permission_id'])) {
             $role->permissions()->sync($input['permission_id']);
         }
 

@@ -48,8 +48,8 @@ class Role extends roleModal
     protected $table = 'roles';
 
     public static $rules = [
-        'display_name' => 'required|max:190',
-        'permission_id' => 'required',
+        'display_name' => 'nullable|max:190',
+        'permission_id' => 'nullable',
     ];
 
     const STAFF = 4;

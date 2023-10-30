@@ -97,8 +97,17 @@ class RoleController extends AppBaseController
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        $role = Role::where('name', $request->display_name)->first();
+        if (!$request->permission_id && $role) {
+            // Delete associated permissions
+            $role->permissions()->detach();
+            return redirect(route('roles.index'));
+        }
+        
         $input['name'] = str_replace(' ', '_', strtolower($request->get('display_name')));
-        $roleExists = Role::where('name', $input['name'])->where('id', '!=', $role->id)->exists();
+        $roleExists = Role::where('name', $input['name'])
+            ->where('id', '!=', $role->id)
+            ->exists();
 
         if ($roleExists) {
             Flash::error(__('messages.placeholder.role_already_exists'));
