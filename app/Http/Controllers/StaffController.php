@@ -71,7 +71,7 @@ class StaffController extends AppBaseController
      */
     public function create()
     {
-        $roles = Role::whereNotIn('name', ['user'])->pluck('display_name', 'id');
+        $roles = Role::query()->orderBy('name', 'asc')->pluck('display_name', 'id');
         
         return view('staffs.create', compact('roles'));
     }
@@ -111,7 +111,7 @@ class StaffController extends AppBaseController
     public function edit(User $staff)
     {
         $staff->load('roles');
-        $roles = Role::whereNotIn('name', ['user'])->pluck('display_name', 'id');
+        $roles = Role::query()->orderBy('name', 'asc')->pluck('display_name', 'id');
 //        $roles = $this->staffRepository->getRole();
 
         return view('staffs.edit', compact('staff', 'roles'));
