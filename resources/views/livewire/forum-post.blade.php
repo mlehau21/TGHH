@@ -1,7 +1,7 @@
 <div class="gallery-post-section pt-4">
     <div class="row">
         @forelse ($posts as $post)
-            <div class="col-lg-12 pb-md-3">
+            <div class="col-lg-8 offset-2 pb-md-3">
                 <div class="card custom-card mb-4 h-100 border">
                     <div class="image-container p-2">
                         <div class="author-info avater-top">
@@ -13,7 +13,7 @@
                         </div>
                         <div class="author-info avater-top">
                             @if ($post->file_type == 1)
-                                <img src="{{ asset($post->file) }}" class="card-img-top" alt="Post Image">
+                                <img src="{{ asset($post->file) }}" class="card-img-top" style="height: 75vh" alt="Post Image">
                             @elseif ($post->file_type == 2)
                                 <video width="100" controls class="card-img-top">
                                     <source src="{{ asset($post->file) }}" type="video/mp4">
