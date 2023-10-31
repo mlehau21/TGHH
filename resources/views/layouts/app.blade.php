@@ -86,5 +86,6 @@
 
 @include('profile.changePassword')
 
+@stack('script')
 </body>
 </html>

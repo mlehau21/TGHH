@@ -107,6 +107,7 @@
         </div>
     </div>
     <!-- end dark-mode-section -->
+    @stack('script')
 </body>
 
 </html>

@@ -13,9 +13,11 @@
                         </div>
                         <div class="author-info avater-top">
                             @if ($post->file_type == 1)
-                                <img src="{{ asset($post->file) }}" class="card-img-top" style="height: 75vh" alt="Post Image">
+                                <img src="{{ asset($post->file) }}"
+                                    wire:click.prevent="showInModal({{ $post }})" class="card-img-top"
+                                    style="height: 75vh; cursor: pointer;" alt="Post Image">
                             @elseif ($post->file_type == 2)
-                                <video width="100" controls class="card-img-top">
+                                <video width="100" controls class="card-img-top" style="cursor: pointer;">
                                     <source src="{{ asset($post->file) }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
@@ -44,7 +46,7 @@
                                         @if (auth()->check())
                                             @if ($post->forum_likes->count() > 1)
                                                 {{ $i_liked ? 'You And' : '' }}
-                                                {{ $post->forum_likes->count()-1 }}
+                                                {{ $post->forum_likes->count() - 1 }}
                                                 other{{ $post->forum_likes->count() == 2 ? '' : 's' }}
                                             @else
                                                 @if ($post->forum_likes->where('user_id', auth()->user()->id)->first())
@@ -84,7 +86,8 @@
 
 
                             <div class="comment-form">
-                                <form wire:submit.prevent='{{ $isUpdateComment ? "commentUpdate($post->id)" : "commentAdd($post->id)" }}'>
+                                <form
+                                    wire:submit.prevent='{{ $isUpdateComment ? "commentUpdate($post->id)" : "commentAdd($post->id)" }}'>
 
                                     <div class="form-group border">
                                         <textarea class="form-control comment-input" wire:model.defer='comment' placeholder="Add a comment"></textarea>
@@ -98,6 +101,34 @@
             </div>
         @empty
         @endforelse
-            <div>{{ $posts->links() }}</div>
+        <div>{{ $posts->links() }}</div>
+
     </div>
+    <div class="modal" tabindex="-1" role="dialog" id="showPhoto" >
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+                <img src="" id="imageId" class="img-fluid" alt="">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" wire:click.prevent="hideImageModal" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    @push('script')
+        <script>
+            window.addEventListener('show-form', (message) => {
+                $('#imageId').attr('src', message.detail.image);
+                $('#showPhoto').modal('show');
+            }, false);
+
+            window.addEventListener('hide-form', (message) => {
+                $('#imageId').attr('src',"");
+                $('#showPhoto').modal('hide');
+            }, false);
+        </script>
+    @endpush
 </div>

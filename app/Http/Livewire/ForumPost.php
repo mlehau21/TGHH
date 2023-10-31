@@ -110,4 +110,18 @@ class ForumPost extends Component
         $data['posts'] = $this->forums;
         return view('livewire.forum-post', $data);
     }
+
+
+    
+    public function showInModal(Model $post)
+    {
+        $image = asset($post->file);
+        $this->dispatchBrowserEvent('show-form', ['image' => $image]);
+    }
+    
+    public function hideImageModal()
+    {
+        $this->dispatchBrowserEvent('hide-form');
+    }
+  
 }
