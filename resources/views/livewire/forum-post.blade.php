@@ -107,11 +107,16 @@
     <div class="modal" tabindex="-1" role="dialog" id="showPhoto" >
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn btn-danger btn-sm float-right rounded" wire:click.prevent="hideImageModal" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             <div class="modal-body">
                 <img src="" id="imageId" class="img-fluid" alt="">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" wire:click.prevent="hideImageModal" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger" wire:click.prevent="hideImageModal" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
