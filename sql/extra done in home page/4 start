@@ -1,0 +1,4 @@
+
+                                                            {{--                                                            <img data-src="{{ $categoryPost->post_image }}" --}}
+                                                            {{--                                                                 alt="" src="{{ asset('front_web/images/bg-process.png') }}" --}}
+                                                            {{--                                                                 class="w-100 h-100 lazy"/> --}}
