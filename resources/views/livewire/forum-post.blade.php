@@ -11,40 +11,40 @@
                             <span class="created-time">Posted
                                 {{ $post->created_at->diffForHumans() }}</span>
                         </div>
-                        <div class="author-info avater-top" style="height: 75vh; cursor: pointer;">
-                            <div class="row">
-                                <div class="col-lg-6 px-2 pl-2">
-                                    <img height="340" width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluida mt-2" alt="Post Image 1">
+                        <div class="author-info avater-top" style="cursor: pointer">
+                            <div class="row gx-0">
+                                {{-- <div class="col-6 px-2 pl-2">
+                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                        class="img-fluid mt-2" alt="Post Image 1">
                                 </div>
-                                <div class="col-lg-6 px-2">
-                                    <img height="340" width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluida mt-2" alt="Post Image 1">
+                                <div class="col-6 px-2">
+                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                        class="img-fluid mt-2" alt="Post Image 1">
                                 </div>
-                                <div class="col-lg-6 px-2 pr-2">
-                                    <img height="340" width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluida mt-2" alt="Post Image 1">
+                                <div class="col-6 px-2 pr-2">
+                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                        class="img-fluid mt-2" alt="Post Image 1">
                                 </div>
-                                <div class="col-lg-6 px-2">
-                                    <img height="340" width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluida mt-2" alt="Post Image 1">
-                                </div>
+                                <div class="col-6 px-2">
+                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
+                                        class="img-fluid mt-2" alt="Post Image 1">
+                                </div> --}}
                                 {{-- <div class="col-lg-12 mt-3 mt-md-3 col-md-12">
                                     <img height="340" width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluida" alt="Post Image 1">
+                                        class="img-fluid" alt="Post Image 1">
                                 </div> --}}
                             </div>
 
-                            {{-- @if ($post->file_type == 1)
+                            @if ($post->file_type == 1)
                                 <img src="{{ asset($post->file) }}"
-                                    wire:click.prevent="showInModal({{ $post }})" class="card-img-top"
-                                    style="height: 75vh; cursor: pointer;" alt="Post Image">
+                                    wire:click.prevent="showInModal({{ $post }})"
+                                    style="cursor: pointer; height: 75vh" class="w-100" alt="Post Image">
                             @elseif ($post->file_type == 2)
                                 <video width="100" controls class="card-img-top" style="cursor: pointer;">
                                     <source src="{{ asset($post->file) }}" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
-                            @endif --}}
+                            @endif
                         </div>
                         <div class="post-content p-2">
                             <h2 class="post-title">{{ $post->title }}</h2>
@@ -131,10 +131,20 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="btn btn-danger btn-sm float-right rounded"
+                    <button type="button" class="btn btn-danger btn-sm mt-0 float-right rounded"
                         wire:click.prevent="hideImageModal" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
+                    <nav aria-label="Page navigation mt-2">
+                        <ul class="pagination justify-content-end">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                          </li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
                 <div class="modal-body">
                     <img src="" id="imageId" class="img-fluid" alt="">
