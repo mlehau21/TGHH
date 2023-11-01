@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\ForumComment;
+use App\Models\ForumFiles;
 use App\Models\ForumLike;
 use Livewire\Component;
 use App\Models\ForumPost as Model;
@@ -114,10 +115,10 @@ class ForumPost extends Component
 
 
     
-    public function showInModal(Model $post)
+    public function showInModal(Model $post, ForumFiles $forumFiles)
     {
-        $image = asset($post->file);
-        $this->dispatchBrowserEvent('show-form', ['image' => $image]);
+        $image = asset($forumFiles->file);
+        $this->dispatchBrowserEvent('show-form', ['file_path' => $image, 'file_type' => $forumFiles->file_type]);
     }
     
     public function hideImageModal()

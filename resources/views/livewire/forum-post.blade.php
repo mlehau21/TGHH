@@ -9,13 +9,15 @@
             .overTheImage img {
                 width: 100%;
                 height: 340px;
+                opacity: 0.5;
                 /* Adjust the height as needed */
             }
 
             .overTheImage h2 {
                 position: absolute;
-                top: 0;
-                right: 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
                 background-color: rgba(255, 255, 255, 0.7);
                 padding: 5px 10px;
                 margin: 10px;
@@ -44,10 +46,11 @@
                                 @if ($total_file == 1)
                                     @if ($post->forum_post_file_single->file_type == 1)
                                         <img src="{{ asset($post->forum_post_file_single->file) }}"
-                                            wire:click.prevent="showInModal({{ $post }})"
+                                            wire:click.prevent="showInModal( {{ $post->id }}, {{ $post->forum_post_file_single }})"
                                             style="cursor: pointer; height: 75vh" class="w-100" alt="Post Image">
                                     @elseif ($post->forum_post_file_single->file_type == 2)
-                                        <video width="100" controls class="card-img-top" style="cursor: pointer;">
+                                        <video width="100" controls class="card-img-top" style="cursor: pointer;"
+                                            wire:click.prevent="showInModal( {{ $post->id }}, {{ $post->forum_post_file_single }})">
                                             <source src="{{ asset($post->forum_post_file_single->file) }}"
                                                 type="video/mp4">
                                             Your browser does not support the video tag.
@@ -60,11 +63,13 @@
                                         @if ($file->file_type == 1)
                                             <div class="col-6 px-2 pl-2">
                                                 <img width="100%" src="{{ asset($file->file) }}"
-                                                    class="img-fluid mt-2" alt="Post Image 1">
+                                                    class="img-fluid mt-2" alt="Post Image 1"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})">
                                             </div>
                                         @elseif ($file->file_type == 2)
                                             <div class="col-6 px-2 pl-2">
                                                 <video width="100" controls class="card-img-top"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})"
                                                     style="cursor: pointer;">
                                                     <source src="{{ asset($file->file) }}" type="video/mp4">
                                                     Your browser does not support the video tag.
@@ -79,11 +84,13 @@
                                         @if ($file->file_type == 1)
                                             <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
                                                 <img width="100%" src="{{ asset($file->file) }}"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})"
                                                     class="img-fluid mt-2" alt="Post Image 1">
                                             </div>
                                         @elseif ($file->file_type == 2)
                                             <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
-                                                <video controls class="mt-2" style="width: 100%; height: 100%">
+                                                <video controls class="mt-2" style="width: 100%; height: 100%"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})">
                                                     <source src="{{ asset($file->file) }}" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
@@ -97,11 +104,13 @@
                                         @if ($file->file_type == 1)
                                             <div class="col-6 px-2 pl-2">
                                                 <img width="100%" src="{{ asset($file->file) }}"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})"
                                                     class="img-fluid mt-2" alt="Post Image 1">
                                             </div>
                                         @elseif ($file->file_type == 2)
                                             <div class="col-6 px-2 pl-2">
-                                                <video controls class="mt-2" style="width: 100%; height: 100%">
+                                                <video controls class="mt-2" style="width: 100%; height: 100%"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})">
                                                     <source src="{{ asset($file->file) }}" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
@@ -114,11 +123,35 @@
                                         @if ($file->file_type == 1)
                                             <div class="col-6 px-2 pl-2">
                                                 <img width="100%" src="{{ asset($file->file) }}"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})"
                                                     class="img-fluid mt-2" alt="Post Image 1">
                                             </div>
                                         @elseif ($file->file_type == 2)
                                             <div class="col-6 px-2 pl-2">
-                                                <video controls class="mt-2" style="width: 100%; height: 100%">
+                                                <video controls class="mt-2" style="width: 100%; height: 100%"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})">
+                                                    <source src="{{ asset($file->file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        @endif
+                                    @endforeach
+
+                                    @foreach ($post->forum_post_files->skip(3)->take(1) as $index => $file)
+                                        @if ($file->file_type == 1)
+                                            <div class="col-6 px-2 pl-2">
+                                                <div class="overTheImage">
+                                                    <img style="width: 100%; height: 100%"
+                                                        wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})"
+                                                        src="{{ asset($file->file) }}" class="img-fluid mt-2"
+                                                        alt="Post Image 1">
+                                                    <h2>+{{ $total_file - 4 }}</h2>
+                                                </div>
+                                            </div>
+                                        @elseif ($file->file_type == 2)
+                                            <div class="col-6 px-2 pl-2">
+                                                <video controls class="mt-2" style="width: 100%; height: 100%"
+                                                    wire:click.prevent="showInModal({{ $post->id }}, {{ $file }})">
                                                     <source src="{{ asset($file->file) }}" type="video/mp4">
                                                     Your browser does not support the video tag.
                                                 </video>
@@ -127,7 +160,7 @@
                                     @endforeach
                                 @endif
 
-                                            {{-- <div class="col-6 px-2 pl-2">
+                                {{-- <div class="col-6 px-2 pl-2">
                                                 <div class="overTheImage">
                                                     <img width="100%" src="{{ asset($file->file) }}"
                                                         class="img-fluid mt-2" alt="Post Image 1">
@@ -248,7 +281,7 @@
                     </button>
                     <nav aria-label="Page navigation mt-2">
                         <ul class="pagination justify-content-end">
-                            <li class="page-item disabled">
+                            <li class="page-item">
                                 <a class="page-link" href="#" tabindex="-1">Previous</a>
                             </li>
                             <li class="page-item">
@@ -258,7 +291,11 @@
                     </nav>
                 </div>
                 <div class="modal-body">
-                    <img src="" id="imageId" class="img-fluid" alt="">
+                    <img src="" id="imageId" class="img-fluid d-none" alt="">
+                    <video controls class="mt-2" id="controlsVideo" class="d-none">
+                        <source src="" id="videoId" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" wire:click.prevent="hideImageModal"
@@ -272,12 +309,21 @@
     @push('script')
         <script>
             window.addEventListener('show-form', (message) => {
-                $('#imageId').attr('src', message.detail.image);
+                $('#imageId').addClass('d-none');
+                $('#controlsVideo').addClass('d-none');
+                if (message.detail.file_type == 1) {
+                    $('#imageId').removeClass('d-none');
+                    $('#imageId').attr('src', message.detail.file_path);
+                } else {
+                    $('#controlsVideo').removeClass('d-none');
+                    $('#videoId').attr('src', message.detail.file_path).removeClass('d-none');
+                }
                 $('#showPhoto').modal('show');
             }, false);
 
             window.addEventListener('hide-form', (message) => {
                 $('#imageId').attr('src', "");
+                $('#videoId').attr('src', "");
                 $('#showPhoto').modal('hide');
             }, false);
         </script>
