@@ -1,4 +1,28 @@
 <div class="gallery-post-section pt-4">
+    @push('css')
+        <style>
+            .overTheImage {
+                position: relative;
+                display: inline-block;
+            }
+
+            .overTheImage img {
+                width: 100%;
+                height: 340px;
+                /* Adjust the height as needed */
+            }
+
+            .overTheImage h2 {
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-color: rgba(255, 255, 255, 0.7);
+                padding: 5px 10px;
+                margin: 10px;
+                border-radius: 5px;
+            }
+        </style>
+    @endpush
     <div class="row">
         @forelse ($posts as $post)
             <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 pb-md-3">
@@ -24,7 +48,8 @@
                                             style="cursor: pointer; height: 75vh" class="w-100" alt="Post Image">
                                     @elseif ($post->forum_post_file_single->file_type == 2)
                                         <video width="100" controls class="card-img-top" style="cursor: pointer;">
-                                            <source src="{{ asset($post->forum_post_file_single->file) }}" type="video/mp4">
+                                            <source src="{{ asset($post->forum_post_file_single->file) }}"
+                                                type="video/mp4">
                                             Your browser does not support the video tag.
                                         </video>
                                     @endif
@@ -33,40 +58,82 @@
                                 @if ($total_file == 2)
                                     @foreach ($post->forum_post_files as $file)
                                         @if ($file->file_type == 1)
-                                        <div class="col-6 px-2 pl-2">
-                                            <img  width="100%" src="{{ asset($file->file) }}"
-                                                class="img-fluid mt-2" alt="Post Image 1">
-                                        </div>
+                                            <div class="col-6 px-2 pl-2">
+                                                <img width="100%" src="{{ asset($file->file) }}"
+                                                    class="img-fluid mt-2" alt="Post Image 1">
+                                            </div>
                                         @elseif ($file->file_type == 2)
-                                        <div class="col-6 px-2 pl-2">
-                                            <video width="100" controls class="card-img-top"
-                                                style="cursor: pointer;">
-                                                <source src="{{ asset($file->file) }}" type="video/mp4">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </div>
+                                            <div class="col-6 px-2 pl-2">
+                                                <video width="100" controls class="card-img-top"
+                                                    style="cursor: pointer;">
+                                                    <source src="{{ asset($file->file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
                                         @endif
                                     @endforeach
                                 @endif
 
                                 @if ($total_file == 3)
                                     @foreach ($post->forum_post_files as $index => $file)
-                                        
                                         @if ($file->file_type == 1)
-                                        <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
-                                            <img  width="100%" src="{{ asset($file->file) }}"
-                                                class="img-fluid mt-2" alt="Post Image 1">
-                                        </div>
+                                            <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
+                                                <img width="100%" src="{{ asset($file->file) }}"
+                                                    class="img-fluid mt-2" alt="Post Image 1">
+                                            </div>
                                         @elseif ($file->file_type == 2)
-                                        <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
-                                            <video controls class="mt-2" style="width: 100%; height: 100%">
-                                                <source src="{{ asset($file->file) }}" type="video/mp4">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </div>
+                                            <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
+                                                <video controls class="mt-2" style="width: 100%; height: 100%">
+                                                    <source src="{{ asset($file->file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
                                         @endif
                                     @endforeach
                                 @endif
+
+                                @if ($total_file == 4)
+                                    @foreach ($post->forum_post_files as $index => $file)
+                                        @if ($file->file_type == 1)
+                                            <div class="col-6 px-2 pl-2">
+                                                <img width="100%" src="{{ asset($file->file) }}"
+                                                    class="img-fluid mt-2" alt="Post Image 1">
+                                            </div>
+                                        @elseif ($file->file_type == 2)
+                                            <div class="col-6 px-2 pl-2">
+                                                <video controls class="mt-2" style="width: 100%; height: 100%">
+                                                    <source src="{{ asset($file->file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+                                @if ($total_file > 4)
+                                    @foreach ($post->forum_post_files->take(3) as $index => $file)
+                                        @if ($file->file_type == 1)
+                                            <div class="col-6 px-2 pl-2">
+                                                <img width="100%" src="{{ asset($file->file) }}"
+                                                    class="img-fluid mt-2" alt="Post Image 1">
+                                            </div>
+                                        @elseif ($file->file_type == 2)
+                                            <div class="col-6 px-2 pl-2">
+                                                <video controls class="mt-2" style="width: 100%; height: 100%">
+                                                    <source src="{{ asset($file->file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+
+                                            {{-- <div class="col-6 px-2 pl-2">
+                                                <div class="overTheImage">
+                                                    <img width="100%" src="{{ asset($file->file) }}"
+                                                        class="img-fluid mt-2" alt="Post Image 1">
+                                                    <h2>+{{ $total_file - 4 }}</h2>
+                                                </div>
+                                            </div> --}}
                                 {{-- <div class="col-6 px-2 pl-2">
                                     <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
                                         class="img-fluid mt-2" alt="Post Image 1">

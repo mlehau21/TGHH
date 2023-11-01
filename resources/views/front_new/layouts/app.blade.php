@@ -28,6 +28,7 @@
     <link href="{{ mix('css/front-pages.css') }}" rel="stylesheet" type="text/css">
 
     @yield('pageCss')
+    @stack('css')
     <style>
         /* bground {
           background-color:  #fe127e !important;
