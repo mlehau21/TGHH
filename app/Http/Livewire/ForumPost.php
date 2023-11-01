@@ -16,6 +16,7 @@ class ForumPost extends Component
     protected $paginationTheme = 'bootstrap';
     public $comment;
     public $file_id;
+    public $post_id;
     public $showCommentStatus = [];
     public $show_post_id = null;
     public $is_exists_post_like;
@@ -119,6 +120,7 @@ class ForumPost extends Component
     public function showInModal(Model $post, ForumFiles $forumFiles)
     {
         $this->file_id = $forumFiles->id;
+        $this->post_id = $post->id;
         $image = asset($forumFiles->file);
         $this->dispatchBrowserEvent('show-form', ['file_path' => $image, 'file_type' => $forumFiles->file_type]);
     }
@@ -126,6 +128,32 @@ class ForumPost extends Component
     public function hideImageModal()
     {
         $this->dispatchBrowserEvent('hide-form');
+    }
+
+    public function paginateNext()
+    {
+        $this->dispatchBrowserEvent('hide-form');
+        $forumFiles = ForumFiles::find($this->file_id);
+        $nextItem = ForumFiles::where('id', '>', $forumFiles->id)->where('forum_post_id', $this->post_id)->first();
+        if ($nextItem) {
+            $this->file_id = $nextItem->id;
+            $image = asset($nextItem->file);
+            $this->dispatchBrowserEvent('show-form', ['file_path' => $image, 'file_type' => $nextItem->file_type]);
+        }
+        
+    }
+
+    public function paginatePrevious()
+    {
+        $this->dispatchBrowserEvent('hide-form');
+        $forumFiles = ForumFiles::find($this->file_id);
+        $previousItem = ForumFiles::where('id', '<', $forumFiles->id)->where('forum_post_id', $this->post_id)->first();
+        if ($previousItem) {
+            $this->file_id = $previousItem->id;
+            $image = asset($previousItem->file);
+            $this->dispatchBrowserEvent('show-form', ['file_path' => $image, 'file_type' => $previousItem->file_type]);
+        }
+        
     }
 
     

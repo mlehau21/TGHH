@@ -282,7 +282,7 @@
                     <nav aria-label="Page navigation mt-2">
                         <ul class="pagination justify-content-end">
                             <li class="page-item">
-                                <a class="page-link" wire:click.prevent="paginatePrevious()" id="hello" href="#" tabindex="-1">Previous</a>
+                                <a class="page-link" wire:click.prevent="paginatePrevious()" href="#" tabindex="-1">Previous</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" wire:click.prevent="paginateNext()" href="#">Next</a>
@@ -311,6 +311,7 @@
     @push('script')
         <script>
             window.addEventListener('show-form', (message) => {
+                console.log(message.detail.file_type);
                 $('#imageId').addClass('d-none');
                 $('#controlsVideo').addClass('d-none');
                 if (message.detail.file_type == 1) {
