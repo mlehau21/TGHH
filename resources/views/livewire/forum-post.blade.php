@@ -292,10 +292,12 @@
                 </div>
                 <div class="modal-body">
                     <img src="" id="imageId" class="img-fluid d-none" alt="">
-                    <video controls class="mt-2" id="controlsVideo" class="d-none">
-                        <source src="" id="videoId" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div id="controlsVideo">
+                        <video controls class="mt-2" style="width: 100%; height: 100%">
+                            <source src="http://127.0.0.1:8000/forum/1698823349_result downloader.mp4" id="videoId" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" wire:click.prevent="hideImageModal"

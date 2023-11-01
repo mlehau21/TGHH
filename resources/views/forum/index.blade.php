@@ -98,16 +98,7 @@
                                     {{ $index + 1 }}
                                 </td>
                                 <td class="d-flex">
-                                    @if ($post->file_type == 1)
-                                        <img width="100" src="{{ asset($post->file) }}" alt="Image">
-                                    @elseif ($post->file_type == 2)
-                                        <video width="100" controls>
-                                            <source src="{{ asset($post->file) }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    @else
-                                        <strong>No file</strong>
-                                    @endif
+                                     {{ count($post->forum_post_files) }} Files
                                 </td>
 
                                 <td style="width: 50%">
