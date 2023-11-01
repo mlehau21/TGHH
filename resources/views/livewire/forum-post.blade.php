@@ -282,10 +282,10 @@
                     <nav aria-label="Page navigation mt-2">
                         <ul class="pagination justify-content-end">
                             <li class="page-item">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                <a class="page-link" wire:click.prevent="paginatePrevious()" id="hello" href="#" tabindex="-1">Previous</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
+                                <a class="page-link" wire:click.prevent="paginateNext()" href="#">Next</a>
                             </li>
                         </ul>
                     </nav>

@@ -15,6 +15,7 @@ class ForumPost extends Component
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $comment;
+    public $file_id;
     public $showCommentStatus = [];
     public $show_post_id = null;
     public $is_exists_post_like;
@@ -117,6 +118,7 @@ class ForumPost extends Component
     
     public function showInModal(Model $post, ForumFiles $forumFiles)
     {
+        $this->file_id = $forumFiles->id;
         $image = asset($forumFiles->file);
         $this->dispatchBrowserEvent('show-form', ['file_path' => $image, 'file_type' => $forumFiles->file_type]);
     }
@@ -125,5 +127,7 @@ class ForumPost extends Component
     {
         $this->dispatchBrowserEvent('hide-form');
     }
+
+    
   
 }
