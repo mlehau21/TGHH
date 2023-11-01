@@ -26,4 +26,14 @@ class ForumPost extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    public function forum_post_files()
+    {
+        return $this->hasMany(ForumFiles::class, 'forum_post_id');
+    }
+
+    public function forum_post_file_single()
+    {
+        return $this->hasOne(ForumFiles::class, 'forum_post_id');
+    }
 }

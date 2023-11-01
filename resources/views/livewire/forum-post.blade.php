@@ -13,6 +13,60 @@
                         </div>
                         <div class="author-info avater-top" style="cursor: pointer">
                             <div class="row gx-0">
+                                @php
+                                    $total_file = count($post->forum_post_files);
+                                @endphp
+
+                                @if ($total_file == 1)
+                                    @if ($post->forum_post_file_single->file_type == 1)
+                                        <img src="{{ asset($post->forum_post_file_single->file) }}"
+                                            wire:click.prevent="showInModal({{ $post }})"
+                                            style="cursor: pointer; height: 75vh" class="w-100" alt="Post Image">
+                                    @elseif ($post->forum_post_file_single->file_type == 2)
+                                        <video width="100" controls class="card-img-top" style="cursor: pointer;">
+                                            <source src="{{ asset($post->forum_post_file_single->file) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @endif
+                                @endif
+
+                                @if ($total_file == 2)
+                                    @foreach ($post->forum_post_files as $file)
+                                        @if ($file->file_type == 1)
+                                        <div class="col-6 px-2 pl-2">
+                                            <img  width="100%" src="{{ asset($file->file) }}"
+                                                class="img-fluid mt-2" alt="Post Image 1">
+                                        </div>
+                                        @elseif ($file->file_type == 2)
+                                        <div class="col-6 px-2 pl-2">
+                                            <video width="100" controls class="card-img-top"
+                                                style="cursor: pointer;">
+                                                <source src="{{ asset($file->file) }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                        @endif
+                                    @endforeach
+                                @endif
+
+                                @if ($total_file == 3)
+                                    @foreach ($post->forum_post_files as $index => $file)
+                                        
+                                        @if ($file->file_type == 1)
+                                        <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
+                                            <img  width="100%" src="{{ asset($file->file) }}"
+                                                class="img-fluid mt-2" alt="Post Image 1">
+                                        </div>
+                                        @elseif ($file->file_type == 2)
+                                        <div class="col-{{ $index == 0 ? '12' : '6' }} px-2 pl-2">
+                                            <video controls class="mt-2" style="width: 100%; height: 100%">
+                                                <source src="{{ asset($file->file) }}" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                        @endif
+                                    @endforeach
+                                @endif
                                 {{-- <div class="col-6 px-2 pl-2">
                                     <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
                                         class="img-fluid mt-2" alt="Post Image 1">
@@ -35,16 +89,6 @@
                                 </div> --}}
                             </div>
 
-                            @if ($post->file_type == 1)
-                                <img src="{{ asset($post->file) }}"
-                                    wire:click.prevent="showInModal({{ $post }})"
-                                    style="cursor: pointer; height: 75vh" class="w-100" alt="Post Image">
-                            @elseif ($post->file_type == 2)
-                                <video width="100" controls class="card-img-top" style="cursor: pointer;">
-                                    <source src="{{ asset($post->file) }}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            @endif
                         </div>
                         <div class="post-content p-2">
                             <h2 class="post-title">{{ $post->title }}</h2>
@@ -137,14 +181,14 @@
                     </button>
                     <nav aria-label="Page navigation mt-2">
                         <ul class="pagination justify-content-end">
-                          <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                          </li>
-                          <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                          </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
                         </ul>
-                      </nav>
+                    </nav>
                 </div>
                 <div class="modal-body">
                     <img src="" id="imageId" class="img-fluid" alt="">

@@ -28,9 +28,10 @@ class ForumPost extends Component
     }
     public function getForumsProperty()
     {
-        return Model::with('owner', 'forum_likes', 'forum_comments')
+        return Model::with('owner', 'forum_likes', 'forum_comments', 'forum_post_file_single', 'forum_post_files')
             ->where('active_status', 1)
             ->latest()
+            // ->get();
             ->simplePaginate(env('FORUM_PAGINATION_LIMIT'));
     }
 

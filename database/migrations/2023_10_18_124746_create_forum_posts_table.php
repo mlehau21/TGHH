@@ -16,8 +16,6 @@ return new class extends Migration
         Schema::create('forum_posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id");
-            $table->string("file")->nullable();
-            $table->tinyInteger("file_type")->default(0)->comment('0=no-file; 1=image; 2=video');
             $table->string("title")->nullable();
             $table->string("description", 1000)->nullable();
             $table->boolean("active_status")->default(0);
