@@ -170,36 +170,7 @@
                                         @endif
                                     @endforeach
                                 @endif
-
-                                {{-- <div class="col-6 px-2 pl-2">
-                                                <div class="overTheImage">
-                                                    <img width="100%" src="{{ asset($file->file) }}"
-                                                        class="img-fluid mt-2" alt="Post Image 1">
-                                                    <h2>+{{ $total_file - 4 }}</h2>
-                                                </div>
-                                            </div> --}}
-                                {{-- <div class="col-6 px-2 pl-2">
-                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluid mt-2" alt="Post Image 1">
-                                </div>
-                                <div class="col-6 px-2">
-                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluid mt-2" alt="Post Image 1">
-                                </div>
-                                <div class="col-6 px-2 pr-2">
-                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluid mt-2" alt="Post Image 1">
-                                </div>
-                                <div class="col-6 px-2">
-                                    <img  width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluid mt-2" alt="Post Image 1">
-                                </div> --}}
-                                {{-- <div class="col-lg-12 mt-3 mt-md-3 col-md-12">
-                                    <img height="340" width="100%" src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                        class="img-fluid" alt="Post Image 1">
-                                </div> --}}
                             </div>
-
                         </div>
                         <div class="post-content p-2">
                             <h2 class="post-title">{{ $post->title }}</h2>
@@ -261,19 +232,6 @@
                             @if (in_array($post->id, $showCommentStatus) && $post->id == $show_post_id)
                                 @livewire('forum-comment-component', ['post_id' => $post->id])
                             @endif
-
-
-                            {{-- <div class="comment-form">
-                                <form
-                                    wire:submit.prevent='{{ $isUpdateComment ? "commentUpdate($post->id)" : "commentAdd($post->id)" }}'>
-
-                                    <div class="form-group border">
-                                        <textarea class="form-control comment-input" wire:model.defer='comment' placeholder="Add a comment"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Send</button>
-                                </form>
-                            </div> --}}
-
                             <div class="comment-form">
                                 <form
                                     wire:submit.prevent='{{ $isUpdateComment ? "commentUpdate($post->id)" : "commentAdd($post->id)" }}'
@@ -282,17 +240,23 @@
                                     <div class="form-group border">
                                         <textarea class="form-control comment-input" cals="2" wire:model.defer='comment' placeholder="Add a comment"></textarea>
                                     </div>
-                                    @if (isset($photo))
+                                    @if (isset($photo) && $postFileChooseId == $post->id)
                                         <div>
                                             <img class="comment-style" width="130" height="130"
                                                 src="{{ $photo->temporaryUrl() }}" alt="">
                                         </div>
                                     @endif
+                                    @if (isset($editPhoto) && !empty($editPhoto) && !isset($photo))
+                                        <div>
+                                            <img class="comment-style" width="130" height="130"
+                                                src="{{ $editPhoto }}" alt="">
+                                        </div>
+                                    @endif
                                     <div class="form-group">
-                                        <label for="comment-image" class="btn btn-secondary custom-upload-btn">
+                                        <label for="comment-image{{ $post->id }}" class="btn btn-secondary custom-upload-btn">
                                             <i class="fas fa-camera"></i> Upload a Photo
                                         </label>
-                                        <input type="file" id="comment-image" accept="image/*" name="photo"
+                                        <input type="file" id="comment-image{{ $post->id }}" wire:change='ChooseFileUnique({{ $post->id }})' accept="image/*" name="photo"
                                             wire:model.defer="photo" class="d-none">
                                     </div>
                                     <br>
