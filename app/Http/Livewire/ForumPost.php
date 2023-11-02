@@ -30,12 +30,11 @@ class ForumPost extends Component
     public $isUpdateComment = false;
     protected $listeners = ['editComment'];
 
-
     public function editComment($comment_id)
     {
         $comment = ForumComment::findOrFail($comment_id);
         $this->comment = $comment->message;
-        $this->editPhoto =  asset("forum/".$comment->photo);
+        $this->editPhoto = asset('forum/' . $comment->photo);
         $this->isUpdateComment = true;
     }
     public function getForumsProperty()
