@@ -275,7 +275,41 @@
         <div>{{ $posts->links() }}</div>
 
     </div>
+
+    {{-- photo  --}}
     <div class="modal" tabindex="-1" role="dialog" id="showPhoto">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-danger btn-sm mt-0 float-right rounded"
+                        wire:click.prevent="hideImageModal" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <nav aria-label="Page navigation mt-2">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" wire:click.prevent="paginatePrevious()" href="#"
+                                    tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" wire:click.prevent="paginateNext()" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="modal-body">
+                    <img src="" id="imageId" class="img-fluid d-none" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" wire:click.prevent="hideImageModal"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- videos    --}}
+    <div class="modal" tabindex="-1" role="dialog" id="showVideo">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -311,20 +345,28 @@
             </div>
         </div>
     </div>
-
-
     @push('script')
         <script>
             window.addEventListener('show-form', (message) => {
-                $('#imageId').removeClass('d-none');
-                $('#imageId').attr('src', message.detail.file_path);
-
-                $('#showPhoto').modal('show');
+                console.log(message.detail.file_type);
+                $('#imageId').addClass('d-none');
+                $('#controlsVideo').addClass('d-none');
+                if (message.detail.file_type == 1) {
+                    $('#imageId').removeClass('d-none');
+                    $('#imageId').attr('src', message.detail.file_path);
+                    $('#showPhoto').modal('show');
+                } else {
+                    $('#controlsVideo').removeClass('d-none');
+                    $('#videoId').attr('src', message.detail.file_path).removeClass('d-none');
+                    $('#showVideo').modal('show');
+                }
             }, false);
 
             window.addEventListener('hide-form', (message) => {
                 $('#imageId').attr('src', "");
+                $('#videoId').attr('src', "");
                 $('#showPhoto').modal('hide');
+                $('#showVideo').modal('hide');
             }, false);
         </script>
     @endpush

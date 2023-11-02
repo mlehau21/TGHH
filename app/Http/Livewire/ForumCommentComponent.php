@@ -11,7 +11,7 @@ use Livewire\Component;
 class ForumCommentComponent extends Component
 {
     public $page = 1;
-    public $post_id;
+    public $post_id = null;
     public $refresh = true;
     public $is_exists_post_comment_like;
     protected $listeners = ['forumCommentRefresh'];

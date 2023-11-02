@@ -91,25 +91,17 @@
             </div>
         </div>
     
-    @push('script')
+        @push('script')
         <script>
             window.addEventListener('show-form', (message) => {
-                console.log(message.detail.file_type);
-                $('#imageId').addClass('d-none');
-                $('#controlsVideo').addClass('d-none');
-                if (message.detail.file_type == 1) {
-                    $('#imageId').removeClass('d-none');
-                    $('#imageId').attr('src', message.detail.file_path);
-                } else {
-                    $('#controlsVideo').removeClass('d-none');
-                    $('#videoId').attr('src', message.detail.file_path).removeClass('d-none');
-                }
+                $('#imageId').removeClass('d-none');
+                $('#imageId').attr('src', message.detail.file_path);
+
                 $('#showPhoto').modal('show');
             }, false);
 
             window.addEventListener('hide-form', (message) => {
                 $('#imageId').attr('src', "");
-                $('#videoId').attr('src', "");
                 $('#showPhoto').modal('hide');
             }, false);
         </script>
