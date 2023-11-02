@@ -13,10 +13,13 @@
                     @if ($comment->message)
                         <p class="comment-text comment-style">{{ $comment->message }}</p>
                     @endif
-                    @if ($comment->photo )
-                    <div>
-                        <img class="comment-style" width="130" height="130" src="{{ asset("forum/".$comment->photo) }}" alt="">
-                    </div>
+                    @if ($comment->photo)
+                        <div>
+                            <img class="comment-style" style="cursor: pointer"
+                                wire:click.prevent="commentPhotoPopUp({{ $comment }})"
+                                width="130" height="130" src="{{ asset('forum/' . $comment->photo) }}"
+                                alt="">
+                        </div>
                     @endif
                     <div class="comment-actions">
                         <button wire:click.prevent="postCommentLike({{ $comment->id }})" class="btn btn-light"
@@ -67,4 +70,48 @@
     </ul>
     <button wire:click="loadMore" class="btn btn-info see-more-btn">See
         More</button>
+
+        <div class="modal" tabindex="-1" role="dialog" id="showPhoto">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn btn-danger btn-sm mt-0 float-right rounded"
+                            wire:click.prevent="hideImageModal" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="" id="imageId" class="img-fluid d-none" alt="">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" wire:click.prevent="hideImageModal"
+                            data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    @push('script')
+        <script>
+            window.addEventListener('show-form', (message) => {
+                console.log(message.detail.file_type);
+                $('#imageId').addClass('d-none');
+                $('#controlsVideo').addClass('d-none');
+                if (message.detail.file_type == 1) {
+                    $('#imageId').removeClass('d-none');
+                    $('#imageId').attr('src', message.detail.file_path);
+                } else {
+                    $('#controlsVideo').removeClass('d-none');
+                    $('#videoId').attr('src', message.detail.file_path).removeClass('d-none');
+                }
+                $('#showPhoto').modal('show');
+            }, false);
+
+            window.addEventListener('hide-form', (message) => {
+                $('#imageId').attr('src', "");
+                $('#videoId').attr('src', "");
+                $('#showPhoto').modal('hide');
+            }, false);
+        </script>
+    @endpush
 </div>

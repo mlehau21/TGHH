@@ -94,6 +94,7 @@ class ForumPost extends Component
                 ]);
                 $this->comment = null;
                 $this->photo = null;
+                $this->editPhoto = '';
                 $this->isUpdateComment = false;
             }
 

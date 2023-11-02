@@ -61,4 +61,16 @@ class ForumCommentComponent extends Component
         $data['comments'] = ForumComment::latest()->with('forum_comment_likes')->where('post_id', $this->post_id)->paginate(env('FORUM_COMMENT_PAGINATION_LIMIT'), ['*'], 'page', $this->page);
         return view('livewire.forum-comment-component', $data);
     }
+
+    public function commentPhotoPopUp(ForumComment $comment)
+    {
+        $image =  asset('forum/' . $comment->photo);
+        $this->dispatchBrowserEvent('show-form', ['file_path' => $image]);
+    }
+
+    
+    public function hideImageModal()
+    {
+        $this->dispatchBrowserEvent('hide-form');
+    }
 }

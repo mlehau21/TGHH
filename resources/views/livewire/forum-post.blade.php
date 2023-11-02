@@ -253,11 +253,13 @@
                                         </div>
                                     @endif
                                     <div class="form-group">
-                                        <label for="comment-image{{ $post->id }}" class="btn btn-secondary custom-upload-btn">
+                                        <label for="comment-image{{ $post->id }}"
+                                            class="btn btn-secondary custom-upload-btn">
                                             <i class="fas fa-camera"></i> Upload a Photo
                                         </label>
-                                        <input type="file" id="comment-image{{ $post->id }}" wire:change='ChooseFileUnique({{ $post->id }})' accept="image/*" name="photo"
-                                            wire:model.defer="photo" class="d-none">
+                                        <input type="file" id="comment-image{{ $post->id }}"
+                                            wire:change='ChooseFileUnique({{ $post->id }})' accept="image/*"
+                                            name="photo" wire:model.defer="photo" class="d-none">
                                     </div>
                                     <br>
                                     <button type="submit" class="btn btn-primary">Send</button>
@@ -314,105 +316,16 @@
     @push('script')
         <script>
             window.addEventListener('show-form', (message) => {
-                console.log(message.detail.file_type);
-                $('#imageId').addClass('d-none');
-                $('#controlsVideo').addClass('d-none');
-                if (message.detail.file_type == 1) {
-                    $('#imageId').removeClass('d-none');
-                    $('#imageId').attr('src', message.detail.file_path);
-                } else {
-                    $('#controlsVideo').removeClass('d-none');
-                    $('#videoId').attr('src', message.detail.file_path).removeClass('d-none');
-                }
+                $('#imageId').removeClass('d-none');
+                $('#imageId').attr('src', message.detail.file_path);
+
                 $('#showPhoto').modal('show');
             }, false);
 
             window.addEventListener('hide-form', (message) => {
                 $('#imageId').attr('src', "");
-                $('#videoId').attr('src', "");
                 $('#showPhoto').modal('hide');
             }, false);
         </script>
     @endpush
 </div>
-
-{{-- <div class="gallery-page">
-    <section class="gallery-section py-5">
-        <div class="container">
-            <div class="gallery-post-section pt-4">
-                <div class="row">
-                    <div class="col-lg-8 offset-4 pb-md-3">
-                        <div class="card custom-card mb-4 h-100">
-                            <div class="image-container">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                            class="img-fluid" alt="Post Image 1">
-                                    </div>
-                                    <div class="col-md-6">
-                                        <img src="http://127.0.0.1:8000/uploads/post%20image/39/large_289447134_6000595216634026_6797221462978289858_n_72a1410d74_f39d3b3f8d.jpg"
-                                            class="img-fluid" alt="Post Image 2">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <div class="author-info">
-                                    <img src="profile-picture.jpg" class="profile-picture" alt="Profile Picture">
-                                    <span class="author-name">John Doe</span>
-                                    <span class="created-time">Posted 2 hours ago</span>
-                                </div>
-                                <h2 class="post-title">Sample Forum Post Title</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod tincidunt libero
-                                    ac aliquam.</p>
-                                <div class="d-flex justify-content-between">
-                                    <!-- Like button with Font Awesome heart icon -->
-                                    <button class="btn btn-primary">
-                                        <i class="fas fa-heart"></i> Like
-                                    </button>
-                                    <button class="btn btn-secondary toggle-comments">Comment</button>
-                                </div>
-                                <div class="comments comment-section">
-                                    <ul>
-                                        <li class="comment">
-                                            <div class="comment-details">
-                                                <div class="author-info">
-                                                    <img src="profile-picture.jpg" class="profile-picture"
-                                                        alt="Profile Picture">
-                                                    <span class="author-name">John Doe</span>
-                                                    <span class="created-time">Posted 2 hours ago</span>
-                                                </div>
-                                                <p class="comment-text">Comment 1</p>
-                                            </div>
-                                        </li>
-                                        <li class="comment">
-                                            <div class="comment-details">
-                                                <div class="author-info">
-                                                    <img src="profile-picture.jpg" class="profile-picture"
-                                                        alt="Profile Picture">
-                                                    <span class="author-name">John Doe</span>
-                                                    <span class="created-time">Posted 2 hours ago</span>
-                                                </div>
-                                                <p class="comment-text">Comment 2</p>
-                                            </div>
-                                        </li>
-                                        <!-- Add more comments as needed -->
-                                    </ul>
-                                    <button class="btn btn-info see-more-btn" style="display: block;">See
-                                        More</button>
-                                </div>
-                                <div class="comment-form">
-                                    <form>
-                                        <div class="form-group border">
-                                            <textarea class="form-control comment-input" placeholder="Add a comment"></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div> --}}
