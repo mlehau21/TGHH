@@ -34,12 +34,15 @@
                 padding: 5px;
                 border-radius: 13px;
             }
+            .border-custom{
+                border-radius: 5px !important;
+            }
         </style>
     @endpush
     <div class="row">
         @forelse ($posts as $post)
             <div class="col-lg-8 offset-lg-2 col-md-12 col-sm-12 pb-md-3">
-                <div class="card custom-card mb-4 h-100 border">
+                <div class="card custom-card mb-4 h-100 border border-custom">
                     <div class="image-container p-2">
                         <div class="author-info avater-top">
                             <img src="{{ $post->owner->photo ? asset($post->owner->photo) : asset('forum/avater.png') }}"
