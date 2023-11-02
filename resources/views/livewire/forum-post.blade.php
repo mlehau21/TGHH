@@ -230,7 +230,7 @@
                                 </div>
                             </div>
                             @if (in_array($post->id, $showCommentStatus) && $post->id == $show_post_id)
-                                @livewire('forum-comment-component', ['post_id' => $post->id])
+                                @livewire('forum-comment-component', ['post_id' => $post->id], key($post->id))
                             @endif
                             <div class="comment-form">
                                 <form
@@ -333,7 +333,7 @@
                     <img src="" id="imageId" class="img-fluid d-none" alt="">
                     <div id="controlsVideo">
                         <video controls preload="auto" class="mt-2" style="width: 100%; height: 100%">
-                            <source src="" id="videoId" type="video/mp4">
+                            <source src="{{ asset('forum/1698821045_loading video.mp4') }}" id="videoId" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -348,7 +348,6 @@
     @push('script')
         <script>
             window.addEventListener('show-form', (message) => {
-                console.log(message.detail.file_type);
                 $('#imageId').addClass('d-none');
                 $('#controlsVideo').addClass('d-none');
                 if (message.detail.file_type == 1) {
@@ -357,14 +356,25 @@
                     $('#showPhoto').modal('show');
                 } else {
                     $('#controlsVideo').removeClass('d-none');
-                    $('#videoId').attr('src', message.detail.file_path).removeClass('d-none');
+
+                    var video = ` <video controls preload="auto" class="mt-2" style="width: 100%; height: 100%">
+                            <source src="${message.detail.file_path}" id="videoId" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>`;
+                    $('#controlsVideo').html(video);
+                    // $('#videoId').attr('src', message.detail.file_path).removeClass('d-none');
                     $('#showVideo').modal('show');
                 }
             }, false);
 
             window.addEventListener('hide-form', (message) => {
                 $('#imageId').attr('src', "");
-                $('#videoId').attr('src', "");
+                
+                var video = ` <video controls preload="auto" class="mt-2" style="width: 100%; height: 100%">
+                            <source src="" id="videoId" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>`;
+                    $('#controlsVideo').html(video);
                 $('#showPhoto').modal('hide');
                 $('#showVideo').modal('hide');
             }, false);
