@@ -332,7 +332,7 @@
                 <div class="modal-body">
                     <img src="" id="imageId" class="img-fluid d-none" alt="">
                     <div id="controlsVideo">
-                        <video controls class="mt-2" style="width: 100%; height: 100%">
+                        <video controls preload="auto" class="mt-2" style="width: 100%; height: 100%">
                             <source src="" id="videoId" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
