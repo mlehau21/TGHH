@@ -65,12 +65,7 @@ class ForumCommentComponent extends Component
     public function commentPhotoPopUp(ForumComment $comment)
     {
         $image =  asset('forum/' . $comment->photo);
-        $this->dispatchBrowserEvent('show-form', ['file_path' => $image]);
+        $this->dispatchBrowserEvent('show_comment_modal', ['comment_photo_path' => $image]);
     }
 
-    
-    public function hideImageModal()
-    {
-        $this->dispatchBrowserEvent('hide-form');
-    }
 }

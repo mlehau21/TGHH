@@ -153,6 +153,11 @@ class ForumPost extends Component
     {
         $this->dispatchBrowserEvent('hide-form');
     }
+    
+    public function hideCommentModal()
+    {
+        $this->dispatchBrowserEvent('hide_comment_modal');
+    }
 
     public function paginateNext()
     {

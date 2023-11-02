@@ -345,6 +345,41 @@
             </div>
         </div>
     </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="showCommentPhoto">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn btn-danger btn-sm mt-0 float-right rounded"
+                        wire:click.prevent="hideCommentModal" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="" id="commentPhotoId" class="img-fluid d-none" alt="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" wire:click.prevent="hideCommentModal"
+                        data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @push('script')
+        <script>
+            window.addEventListener('show_comment_modal', (message) => {
+                $('#commentPhotoId').removeClass('d-none');
+                $('#commentPhotoId').attr('src', message.detail.comment_photo_path);
+                $('#showCommentPhoto').modal('show');
+            }, false);
+
+            window.addEventListener('hide_comment_modal', (message) => {
+                $('#commentPhotoId').attr('src', "");
+                $('#showCommentPhoto').modal('hide');
+            }, false);
+        </script>
+    @endpush
     @push('script')
         <script>
             window.addEventListener('show-form', (message) => {
