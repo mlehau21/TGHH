@@ -23,6 +23,17 @@
                 margin: 10px;
                 border-radius: 5px;
             }
+
+            .comment-details {
+                display: inline-flex;
+                flex-direction: column;
+            }
+
+            .comment-style {
+                background-color: gainsboro;
+                padding: 5px;
+                border-radius: 13px;
+            }
         </style>
     @endpush
     <div class="row">
@@ -252,7 +263,7 @@
                             @endif
 
 
-                            <div class="comment-form">
+                            {{-- <div class="comment-form">
                                 <form
                                     wire:submit.prevent='{{ $isUpdateComment ? "commentUpdate($post->id)" : "commentAdd($post->id)" }}'>
 
@@ -261,7 +272,34 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">Send</button>
                                 </form>
+                            </div> --}}
+
+                            <div class="comment-form">
+                                <form
+                                    wire:submit.prevent='{{ $isUpdateComment ? "commentUpdate($post->id)" : "commentAdd($post->id)" }}'
+                                    enctype="multipart/form-data">
+
+                                    <div class="form-group border">
+                                        <textarea class="form-control comment-input" cals="2" wire:model.defer='comment' placeholder="Add a comment"></textarea>
+                                    </div>
+                                    @if (isset($photo))
+                                        <div>
+                                            <img class="comment-style" width="130" height="130"
+                                                src="{{ $photo->temporaryUrl() }}" alt="">
+                                        </div>
+                                    @endif
+                                    <div class="form-group">
+                                        <label for="comment-image" class="btn btn-secondary custom-upload-btn">
+                                            <i class="fas fa-camera"></i> Upload a Photo
+                                        </label>
+                                        <input type="file" id="comment-image" accept="image/*" name="photo"
+                                            wire:model.defer="photo" class="d-none">
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary">Send</button>
+                                </form>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -282,7 +320,8 @@
                     <nav aria-label="Page navigation mt-2">
                         <ul class="pagination justify-content-end">
                             <li class="page-item">
-                                <a class="page-link" wire:click.prevent="paginatePrevious()" href="#" tabindex="-1">Previous</a>
+                                <a class="page-link" wire:click.prevent="paginatePrevious()" href="#"
+                                    tabindex="-1">Previous</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" wire:click.prevent="paginateNext()" href="#">Next</a>
@@ -294,7 +333,7 @@
                     <img src="" id="imageId" class="img-fluid d-none" alt="">
                     <div id="controlsVideo">
                         <video controls class="mt-2" style="width: 100%; height: 100%">
-                            <source src="http://127.0.0.1:8000/forum/1698823349_result downloader.mp4" id="videoId" type="video/mp4">
+                            <source src="" id="videoId" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>

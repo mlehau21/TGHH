@@ -9,12 +9,16 @@ use Livewire\Component;
 use App\Models\ForumPost as Model;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class ForumPost extends Component
 {
+    use WithFileUploads;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
     public $comment;
+    public $photo; // Property to hold the uploaded photo
+    public $photoPath; // Property to store the photo's path after uploading
     public $file_id;
     public $post_id;
     public $showCommentStatus = [];
@@ -41,11 +45,16 @@ class ForumPost extends Component
     public function commentAdd($post_id)
     {
         if (Auth::id()) {
-            if ($this->comment) {
+            if ($this->comment  || $this->photo) {
+                if ($this->photo) {
+                    $this->photoPath = $this->photo->store('/comment', 'forum');
+                }
+    
                 ForumComment::create([
                     'user_id' => Auth::id(),
                     'post_id' => $post_id,
                     'message' => $this->comment,
+                    'photo' => $this->photoPath,
                     'created_by' => Auth::id(),
                 ]);
                 $this->comment = null;

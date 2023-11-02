@@ -10,7 +10,14 @@
                         <span class="created-time">Posted
                             {{ $comment->created_at->diffForHumans() }}</span>
                     </div>
-                    <p class="comment-text">{{ $comment->message }}</p>
+                    @if ($comment->message)
+                        <p class="comment-text comment-style">{{ $comment->message }}</p>
+                    @endif
+                    @if ($comment->photo )
+                    <div>
+                        <img class="comment-style" width="130" height="130" src="{{ asset("forum/".$comment->photo) }}" alt="">
+                    </div>
+                    @endif
                     <div class="comment-actions">
                         <button wire:click.prevent="postCommentLike({{ $comment->id }})" class="btn btn-light"
                             style="color:#fc147c">
@@ -19,14 +26,16 @@
                                 $i_liked_comment = null;
                                 $check_like = null;
                                 $post_comment = null;
+                                $manage_forum = null;
                                 $admin = false;
                                 if (auth()->check()) {
                                     $i_liked_comment = \App\Models\ForumCommentLike::where('comment_id', $comment->id);
                                     $check_like = $i_liked_comment->where('created_by', auth()->user()->id)->first();
                                     $post_comment = $comment->created_by == auth()->user()->id;
-                                
+                                    $manage_forum = auth()
+                                        ->user()
+                                        ->can('manage_forum');
                                 }
-                                $manage_forum = auth()->user()->can('manage_forum');
                             @endphp
                             @if ($check_like)
                                 <span class="like-text">Liked ({{ $i_liked_comment->count() }})</span>
@@ -35,13 +44,15 @@
                             @endif
                         </button>
                         @if ($post_comment)
-                            <button wire:click.prevent="editComment({{ $comment->id }})" class="btn btn-light" style="color: blue">
+                            <button wire:click.prevent="editComment({{ $comment->id }})" class="btn btn-light"
+                                style="color: blue">
                                 <i class="fas fa-edit"></i>
                                 <span class="like-text">Edit</span>
                             </button>
                         @endif
                         @if ($post_comment || $manage_forum)
-                            <button wire:click.prevent="deleteComment({{ $comment->id }})" class="btn btn-light" style="color:#c60000d3">
+                            <button wire:click.prevent="deleteComment({{ $comment->id }})" class="btn btn-light"
+                                style="color:#c60000d3">
                                 <i class="fas fa-trash"></i>
                                 <span class="like-text">Delete</span>
                             </button>

@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id");
             $table->foreignId("post_id");
-            $table->string("message", 1000);
+            $table->string("message", 1000)->nullable();
+            $table->string("photo")->nullable();
             $table->foreignId('created_by');
             $table->foreignId('updated_by')->nullable();
             $table->softDeletes();
