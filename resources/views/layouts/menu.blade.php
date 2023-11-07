@@ -30,7 +30,7 @@
             <span class="aside-menu-title">{!! __('messages.comments') !!}</span>
         </a>
     </li>
-    @else 
+    @else
     <li class="nav-item {{ Request::is('admin/post-comments*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page"
             href="{{ route('admin.post-comments.index') }}">
@@ -95,7 +95,7 @@
         </a>
     </li>
 @endcanany
-@can('manage_pages')
+{{-- @can('manage_pages')
     <li class="nav-item {{ Request::is('admin/pages*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('pages.index') }}">
             <span class="aside-menu-icon pe-3">
@@ -104,7 +104,7 @@
             <span class="aside-menu-title">{!! __('messages.pages') !!}</span>
         </a>
     </li>
-@endcan
+@endcan --}}
 {{-- @can('manage_forum') --}}
 <li class="nav-item {{ Request::is('user/forums*', 'user/forum/view*') ? 'active' : '' }}">
     <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('forum.index') }}">
@@ -115,7 +115,7 @@
     </a>
 </li>
 {{-- @endcan --}}
-@can('manage_menu')
+{{-- @can('manage_menu')
     <li class="nav-item {{ Request::is('admin/menus*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('menus.index') }}">
             <span class="aside-menu-icon pe-3">
@@ -124,8 +124,8 @@
             <span class="aside-menu-title">{!! __('messages.menus') !!}</span>
         </a>
     </li>
-@endcan
-@can('manage_rss_feeds')
+@endcan --}}
+{{-- @can('manage_rss_feeds')
     <li class="nav-item {{ Request::is('admin/rss-feed*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('rss-feed.index') }}">
             <span class="aside-menu-icon pe-3">
@@ -134,7 +134,7 @@
             <span class="aside-menu-title"> {{ __('messages.rss-feed') }}</span>
         </a>
     </li>
-@endcan
+@endcan --}}
 @can('manage_navigation')
     <li class="nav-item {{ Request::is('admin/navigation*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('navigation.index') }}">
@@ -186,7 +186,7 @@
         </a>
     </li>
 @endcan
-@can('manage_seo_tools')
+{{-- @can('manage_seo_tools')
     <li class="nav-item {{ Request::is('admin/seo-tools*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('seo-tools.index') }}">
             <span class="aside-menu-icon pe-3">
@@ -195,7 +195,7 @@
             <span class="aside-menu-title">{!! __('messages.seo-tools') !!}</span>
         </a>
     </li>
-@endcan
+@endcan --}}
 @can('manage_language')
     <li class="nav-item {{ Request::is('admin/languages*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('languages.index') }}">
@@ -217,7 +217,7 @@
             <span class="aside-menu-title">{!! __('messages.comments') !!}</span>
         </a>
     </li>
-    @else 
+    @else
     <li class="nav-item {{ Request::is('admin/post-comments*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page"
             href="{{ route('post-comments.index') }}">
