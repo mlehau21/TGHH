@@ -154,12 +154,12 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
             [LanguageController::class, 'updateTranslation'])->name('languages.translation.update');
     });
 
-    Route::middleware('permission:manage_menu')->group(function () {
-        Route::resource('menus', MenuController::class);
-        Route::post('get-menus', function () {
-            return getMenus();
-        })->name('get-menus');
-    });
+    // Route::middleware('permission:manage_menu')->group(function () {
+    //     Route::resource('menus', MenuController::class);
+    //     Route::post('get-menus', function () {
+    //         return getMenus();
+    //     })->name('get-menus');
+    // });
 
     Route::middleware('permission:manage_navigation')->group(function () {
         Route::get('navigation', [NavigationController::class, 'index'])->name('navigation.index');
