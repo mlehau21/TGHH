@@ -61,7 +61,7 @@
                                         <h2 class="fs-1-xxl fw-bolder text-white">{{$rssPost}}</h2>
                                         <h3 class="mb-0 fs-4 fw-light">{{__('messages.on_rss_feed')}}</h3>
                                     </div>
-                                </div>  
+                                </div>
                             </div>
                             <div class="col-12">
                                 <div class="card-header border-0 pt-5 pb-1">
@@ -74,12 +74,12 @@
                                                 class="caret"></b>
                                     </div>
                                 </div>
-                                <div class="card mb-5 mb-xl-8 p-5" id="postChartContainer" >        
+                                <div class="card mb-5 mb-xl-8 p-5" id="postChartContainer" >
                                 </div>
                             </div>
                         </div>
                     @endcan
-                    @can('manage_staff')
+                    {{-- @can('manage_staff')
                         <div class="row">
                             <div class="col-xl-6">
                                 <div class="mb-5 mb-xl-8">
@@ -135,7 +135,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endcan
+                    @endcan --}}
             </div>
         </div>
     </div>

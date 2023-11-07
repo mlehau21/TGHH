@@ -109,7 +109,7 @@
             </div>
         </a>
     </div>
-    <div class="col-xl-4 col-sm-6">
+    {{-- <div class="col-xl-4 col-sm-6">
         <a class="nav-link text-active-primary p-0 {{ (isset($sectionName) && $sectionName == 'audio') ? 'active' : ''}}"
            href="{{ Auth::user()->hasRole('user') ? route('user.post_type',['section' => 'audio/create']) : route('post_type',['section' => 'audio/create']) }}">
             <div class="card add-post-card">
@@ -126,5 +126,5 @@
                 </div>
             </div>
         </a>
-    </div>
+    </div> --}}
 </div>

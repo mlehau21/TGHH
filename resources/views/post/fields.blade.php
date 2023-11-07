@@ -3,13 +3,13 @@
         <div class="card-body">
             <div>
                 <div class="p-0">
-                    
+
                     @if($sectionType != \App\Models\Post::OPEN_AI_ACTIVE)
                         <div class="mb-5">
                             <input type="hidden" name="id" id="hiddenId" value="{{ !empty($post) ? $post->id : null }}">
                             {{ Form::label('title', __('messages.common.title').':', ['class' => 'form-label required']) }}
                             {{ Form::text('title', isset($post) ? $post->title : old('title'), ['class' => 'form-control', 'placeholder' =>  __('messages.common.title'), 'required' ,'id'=>'postTitle']) }}
-                           
+
                         </div>
                     @else
                         <div class="mb-5">
@@ -25,18 +25,18 @@
 
                             </div>
                         </div>
-                        
+
                     @endif
                 </div>
-                <div class="px-0">
+                {{-- <div class="px-0">
                     <div class="mb-5">
                         {{ Form::label('slug', __('messages.common.slug').':', ['class' => 'form-label required ']) }}
                         {{ Form::text('slug', isset($post) ? $post->slug : old('slug'), ['class' => 'form-control', 'placeholder' =>  __('messages.common.slug'), 'required' ,'id'=>'postSlug']) }}
                         {{ Form::hidden('hidden_slug', isset($post) ? $post->slug : old('slug'), ['id'=>'postHiddenSlug']) }}
                     </div>
-                </div>
+                </div> --}}
                 <div class="px-0">
-                    <div class="mb-5">  
+                    <div class="mb-5">
                         {{ Form::label('short_description', __('messages.post.short_description').':', ['class' => 'form-label required ']) }}
                         {{ Form::textarea('description', isset($post) ? $post->description : old('description'), ['class' => 'form-control','id' => 'description', 'placeholder' =>  __('messages.post.short_description'), 'required','rows'=>'3']) }}
                     </div>
@@ -45,7 +45,7 @@
                     <div class="mb-5">
                         {{ Form::label('keywords', __('messages.post.keywords').':', ['class' => 'form-label required']) }}
                         {{ Form::text('keywords', isset($post) ? $post->keywords : old('keywords'), ['class' => 'form-control', 'placeholder' =>  __('messages.post.keywords'), 'required']) }}
-                    </div>  
+                    </div>
                 </div>
                 <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-2">
+                {{-- <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
                                 class="form-label">{{__('messages.post.add_to_featured')}}</label>
@@ -76,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
@@ -93,19 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-2">
-                    <div class="col-lg-4 mb-4">
-                        <label
-                                class="form-label">{{__('messages.post.add_to_breaking')}}</label>
-                    </div>
-                    <div class="col-lg-2 mb-4 ">
-                        <div class="form-check form-check-custom form-check-solid">
-                            <input class="form-check-input" type="checkbox" name="breaking"
-                                   value="1" {{ !empty($post) && $post->breaking == 1 ? 'checked' :
-                                    (old('breaking') ? 'checked' : '' ) }} >
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
@@ -132,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-2">
+                {{-- <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
                                 class="form-label">{{__('messages.post.show_registered_user')}}</label>
@@ -144,7 +132,7 @@
                                    (old('show_registered_user') ? 'checked' : '' ) }} >
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="px-0">
                     <div class="mb-5">
                         {{ Form::label('tags', __('messages.post.tag').':', ['class' => 'form-label required']) }}
@@ -169,7 +157,7 @@
                 </textarea>
                 @elseif($sectionType == \App\Models\Post::VIDEO_TYPE_ACTIVE)
                     <button type="button" class="btn btn-primary mb-2 btn-add-image" data-role="{{getLoginUserRole()}}">
-                        {{__('messages.post.add_image') }}
+                        {{__('messages.ypost.add_image') }}
                     </button>
                     <textarea name="video_content" class="tox-target video-text-description form-control" rows="25">
                     {!! $post->postVideo->video_content??old('video_content')!!}
@@ -181,9 +169,9 @@
                     <textarea name="audio_content" class="tox-target audio-text-description form-control" rows="25">
                     {!! $post->postAudios->audio_content??old('audio_content')!!}
                 </textarea>
-                  
+
                 @elseif($sectionType ==  \App\Models\Post::OPEN_AI_ACTIVE)
-                    
+
                     <button type="button" class="btn btn-primary mb-2 btn-add-image" data-role="{{getLoginUserRole()}}">
                         {{__('messages.post.add_image') }}
                     </button>
@@ -268,7 +256,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <div class="card mb-6">
@@ -287,10 +275,10 @@
                             </div>
                             <span class="picker-edit rounded-circle text-gray-500 fs-small" data-bs-toggle="tooltip"
                                   data-placement="top" data-bs-original-title="{{__('messages.common.change_image')}}">
-                        <label> 
+                        <label>
                             <i class="fa-solid fa-pen" id="profileImageIcon"></i>
                             <input type="file" name="thumbnailImage" class="image-upload d-none" id="thumbnailImage"
-                                   accept=".png, .jpg, .jpeg, .webp, .svg"/> 
+                                   accept=".png, .jpg, .jpeg, .webp, .svg"/>
                         </label>
                     </span>
                         </div>
@@ -318,12 +306,12 @@
                                 <span class="picker-edit rounded-circle text-gray-500 fs-small" data-bs-toggle="tooltip"
                                       data-placement="top"
                                       data-bs-original-title="{{__('messages.common.change_image')}}">
-                        <label> 
-                            <i class="fa-solid fa-pen" id="profileImageIcon"></i> 
-                            
+                        <label>
+                            <i class="fa-solid fa-pen" id="profileImageIcon"></i>
+
                             <input type="file" name="image" class="image-upload d-none" id="image"
-                                   accept=".png, .jpg, .jpeg"/> 
-                        </label> 
+                                   accept=".png, .jpg, .jpeg"/>
+                        </label>
                     </span>
                             </div>
                         </div>
@@ -399,7 +387,7 @@
             </div>
         </div>
     @endif
-    @if(getLogInUserId() == App\Models\User::ADMIN)
+    {{-- @if(getLogInUserId() == App\Models\User::ADMIN)
         <div class="card mb-6">
             <div class="card-body">
                 <div class="col-lg-12 px-0">
@@ -410,7 +398,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    @endif --}}
     <div class="card mb-6">
         <div class="card-body">
             <h6 class="mb-5">{{__('messages.post.category')}}</h6>
@@ -495,7 +483,7 @@
             <div class="d-flex justify-content-between">
                 <span>{{__('messages.ai.top_p')}}</span>
                 <input   id="topP" value="0" >
-               
+
             </div>
             <input type="range" id="InputTopPId" class="form-range" value="0"  min="0" max="1" step="0.01" data-bs-toggle="tooltip"
                    data-placement="top" data-bs-original-title="{{__('messages.placeholder.controls_diversity_via_nucleus_sampling')}}"  oninput="topP.value = InputTopPId.value">
@@ -504,7 +492,7 @@
             <div class="d-flex justify-content-between">
                 <span>{{__('messages.ai.best_of')}}</span>
                 <input   id="BestOf" value="0" >
-              
+
             </div>
             <input type="range" id="InputBestOfId" class="form-range" value="0"  min="0" max="20" step="0.01" data-bs-toggle="tooltip" data-bs-original-title="{{__('messages.placeholder.generates_multiple_completions_server_side')}}"  oninput="BestOf.value = InputBestOfId.value">
         </div>
@@ -512,7 +500,7 @@
 </div>
     </div>
 @endif
-@php   
+@php
     $inStyle = 'style';
     $style   = 'cursor: default !important';
 @endphp
@@ -565,11 +553,11 @@
                                                       data-bs-toggle="tooltip"
                                                       data-placement="top"
                                                       data-bs-original-title="{{__('messages.common.change_image')}}">
-                        <label> 
-                            <i class="fa-solid fa-pen" id="profileImageIcon"></i> 
+                        <label>
+                            <i class="fa-solid fa-pen" id="profileImageIcon"></i>
                             <input type="hidden" name="gallery_image_remove[]">
-                            <input type="file" name="gallery_images[]" class="image-upload d-none" accept="image/*"/> 
-                        </label> 
+                            <input type="file" name="gallery_images[]" class="image-upload d-none" accept="image/*"/>
+                        </label>
                     </span>
                                             </div>
                                         </div>
@@ -644,11 +632,11 @@
                                                       data-bs-toggle="tooltip"
                                                       data-placement="top"
                                                       data-bs-original-title="{{__('messages.common.change_image')}}">
-                        <label> 
-                            <i class="fa-solid fa-pen" id="profileImageIcon"></i> 
-                            <input type="file" name="gallery_images[]" class="image-upload d-none" accept="image/*"/> 
+                        <label>
+                            <i class="fa-solid fa-pen" id="profileImageIcon"></i>
+                            <input type="file" name="gallery_images[]" class="image-upload d-none" accept="image/*"/>
                             <input type="hidden" name="gallery_image_remove[]">
-                        </label> 
+                        </label>
                     </span>
                                             </div>
                                         </div>
@@ -723,7 +711,7 @@
                                     <div class="col-12 mb-5">
                                         <label
                                                 class="form-label">{{ __('messages.common.title') }}</label>
-                                        <input type="text" name="sort_list_title[]" class="form-control form-control-solid 
+                                        <input type="text" name="sort_list_title[]" class="form-control form-control-solid
                                                         {{$loop->first ? 'sort-list-title' :''}} sort-list-title-{{$sortedList->id}} sort-list-title-text"
                                                id="sortListTitle"
                                                value="{{ $sortedList->sort_list_title ?? null }}"
@@ -736,17 +724,17 @@
                                             <div class="d-block">
 
                                                 <div class="image-picker">
-                                                    <div class="image previewImage" id="exampleInputImage" 
+                                                    <div class="image previewImage" id="exampleInputImage"
                                                     {{$styleCss}}="background-image: url('{{ !empty($sortedList->post_sort_list_image) ? $sortedList->post_sort_list_image : asset('front_web/images/default.jpg') }}')">
                                                 </div>
                                                 <span class="picker-edit rounded-circle text-gray-500 fs-small"
                                                       data-bs-toggle="tooltip"
                                                       data-placement="top"
                                                       data-bs-original-title="{{__('messages.common.change_image')}}">
-                        <label> 
-                            <i class="fa-solid fa-pen" id="profileImageIcon"></i> 
-                            <input type="file" name="sorted_list_image[]" class="image-upload d-none" accept="image/*"/> 
-                        </label> 
+                        <label>
+                            <i class="fa-solid fa-pen" id="profileImageIcon"></i>
+                            <input type="file" name="sorted_list_image[]" class="image-upload d-none" accept="image/*"/>
+                        </label>
                     </span>
                                             </div>
                                         </div>
@@ -822,15 +810,15 @@
                                                 </div>
                                                 <span class="picker-edit rounded-circle text-gray-500 fs-small" data-bs-toggle="tooltip"
                                                       data-placement="top" data-bs-original-title="{{__('messages.common.change_image')}}">
-                        <label> 
-                            <i class="fa-solid fa-pen" id="profileImageIcon"></i> 
-                            <input type="file" name="sort_list_images[]" class="image-upload d-none" accept="image/*" /> 
-                        </label> 
+                        <label>
+                            <i class="fa-solid fa-pen" id="profileImageIcon"></i>
+                            <input type="file" name="sort_list_images[]" class="image-upload d-none" accept="image/*" />
+                        </label>
                     </span>
                                             </div>
                                         </div>
                                     </div>
-                                    
+
 
                                 <div class="form-group mt-3">
                                     <input type="text" class="form-control form-control-solid"

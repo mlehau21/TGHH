@@ -35,10 +35,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-12">
-                {{ Form::label('name', __('messages.ad_space.ad_code') . ':', ['class' => 'form-label required fs-6']) }}
-                <textarea rows="10" cols="100" name="ad-code[]">{{ !empty($adBanner[0]->code) ? $adBanner[0]->code : '' }}</textarea>
-            </div>
+
             <hr>
         @endif
         @if ($sectionID != App\Models\AdSpaces::HEADER && $sectionID != App\Models\AdSpaces::ALL_DETAILS_SIDE)

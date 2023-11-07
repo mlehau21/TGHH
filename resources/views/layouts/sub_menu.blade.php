@@ -27,7 +27,7 @@
             </a>
         </li>
     @endcan
-    
+
     @can('manage_albums_category')
         <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/gallery-images*', 'admin/albums*','admin/album-categories*')) ? 'd-none' : '' }}">
             <a class="nav-link p-0 {{ Request::is('admin/album-categories*') ? 'active' : ''  }}" href="{{ route('album-categories.index') }}">
@@ -51,7 +51,7 @@
             </a>
         </li>
     @endcan
-    
+
     @can('manage_emoji')
         <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/emoji*')) ? 'd-none' : '' }}">
             <a class="nav-link p-0 {{ Request::is('admin/emoji*') ? 'active' : ''  }}" href="{{ route('emoji.index') }}">
@@ -59,29 +59,29 @@
             </a>
         </li>
     @endcan
-    
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/pages*')) ? 'd-none' : '' }}">
+
+    {{-- <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/pages*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/pages*') ? 'active' : ''  }}" href="{{ route('pages.index') }}">
             {{ __('messages.pages') }}
         </a>
-    </li>
+    </li> --}}
 
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/menus*')) ? 'd-none' : '' }}">
+    {{-- <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/menus*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/menus*') ? 'active' : ''  }}" href="{{ route('menus.index') }}">
             {{ __('messages.menus') }}
         </a>
-    </li>
+    </li> --}}
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/ad-spaces*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/ad-spaces*') ? 'active' : ''  }}" href="{{ route('ad-spaces.create') }}">
             {{ __('messages.ad_space.ad_space') }}
         </a>
     </li>
-    
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/rss-feed*')) ? 'd-none' : '' }}">
+
+    {{-- <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/rss-feed*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/rss-feed*') ? 'active' : ''  }}" href="{{ route('rss-feed.index') }}">
             {{ __('messages.rss-feed') }}
         </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/navigation*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/navigation*') ? 'active' : ''  }}" href="{{ route('navigation.index') }}">
@@ -113,11 +113,11 @@
         </a>
     </li>
 
-    <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/seo-tools*')) ? 'd-none' : '' }}">
+    {{-- <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/seo-tools*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/seo-tools*') ? 'active' : ''  }}" href="{{ route('seo-tools.index') }}">
             {{ __('messages.seo-tools') }}
         </a>
-    </li>
+    </li> --}}
 
     <li class="nav-item position-relative mx-xl-3 mb-3 mb-xl-0 {{ (!Request::is('admin/languages*')) ? 'd-none' : '' }}">
         <a class="nav-link p-0 {{ Request::is('admin/languages*') ? 'active' : ''  }}" href="{{ route('languages.index') }}">

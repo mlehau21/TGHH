@@ -56,14 +56,7 @@
                         {{ Form::select('front_language', getLanguage(), $setting['front_language']??null, ['class' => 'form-select ', 'id' => 'selectLanguage','data-dropdown-parent'=>'#kt_account_profile_details_form', 'placeholder' => __('messages.common.select_language'), 'data-control' => 'select2','required','aria-label'=>"Select a Language",'data-control'=>"select2"]) }}
                     </div>
                 </div>
-                <div class="row mb-5">
-                    <div class="col-lg-4">
-                        {{ Form::label('rss_feed_update_time',__('messages.setting.rss_feed_auto_update').' :', ['class' => 'form-label required']) }}
-                    </div>
-                    <div class="col-lg-8">
-                        {{ Form::select('rss_feed_update_time', \App\Models\Setting::AUTO_UPDATE_RSS_FEED,  $setting['rss_feed_update_time']??null, ['class' => 'form-select ', 'id' => 'selectRssFeed','data-dropdown-parent'=>'#kt_account_profile_details_form', 'placeholder' => __('messages.setting.select_time'), 'data-control' => 'select2','required','aria-label'=>"Select a Rss Feed",'data-control'=>"select2"]) }}
-                    </div>
-                </div>
+
 
                 <div class="row">
                     <div class="col-lg-4">
@@ -136,56 +129,8 @@
             {{ Form::close() }}
         </div>
     </div>
-    <div class="container-fluid mt-5">
-        <div class="card">
-            <div class="card-header">
-                <div class="card-title m-0">
-                    <h3 class="m-0">{{ __('messages.setting.google_recaptcha') }}</h3>
-                </div>
-            </div>
-            {{ Form::open(['route' => 'setting.update', 'files' => true, 'id'=>'kt_account_profile_details_form','class'=>'form']) }}
-            {{ Form::hidden('sectionName', $sectionName.'_1') }}
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-4">
-                        {{ Form::label('show_captcha',__('messages.setting.show_captcha').':',
-                                     ['class'=>'form-label fs-6']) }}
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="form-check form-switch form-check-custom form-check-solid">
-                            <input class="form-check-input w-30px h-20px is-active"
-                                   name="show_captcha" id="showCaptcha"
-                                   type="checkbox" value="1"
-                                    {{$setting['show_captcha'] ? 'checked' : ''}} >
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-5 mb-5 captchaOptions {{$setting['show_captcha'] ? '' : 'd-none'}}">
-                    <div class="col-lg-4">
-                        {{ Form::label('site_key',__('messages.setting.site_key').':',
-                                 ['class'=>'form-label required fs-6']) }}
-                    </div>
-                    <div class="col-lg-8">
-                        {{ Form::text('site_key', $setting['site_key']??null, ['class' => 'form-control','placeholder'=>__('messages.setting.site_key')]) }}
-                    </div>
-                </div>
-                <div class="row mb-5 captchaOptions {{$setting['show_captcha'] ? '' : 'd-none'}}">
-                    <div class="col-lg-4">
-                        {{ Form::label('secret_key',__('messages.setting.secret_key').':',
-                                ['class'=>'col-lg-4 form-label required fs-6']) }}
-                    </div>
-                    <div class="col-lg-8">
-                        {{ Form::text('secret_key', $setting['secret_key']??null, ['class' => 'form-control','placeholder'=>__('messages.setting.secret_key')]) }}
-                    </div>
-                </div>
-                <div class="d-flex justify-content-start mt-5">
-                    {{ Form::submit(__('messages.user.save_changes'),['class' => 'btn btn-primary']) }}
-                </div>
-            </div>
-            {{ Form::close() }}
-        </div>
-    </div>
-    <div class="container-fluid mt-5">
+
+    {{-- <div class="container-fluid mt-5">
         <div class="card">
             <div class="card-header">
                 <div class="card-title m-0">
@@ -271,7 +216,7 @@
             </div>
             {{ Form::close() }}
         </div>
-    </div>
+    </div> --}}
 {{--    <div class="container-fluid mt-5">--}}
 {{--        <div class="card">--}}
 {{--            <div class="card-header">--}}

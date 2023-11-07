@@ -13,25 +13,18 @@
         <a class="nav-link p-0 {{ (isset($sectionName) && $sectionName == 'contact_information') ? 'active' : ''}}"
            href="{{ route('setting.index',['section' => 'contact_information']) }}">{{ __('messages.setting.contact_information') }}</a>
     </li>
-    <li class="nav-item position-relative me-7 mb-3" role="presentation">
+    {{-- <li class="nav-item position-relative me-7 mb-3" role="presentation">
         <a class="nav-link p-0 {{ (isset($sectionName) && $sectionName == 'social_media') ? 'active' : ''}}"
            href="{{ route('setting.index',['section' => 'social_media']) }}">{{ __('messages.setting.social_media_setting') }}</a>
-    </li>
-    <li class="nav-item position-relative me-7 mb-3" role="presentation">
+    </li> --}}
+    {{-- <li class="nav-item position-relative me-7 mb-3" role="presentation">
         <a class="nav-link p-0 {{ (isset($sectionName) && $sectionName == 'cookie_warning') ? 'active' : ''}}"
            href="{{ route('setting.index',['section' => 'cookie_warning']) }}">{{ __('messages.setting.cookie_warning') }}</a>
-    </li>
-    <li class="nav-item position-relative me-7 mb-3" role="presentation">
-        <a class="nav-link p-0 {{ (isset($sectionName) && $sectionName == 'cms') ? 'active' : ''}}"
-           href="{{ route('setting.index',['section' => 'cms']) }}" data-turbo="false">{{ __('messages.setting.cms') }}</a>
-    </li>
+    </li> --}}
+
     <li class="nav-item position-relative me-7 mb-3" role="presentation">
         <a class="nav-link p-0 {{ (isset($sectionName) && $sectionName == 'ad_management') ? 'active' : ''}}"
            href="{{ route('setting.index',['section' => 'ad_management']) }}">{{ __('messages.ad_space.ad_management') }}</a>
-    </li>
-    <li class="nav-item position-relative me-7 mb-3" role="presentation">
-        <a class="nav-link p-0 {{ (isset($sectionName) && $sectionName == 'generate_sitemap') ? 'active' : ''}}"
-           href="{{ route('setting.index',['section' => 'generate_sitemap']) }}">{{ __('messages.setting.generate_sitemap') }}</a>
     </li>
 </ul>
 </div>
