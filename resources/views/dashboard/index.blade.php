@@ -45,7 +45,7 @@
                                     </div>
                                     <div class="text-end text-white">
                                         <h2 class="fs-1-xxl fw-bolder text-white">{{$rss}}</h2>
-                                        <h3 class="mb-0 fs-4 fw-light">{{__('messages.rss-feed')}}</h3>
+                                        <h3 class="mb-0 fs-4 fw-light">User</h3>
                                     </div>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="text-end text-white">
                                         <h2 class="fs-1-xxl fw-bolder text-white">{{$rssPost}}</h2>
-                                        <h3 class="mb-0 fs-4 fw-light">{{__('messages.on_rss_feed')}}</h3>
+                                        <h3 class="mb-0 fs-4 fw-light">Forum Post</h3>
                                     </div>
                                 </div>
                             </div>

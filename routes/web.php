@@ -16,7 +16,6 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupPostBackend;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LanguageController;
-use App\Http\Controllers\MenuController;
 use App\Http\Controllers\NavigationController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PollController;
