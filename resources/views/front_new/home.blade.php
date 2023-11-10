@@ -52,9 +52,12 @@
                                                         class="text-white">{{ __('messages.common.by') }}
                                                         {{ $sliderPost->user->full_name }}</a></p>
                                                 <div class="desc d-flex">
-                                                    <p class="fs-14 text-white mb-0">
+                                                    {{-- <p class="fs-14 text-white mb-0">
                                                         {{ ucfirst(__('messages.common.' . strtolower($sliderPost->created_at->format('F')))) }}
-                                                        {{ $sliderPost->created_at->format('d, Y') }}</p>
+                                                        {{ $sliderPost->created_at->format('d, Y') }}</p> --}}
+                                                        <p class="fs-14 text-white mb-0">
+                                                            {{ $sliderPost->created_at->format('d.m.Y') }}
+                                                        </p>
                                                     <span class=" text-primary px-sm-4 px-2"> | </span>
                                                     <p class="fs-14 text-white mb-0">{{ $sliderPost->comment_count }}</p>
                                                 </div>
@@ -108,8 +111,14 @@
                                                     class="fs-16 text-black fw-6">{!! \Illuminate\Support\Str::limit($row->title, 40, '...') !!}</a>
                                             </h5>
                                             <span
-                                                class="card-text fs-12 text-gray">{{ ucfirst(__('messages.common.' . strtolower($row->created_at->format('M')))) }}
-                                                {{ $row->created_at->format('d, Y') }}</span>
+                                                class="card-text fs-12 text-gray">
+                                                {{ $row->created_at->format('d.m.Y') }}
+
+                                            </span>
+                                                {{-- <p class="fs-14 text-white mb-0">
+                                                    {{ $sliderPost->created_at->format('d.m.Y') }}
+                                                </p> --}}
+
                                         </div>
                                     </div>
                                 </div>
@@ -378,9 +387,12 @@
                                                                     {{ $latestPost->user->full_name }}</a>
                                                             </p>
                                                             <span class=" text-primary  px-2"> | </span>
-                                                            <p class="fs-14 text-black mb-0">
+                                                            {{-- <p class="fs-14 text-black mb-0">
                                                                 {{ ucfirst(__('messages.common.' . strtolower($latestPost->created_at->format('M')))) }}
-                                                                {{ $latestPost->created_at->format('d , Y') }}</p>
+                                                                {{ $latestPost->created_at->format('d , Y') }}</p> --}}
+                                                                <p class="fs-14 text-black mb-0">
+                                                                    {{ $latestPost->created_at->format('d.m.Y') }}
+                                                                </p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -483,8 +495,11 @@
                                                                         {{ $categoryPost->user->full_name }}</a>
                                                                 </p>
                                                                 <p class="fs-12 text-white mb-0">
-                                                                    {{ ucfirst(__('messages.common.' . strtolower($categoryPost['created_at']->format('M')))) }}
-                                                                    {{ $categoryPost['created_at']->format('d, Y') }}</p>
+                                                                    {{-- {{ ucfirst(__('messages.common.' . strtolower($categoryPost['created_at']->format('M')))) }}
+                                                                    {{ $categoryPost['created_at']->format('d, Y') }}</p> --}}
+                                                                    <p class="fs-14 text-white mb-0">
+                                                                        {{ $categoryPost->created_at->format('d.m.Y') }}
+                                                                    </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -940,7 +955,7 @@
                                                             <a href="{{ route('detailPage',$posts->slug) }}" class="fs-16 text-black fw-6">{!! \Illuminate\Support\Str::limit($posts->title,40,'...') !!}</a>
                                                         </h5>
                                                         <span class="card-text fs-12 text-gray">{{ ucfirst(__('messages.common.'.strtolower($posts->created_at->format('M')))) }} {{ $posts->created_at->format('d, Y') }}</span>
-                                                    </div>
+                                                e    </div>
                                                 </div>
                                             @endforeach
                                         </div>

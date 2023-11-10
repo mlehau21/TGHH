@@ -52,7 +52,7 @@
                                                     {!! $trendingPost['title'] !!}
                                                 </a>
                                             </p>
-                                            <span class="card-text fs-12 text-gray">{{\Carbon\Carbon::parse($trendingPost['created_at'])->format('M d, Y') }}</span>
+                                            <span class="card-text fs-12 text-gray">{{\Carbon\Carbon::parse($trendingPost['created_at'])->format('d.m.Y') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -150,7 +150,8 @@
                                                 {!!  $news['title'] !!}
                                             </a>
                                         </p>
-                                        <span class="card-text fs-12 text-gray">{{ ucfirst(__('messages.common.'.strtolower(\Carbon\Carbon::parse($news['created_at'])->format('F')))) }} {{ \Carbon\Carbon::parse($news['created_at'])->format('d, Y') }}</span>
+                                        <span class="card-text fs-12 text-gray">
+                                        {{ \Carbon\Carbon::parse($news['created_at'])->format('d.m.Y') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +220,7 @@
 
 </section>
 @endif
-@if(checkAdSpaced('details_side'))
+{{-- @if(checkAdSpaced('details_side'))
     @if(isset(getAdImageDesktop(\App\Models\AdSpaces::ALL_DETAILS_SIDE)->code))
         <div class="index-top-desktop ad-space-url-desktop">
             {!! getAdImageDesktop(\App\Models\AdSpaces::ALL_DETAILS_SIDE)->code !!}
@@ -233,6 +234,6 @@
         </a>
     </div>
     @endif
-@endif
+@endif --}}
 
 <!-- end popular-tag-section -->

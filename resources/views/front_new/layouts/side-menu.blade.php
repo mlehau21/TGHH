@@ -54,7 +54,7 @@
                                                 </a>
                                             </p>
                                             <span
-                                                class="card-text fs-12 text-gray">{{ \Carbon\Carbon::parse($trendingPost['created_at'])->format('M d, Y') }}</span>
+                                                class="card-text fs-12 text-gray">{{ \Carbon\Carbon::parse($trendingPost['created_at'])->format('d.m.Y') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +158,7 @@
                                             </a>
                                         </p>
                                         <span
-                                            class="card-text fs-12 text-gray">{{ \Carbon\Carbon::parse($news['created_at'])->format('M d, Y') }}</span>
+                                            class="card-text fs-12 text-gray">{{ \Carbon\Carbon::parse($news['created_at'])->format('d.m.Y') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -258,7 +258,7 @@
                                     </a>
                                 </p>
                                 <span
-                                    class="card-text fs-12 text-gray">{{ $recommendedPost['created_at']->format('F d, Y') }}</span>
+                                    class="card-text fs-12 text-gray">{{ $recommendedPost['created_at']->format('d.m.Y') }}</span>
                             </div>
                         </div>
                     </div>

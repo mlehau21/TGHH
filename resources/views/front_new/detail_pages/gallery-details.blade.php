@@ -61,7 +61,7 @@
                                             <div class="d-flex justify-content-start flex-column">
                                                 <a href="{{route('userDetails',$postDetail->user->id)}}">
                                                 <h5 class="fs-12 text-black mb-0">{{ $postDetail->user->full_name }}</h5>
-                                                <span class="fs-12 text-gray">{{ ucfirst(__('messages.common.'.strtolower($postDetail->created_at->format('F')))) }} {{ $postDetail->created_at->format('d, Y') }}</span>
+                                                <span class="fs-12 text-gray">{{ $postDetail->created_at->format('d.m.Y \| H:i') }}</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -125,7 +125,7 @@
                                                         </a>
                                                     </div>
                                                       @endif
-                                                      
+
                                                 </div>
                                             </div>
                                         </section>
@@ -198,7 +198,7 @@
                                         </div>
                                     @endif
                                 </div>
-                                
+
                                 <div class="admin-post position-relative pt-60">
                                     @if(!empty($previousPost))
                                         <a href="{{ route('detailPage',$previousPost->slug) }}" class='prev-btn fs-16 text-black fw-6'>
@@ -229,7 +229,7 @@
                                                     </h5>
                                                     <span class="fs-14 text-gray"> {{ $previousPost['created_at']->format('M d, Y') }}</span>
                                                 </div>
-                                                
+
                                             </div>
                                             @endif
                                         </div>
@@ -246,7 +246,7 @@
                                                     <h5 class="card-title fs-14 fw-6 text-black">
                                                         <a href="{{ route('detailPage',$nextPost->slug) }}" class="fs-14 fw-6 text-black position-relative">
                                                             {!! \Illuminate\Support\Str::limit($nextPost['title'],40,'...') !!}
-                                                        </a>                
+                                                        </a>
                                                     </h5>
                                                     <span class=" fs-14 text-gray">{{ $nextPost['created_at']->format('M d, Y') }}</span>
                                                 </div>
@@ -263,7 +263,7 @@
                                         {!! getAdImageDesktop(\App\Models\AdSpaces::POST_DETAILS)->code !!}
                                     </div>
                                 @else
-                               
+
                                 <div class="container index-top-desktop">
                                     <a href="{{getAdImageDesktop(\App\Models\AdSpaces::POST_DETAILS)->ad_url}}"
                                        target="_blank">
@@ -299,7 +299,7 @@
                                     <div class="related-post pt-60">
                                         <div class="row">
                                             @foreach($relatedPosts as $relatedPost)
-                                                
+
                                                 <div class="col-lg-4 col-md-4 col-sm-6 mb-2">
                                                     <div class="card position-relative slide-item">
                                                         <div class="card-img-top">
@@ -328,7 +328,7 @@
                                 </section>
                             @endif
                             <!--end related-post-section -->
-                            
+
                             <!-- start post-comment-section -->
                             <section class="post-comment-section bg-light px-30 py-4">
                                 <h5 class="fs-16 text-black fw-6 mb-3">Post a Comment</h5>
@@ -401,7 +401,7 @@
                                 </div>
                             </section>
                             <!--end comment-section -->
-                            
+
                         </section>
                         <!-- end news-details-left-section -->
 

@@ -64,7 +64,9 @@
                                             <div class="d-flex justify-content-start flex-column">
                                                 <a href="{{route('userDetails',$postDetail->user->id)}}">
                                                 <h5 class="fs-12 text-black mb-0">{{ $postDetail->user->full_name }}</h5>
-                                                <span class="fs-12 text-gray">{{ ucfirst(__('messages.common.'.strtolower($postDetail->created_at->format('F')))) }} {{ $postDetail->created_at->format('d, Y') }}</span>
+                                                <span class="fs-12 text-gray">
+
+                                                    {{ $postDetail->created_at->format('d.m.Y \| H:i') }}</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -89,16 +91,16 @@
                                         <section class="share-this-post-section">
                                             <div class="share-this-post">
                                                 <div class="post-blog d-flex flex-wrap justify-content-end">
-                                                    @if(getSettingValue()['facebook']) 
+                                                    @if(getSettingValue()['facebook'])
                                                     <div class="post text-center p-2 text-white fb">
                                                         <a target="_blank"
                                                            href="https://www.facebook.com/sharer.php?u={{ getUrl() }}">
                                                             <i class="social-icon fab fa-facebook-f fs-5"></i>
                                                         </a>
                                                     </div>
-                                                    @endif  
+                                                    @endif
                                                     @if(getSettingValue()['twitter'])
-                                                        <div class="post text-center p-2 text-white tw">            
+                                                        <div class="post text-center p-2 text-white tw">
                                                         <a target="_blank"
                                                            href="https://www.twitter.com/share?url={{ getUrl() }}">
                                                             <i class="social-icon fab fa-twitter fs-5"></i>

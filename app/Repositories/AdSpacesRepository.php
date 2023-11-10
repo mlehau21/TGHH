@@ -52,7 +52,7 @@ class AdSpacesRepository extends BaseRepository
         foreach ($data as $key => $value) {
             $value->update([
                 'ad_url' => $input['ad-url'][$key],
-                'code' => $input['ad-code'][$key],
+                // 'code' => $input['ad-code'][$key],
             ]);
 
             if (! empty($input['ad_banner'][$key])) {

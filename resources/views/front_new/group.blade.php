@@ -83,9 +83,9 @@
             <div class="container">
                 <div class="section-heading">
                     <div class="row align-items-center">
-                        <div class="col-md-6 section-heading-left">
-                            <h2 class="text-black">{{ __('messages.post.gallery') }}</h2>
-                        </div>
+
+                            <h2 class="text-black">Những bài viết mới nhất từ nhóm TGHH</h2>
+
                     </div>
                 </div>
                 <div class="gallery-post-section pt-4">

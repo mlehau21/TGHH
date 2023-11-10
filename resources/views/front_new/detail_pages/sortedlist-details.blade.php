@@ -61,7 +61,7 @@
                                             <div class="d-flex justify-content-start flex-column">
                                                 <a href="{{route('userDetails',$postDetail->user->id)}}">
                                                 <h5 class="fs-12 text-black mb-0">{{ $postDetail->user->full_name }}</h5>
-                                                <span class="fs-12 text-gray">{{ ucfirst(__('messages.common.'.strtolower($postDetail->created_at->format('F')))) }} {{ $postDetail->created_at->format('d, Y') }}</span>
+                                                <span class="fs-12 text-gray">{{ $postDetail->created_at->format('d.m.Y \| H:i') }}</span>
                                                 </a>
                                             </div>
                                         </div>
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-4">
-                                       
+
                                         <section class="share-this-post-section">
                                             <div class="share-this-post">
                                               <div class="post-blog d-flex flex-wrap  justify-content-end">
