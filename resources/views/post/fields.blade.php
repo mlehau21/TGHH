@@ -28,13 +28,13 @@
 
                     @endif
                 </div>
-                {{-- <div class="px-0">
+                <div class="px-0">
                     <div class="mb-5">
                         {{ Form::label('slug', __('messages.common.slug').':', ['class' => 'form-label required ']) }}
                         {{ Form::text('slug', isset($post) ? $post->slug : old('slug'), ['class' => 'form-control', 'placeholder' =>  __('messages.common.slug'), 'required' ,'id'=>'postSlug']) }}
                         {{ Form::hidden('hidden_slug', isset($post) ? $post->slug : old('slug'), ['id'=>'postHiddenSlug']) }}
                     </div>
-                </div> --}}
+                </div>
                 <div class="px-0">
                     <div class="mb-5">
                         {{ Form::label('short_description', __('messages.post.short_description').':', ['class' => 'form-label required ']) }}

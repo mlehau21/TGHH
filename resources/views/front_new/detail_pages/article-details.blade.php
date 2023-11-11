@@ -47,11 +47,11 @@
                                 <h3 class="text-black fw-7 fs-24 my-2">
                                     {!! $postDetail->title !!}
                                 </h3>
-                                <div class="post-content">
+                                {{-- <div class="post-content">
                                     <p class="text-gray">
                                         {!! $postDetail->description !!}
                                     </p>
-                                </div>
+                                </div> --}}
                                 <div class="row d-flex mb-2">
                                     <div class="col-sm-4">
                                         <div class="d-flex">
@@ -135,15 +135,18 @@
                                         </section>
                                     </div>
                                 </div>
-                                <div class="news-content-img position-relative">
+                                {{-- <div class="news-content-img position-relative">
                                     <div class="news-details-img rounded-10">
                                         <a href="#">
-                                            {{--                                            <img data-src="{{$postDetail->post_image}}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy">--}}
+
                                             <img src="{{$postDetail->post_image}}" class="w-100 h-100">
                                         </a>
                                     </div>
                                     <a href="#" class="tags position-absolute">{{$postDetail->category->name}}</a>
-                                </div>
+                                </div> --}}
+
+
+
                                 <div class="news-desc mb-20">
                                     <p>
                                         @if(isset($postDetail->postArticle->article_content))
