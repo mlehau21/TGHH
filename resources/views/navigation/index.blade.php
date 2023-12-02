@@ -30,7 +30,7 @@
                     </div>
                     <div class="accordion draggable-zone" id="accordionExample">
                         @foreach($navigations as  $navigation)
-                            @if($navigation['navigationable']['lang_id'] == getSelectLanguage() || 
+                            @if($navigation['navigationable']['lang_id'] == getSelectLanguage() ||
                                $navigation->navigationable_type == \App\Models\Menu::class )
                                 <div class="accordion-item draggable mb-5 border border-gray-300" data-id="{{$navigation['id']}}">
                                     <h2 class="accordion-header" id="headingOne_{{$navigation['id']}}">
@@ -48,7 +48,7 @@
                                          aria-labelledby="headingOne_{{$navigation['id']}}"
                                          data-bs-parent="#accordionExample">
                                         @foreach($navigationSubs[$navigation->id] as $navSub)
-                                            @if($navSub['parent_id'] == $navigation['navigationable_id'] && 
+                                            @if($navSub['parent_id'] == $navigation['navigationable_id'] &&
                                                 $navSub['navigationable']['lang_id'] == getSelectLanguage() ||
                                                  $navigation->navigationable_type == \App\Models\Menu::class )
                                                 <div class="accordion-body {{$loop->last ? '' : 'border-bottom' }}">
@@ -63,13 +63,13 @@
                             @endif
                         @endforeach
                     </div>
-                    <div class="mb-5 border border-gray-300" data-id="">
+                    {{-- <div class="mb-5 border border-gray-300" data-id="">
                         <h2 class="accordion-header py-4 px-5" id="">
                                 <span class="fs-4 fw-bold collapsed" >
                                     {{ __('messages.Gallery') }}
                                 </span>
                         </h2>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>

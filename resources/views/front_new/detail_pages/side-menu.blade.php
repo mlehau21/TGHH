@@ -198,7 +198,7 @@
 <!-- end popular-news-section -->
 
 <!-- start popular-tag-section -->
-@if(count(array_filter(getPopularTags())))
+{{-- @if(count(array_filter(getPopularTags())))
 <section class="popular-tag-section py-60">
     <div class="section-heading border-0 mb-30">
         <div class="row align-items-center">
@@ -219,7 +219,7 @@
     </div>
 
 </section>
-@endif
+@endif --}}
 {{-- @if(checkAdSpaced('details_side'))
     @if(isset(getAdImageDesktop(\App\Models\AdSpaces::ALL_DETAILS_SIDE)->code))
         <div class="index-top-desktop ad-space-url-desktop">

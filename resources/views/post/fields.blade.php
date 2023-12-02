@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="row mt-2">
+                {{-- <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
                                 class="form-label">{{__('messages.post.add_to_slider')}}</label>
@@ -106,7 +106,7 @@
                                     (old('slider') ? 'checked' : '' ) }} >
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
@@ -234,8 +234,8 @@
                             {{ Form::text('video_url', !empty($post->postVideo) && !empty($post->postVideo->video_url) ? $post->postVideo->video_url : null, ['class' => 'form-control mb-3', 'placeholder' =>__('messages.post.video_url'),'id'=>'videoUrl']) }}
                             <button type="button" class="btn btn-primary text-white get-video-by-url d-flex ms-auto mb-4" id="getVideo"
                                     name="getVideo">{{__('messages.post.get_video') }}</button>
-                            <label for="" class="form-label">{{__('messages.post.video_embed_code')}}:</label>
-                            {{ Form::text('video_embed_code', !empty($post->postVideo) && !empty($post->postVideo->video_embed_code) ? $post->postVideo->video_embed_code : null, ['class' => 'form-control mb-5','readonly','placeholder' =>__('messages.post.video_embed_code'),'id'=>'embedVideoUrl']) }}
+                            {{-- <label for="" class="form-label">{{__('messages.post.video_embed_code')}}:</label>
+                            {{ Form::text('video_embed_code', !empty($post->postVideo) && !empty($post->postVideo->video_embed_code) ? $post->postVideo->video_embed_code : null, ['class' => 'form-control mb-5','readonly','placeholder' =>__('messages.post.video_embed_code'),'id'=>'embedVideoUrl']) }} --}}
                             <div class="video_i_frame col-12">
                                 @if(!empty($post->postVideo) && !empty($post->postVideo->video_embed_code))
                                     <iframe src="{{ $post->postVideo->video_embed_code }}" frameborder="0" width="280" height="250"></iframe>
@@ -320,7 +320,7 @@
             </div>
         </div>
     @endif
-    @if($sectionType == \App\Models\Post::ARTICLE_TYPE_ACTIVE)
+    {{-- @if($sectionType == \App\Models\Post::ARTICLE_TYPE_ACTIVE)
         <div class="card mb-6">
             <div class="card-body">
                 <div class="form-group">
@@ -343,7 +343,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    @endif --}}
     @if($sectionType == \App\Models\Post::AUDIO_TYPE_ACTIVE)
         <div class="card mb-6">
             <div class="card-body">
@@ -365,7 +365,7 @@
             </div>
         </div>
     @endif
-    @if($sectionType == \App\Models\Post::ARTICLE_TYPE_ACTIVE || $sectionType == \App\Models\Post::VIDEO_TYPE_ACTIVE || $sectionType == \App\Models\Post::AUDIO_TYPE_ACTIVE)
+    {{-- @if($sectionType == \App\Models\Post::ARTICLE_TYPE_ACTIVE || $sectionType == \App\Models\Post::VIDEO_TYPE_ACTIVE || $sectionType == \App\Models\Post::AUDIO_TYPE_ACTIVE)
         <div class="card mb-6">
             <div class="card-body">
                 <div class="mb-5 col-lg-12">
@@ -386,7 +386,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    @endif --}}
     {{-- @if(getLogInUserId() == App\Models\User::ADMIN)
         <div class="card mb-6">
             <div class="card-body">

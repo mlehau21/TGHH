@@ -1,5 +1,5 @@
 <x-livewire-tables::bs5.table.cell :customAttributes="['class' => 'd-flex']">
-   
+
     @php
         $image = $row->post_types == \App\Models\Post::VIDEO_TYPE_ACTIVE ? (!empty($row->postVideo->thumbnail_image_url) ? $row->postVideo->thumbnail_image_url : $row->postVideo->uploaded_thumb ?? '') : $row->post_image;
     @endphp
@@ -51,13 +51,13 @@
     </label>
 </x-livewire-tables::bs5.table.cell>
 
-<x-livewire-tables::bs5.table.cell>
+{{-- <x-livewire-tables::bs5.table.cell>
     <label class="form-check form-switch form-check-custom form-check-solid form-switch-sm d-flex justify-content-start cursor-pointer">
         <input type="checkbox" name="status" class="form-check-input  cursor-pointer" value="{{$row->featured}}" wire:click="updateFeatured({{$row['id']}})"
                 {{ (($row->featured)=="1") ? 'checked' : ''}}>
         <span class="custom-switch-indicator"></span>
     </label>
-</x-livewire-tables::bs5.table.cell>
+</x-livewire-tables::bs5.table.cell> --}}
 
 <x-livewire-tables::bs5.table.cell>
     {{ \Carbon\Carbon::parse($row->created_at)->isoFormat('Do MMM, YYYY')}}
@@ -99,7 +99,7 @@
                         </a>
                     @endif
                 </li>
-               
+
                 @if(!$row->status)
                 <li>
                     <a href="#" class="dropdown-item px-3 py-1 text-decoration-none"
@@ -108,7 +108,7 @@
                     </a>
                 </li>
                 @endif
-                <li>
+                {{-- <li>
                     <a href="#" class="dropdown-item px-3 py-1 text-decoration-none"
                        wire:click="updateBreaking({{$row['id']}})">
                         @if($row->breaking)
@@ -117,8 +117,8 @@
                             {{__('messages.post.add_to_breaking')}}
                         @endif
                     </a>
-                </li>
-                <li>
+                </li> --}}
+                {{-- <li>
                     <a href="#" class="dropdown-item px-3 py-1 text-decoration-none"
                        wire:click="updateSlider({{$row['id']}})">
                         @if($row->slider)
@@ -127,7 +127,7 @@
                             {{__('messages.post.add_to_slider')}}
                         @endif
                     </a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="#" class="dropdown-item px-3 py-1 text-decoration-none"
                        wire:click="updateRecommended({{$row['id']}})">

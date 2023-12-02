@@ -22,7 +22,11 @@
     <meta property="og:image"
         content="@if (View::hasSection('meta_image')) @yield('meta_image')@else{{ $settings['logo'] }} @endif" />
     <title>@yield('title') </title>
-
+    <style>
+        body {
+           font-family: 'YourChosenFont', sans-serif !important;
+        }
+     </style>
     <link rel="shortcut icon" type="image/x-icon" href="{{ $settings['favicon'] }}">
     <link href="{{ mix('css/front-third-party.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ mix('css/front-pages.css') }}" rel="stylesheet" type="text/css">

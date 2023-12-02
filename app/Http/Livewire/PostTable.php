@@ -23,7 +23,7 @@ class PostTable extends LivewireTableComponent
 
     public $postName;
 
-    
+
     public $addButtonText = null;
     public $deleteBtnText = null;
 
@@ -48,12 +48,12 @@ class PostTable extends LivewireTableComponent
     public function columns(): array
     {
         return [
-     
+
             Column::make(__('messages.common.title'), 'title')
                 ->sortable()->searchable()->addClass('w-300px'),
             Column::make(__('messages.post.show_on_headline'), 'category.name'),
             Column::make(__('messages.post.visibility'), 'post_types'),
-            Column::make(__('messages.post.featured'), 'post_types'),
+            // Column::make(__('messages.post.featured'), 'post_types'),
             Column::make(__('messages.common.created_at'), 'created_at')
                 ->sortable(),
             Column::make(__('messages.common.action'), 'id')->addClass('text-start'),
@@ -144,8 +144,8 @@ class PostTable extends LivewireTableComponent
                     ]);
 
                     $message = __('messages.placeholder.please_upgrade_plan');
-                    
-                  
+
+
                     $this->dispatchBrowserEvent('success', $message);
                 }
             } else {
@@ -156,9 +156,9 @@ class PostTable extends LivewireTableComponent
 
                 $message = $post->visibility ? __('messages.placeholder.post_added_to_visibility_successfully'): __('messages.placeholder.post_removed_from_visibility_successfully');
                 $this->dispatchBrowserEvent('success', $message);
-            }   
+            }
         }
-       
+
 
 
     }
@@ -252,10 +252,10 @@ class PostTable extends LivewireTableComponent
             'deactivate' => 'Deactivate',
         ];
     }
-    
+
     public function bulkDelete()
     {
-  
+
         if ($this->selectedRowsQuery->count() > 0) {
             $this->selectedRowsQuery->delete();
             $this->resetAll();
@@ -267,6 +267,6 @@ class PostTable extends LivewireTableComponent
 
             $this->dispatchBrowserEvent('error', $message);
         }
-        
+
     }
 }

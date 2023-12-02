@@ -12,6 +12,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- General CSS Files -->
+
+    <style>
+        body {
+           font-family: 'YourChosenFont', sans-serif !important;
+        }
+     </style>
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/third-party.css') }}">
     @if(!Auth::user()->dark_mode)
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
@@ -24,10 +31,10 @@
         <link rel="stylesheet" type="text/css" href="{{asset('front_web/css/flatpicker-dark.css')}}">
         <link rel="stylesheet" type="text/css" href="{{ asset('front_web/css/custom-dark.css') }}">
     @endif
-    
+
 {{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins.css') }}">--}}
 {{--    <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">--}}
-    
+
 
 {{--    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/custom.css') }}">--}}
 {{--    <link href="{{ mix('assets/css/custom.css') }}" rel="stylesheet" type="text/css "/>--}}
@@ -56,7 +63,7 @@
 
         let lang = "{{ Auth::user()->language ?? 'en' }}"
         let defaultImage = "{{ asset('front_web/images/default.jpg') }}"
-        // Lang.setLocale(lang)    
+        // Lang.setLocale(lang)
     </script>
     <script src="{{ asset('messages.js') }}"></script>
     <script src="{{ mix('assets/js/pages.js') }}"></script>
@@ -73,7 +80,7 @@
 
             <div class="content d-flex flex-column flex-column-fluid pt-7">
                 @yield('header_toolbar')
-                <div class='d-flex flex-wrap flex-column-fluid'> 
+                <div class='d-flex flex-wrap flex-column-fluid'>
                     @yield('content')
                 </div>
             </div>
