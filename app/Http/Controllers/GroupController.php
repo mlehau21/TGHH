@@ -36,7 +36,7 @@ class GroupController extends Controller
                         $facebookPost = new FBPost();
                     }
                     
-                    $facebookPost->message = $single['message'];
+                    $facebookPost->message = isset($single['message']) ? $single['message'] : '';
                     $facebookPost->created_time = Carbon::parse($single['created_time']);
                     $facebookPost->link = $single['link'];
                     $facebookPost->image = $single['attachments']['data'][0]['media']['image']['src'];
