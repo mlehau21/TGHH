@@ -125,6 +125,7 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
     Route::middleware('permission:manage_all_post')->group(function () {
         Route::resource('posts', PostController::class);
         Route::get('fb-posts', [GroupPostBackend::class, 'index']);
+        Route::get('fb-post-delete/{id}', [GroupPostBackend::class, 'fbPostDelete']);
         Route::post('posts/language', [PostController::class, 'language'])->name('posts.language');
         Route::post('posts/category', [PostController::class, 'category'])->name('posts.category');
         Route::post('posts-subcategory', [PostController::class, 'categoryFilter'])->name('posts.categoryFilter');

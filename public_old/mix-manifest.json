@@ -1,0 +1,14 @@
+{
+    "/assets/js/pages.js": "/assets/js/pages.js",
+    "/assets/js/front-pages.js": "/assets/js/front-pages.js",
+    "/assets/js/auth-pages.js": "/assets/js/auth-pages.js",
+    "/assets/css/newstyle.css": "/assets/css/newstyle.css",
+    "/css/front-pages.css": "/css/front-pages.css",
+    "/front/scss/custom.css": "/front/scss/custom.css",
+    "/front_web/css/custom-dark.css": "/front_web/css/custom-dark.css",
+    "/front_web/css/custom.css": "/front_web/css/custom.css",
+    "/assets/css/full-screen.css": "/assets/css/full-screen.css",
+    "/assets/css/tagify.css": "/assets/css/tagify.css",
+    "/assets/css/lightbox.css": "/assets/css/lightbox.css",
+    "/assets/css/audio.css": "/assets/css/audio.css"
+}

@@ -46,80 +46,41 @@
                                 </div>
                             </th>
 
-                            {{-- <th class="text-start">
+                             <th class="text-start">
                                 Action
-                            </th> --}}
+                            </th> 
                         </tr>
                     </thead>
 
                     <tbody>
-                        @foreach ($posts as $index=> $post)
+                        @foreach ($posts as $index => $post)
                             <tr>
-                                
+
                                 <td style="width: 5%">
-                                    {{ $index+1 }}
-                                  </td>
+                                    {{ $index + 1 }}
+                                </td>
                                 <td class="d-flex">
                                     <div class="d-flex align-items-center">
                                         <div class=" position-relative overflow-hidden">
-                                            <a href="{{ $post->link }}"
-                                                data-lightbox="image-38">
-                                                <img src="{{ $post->image }}"
-                                                    class="float-start  width-custom">
+                                            <a href="{{ $post->link }}" data-lightbox="image-38">
+                                                <img src="{{ $post->image }}" class="float-start  width-custom">
                                             </a>
                                         </div>
-                                        
+
                                     </div>
                                 </td>
 
                                 <td style="width: 50%">
-                                  {{ $post->message }}
+                                    {{ $post->message }}
                                 </td>
 
                                 <td>
-                                  {{ \Carbon\Carbon::parse($post->created_time)->diffForHumans() }}
+                                    {{ \Carbon\Carbon::parse($post->created_time)->diffForHumans() }}
                                 </td>
 
-                                {{-- <td>
+                                 <td>
                                     <div class="action-btn d-flex option align-items-center">
-                                        <div class="dropdown">
-                                            <button class="btn btn-light btn-sm dropdown-toggle hide-arrow" type="button"
-                                                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Options
-                                            </button>
-                                            <ul class="dropdown-menu min-width-220" aria-labelledby="dropdownMenuButton1">
-                                                <li>
-                                                    <a href="http://127.0.0.1:8000/admin/posts/38/edit"
-                                                        class="dropdown-item posts-edit-btn px-3 py-1 text-decoration-none">
-                                                        Edit
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="http://127.0.0.1:8000/admin/posts/38"
-                                                        class="dropdown-item px-3 py-1 text-decoration-none">
-                                                        View
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" class="dropdown-item px-3 py-1 text-decoration-none">
-                                                        Add to Breaking
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item px-3 py-1 text-decoration-none">
-                                                        Add to Slider
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="dropdown-item px-3 py-1 text-decoration-none">
-                                                        Add to Recommended
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <a href="javascript:void(0)" data-id="38" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" data-bs-trigger="hover" data-bs-original-title="Delete"
+                                        <a href="{{ url('fb-post-delete/'. $post->id) }}"
                                             class="btn px-2 text-danger fs-3 delete-posts-btn">
                                             <svg class="svg-inline--fa fa-trash" aria-hidden="true" focusable="false"
                                                 data-prefix="fas" data-icon="trash" role="img"
@@ -131,7 +92,7 @@
                                             </svg><!-- <i class="fa-solid fa-trash"></i> Font Awesome fontawesome.com -->
                                         </a>
                                     </div>
-                                </td> --}}
+                                </td> 
                             </tr>
                         @endforeach
 
@@ -142,6 +103,3 @@
         </div>
     </div>
 @endsection
-{{-- @section('page_js') --}}
-{{--    <script src="{{mix('assets/js/add_post/create_edit.js')}}"></script> --}}
-{{-- @endsection --}}
