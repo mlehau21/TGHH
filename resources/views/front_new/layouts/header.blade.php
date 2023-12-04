@@ -202,14 +202,7 @@
                                         @endif
                                            
                                     @endforeach
-                                    
-                                    <div class="set">
-                                        <a href="{{ route('galleryPage') }}"
-                                            class="fs-14 fw-6 {{ Request::is('g') || Request::is('g/*') ? 'active' : '' }}">
-                                            {{ __('messages.details.gallery') }}
-                                        </a>
-                                    </div>
-                                    
+                        
                                     @if (getLogInUser())
                                         <div class="set">
                                             <a href="javascript:void(0)" class="fs-14 fw-6">
