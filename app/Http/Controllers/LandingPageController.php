@@ -271,31 +271,6 @@ class LandingPageController extends AppBaseController
         return view('front_new.popular-tag', compact('tagName'));
     }
 
-    /**
-     * @param  null  $id
-     * @return Application|View
-     */
-    public function galleryPage($id = null)
-    {
-        if (! empty($id)) {
-            $allSubCategory = AlbumCategory::with('album', 'gallery')->whereLangId(getFrontSelectLanguage())
-                ->where('album_id', $id)->get();
-            $galleryImages = Gallery::with('album', 'media', 'category')->whereLangId(getFrontSelectLanguage())
-                ->where('album_id', $id)->get();
-
-            return view('front_new.gallery-images', compact('galleryImages', 'allSubCategory'));
-        }
-
-        $album = Album::with('gallery')->whereLangId(getFrontSelectLanguage())->get();
-        $galleries = [];
-        foreach ($album as $gallery) {
-            if (! empty($gallery->gallery->first())) {
-                $galleries[] = $gallery->gallery->first();
-            }
-        }
-
-        return view('front_new.gallery-page', compact('galleries'));
-    }
 
     /**
      * @return Application|Factory|View
