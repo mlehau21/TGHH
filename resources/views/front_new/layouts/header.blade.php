@@ -240,8 +240,7 @@
                                             <a href="javascript:void(0)" class="fs-14 fw-6">
                                                 {{ getLogInUser()->last_name }}
                                             </a>
-                                            <a href="#" class="p-0" data-turbo="false><i class="fa
-                                                fa-plus"></i></a>
+                                            <a href="#" class="p-0" data-turbo="false"><i class="fa fa-plus"></i></a>
                                             <div class="content">
                                                 <li>
                                                     <a href="{{ route('admin.dashboard') }}" class="fs-14 fw-6"
@@ -280,25 +279,6 @@
         </div>
     </div>
 </section>
-{{-- @if (checkAdSpaced('header'))
-    @if (isset(getAdImageDesktop(\App\Models\AdSpaces::HEADER)->code))
-        <div class=" container index-top-desktop ad-space-url-desktop-header">
-            {!! getAdImageDesktop(\App\Models\AdSpaces::HEADER)->code !!}
-        </div>
-    @else
-    <div class="container index-top-desktop">
-        <a href="{{getAdImageDesktop(\App\Models\AdSpaces::HEADER)->ad_url}}"
-           target="_blank">
-            <img src="{{asset(getAdImageDesktop(\App\Models\AdSpaces::HEADER)->ad_banner)}}"
-                 width="1300" class="img-fluid">
-        </a>
-    </div>
-    @endif
-@endif --}}
-{{-- <div class="container py-2 heder-ad"> --}}
-{{--    <img src="{{asset('images/1300.png')}}" width="1300" height="130" class="img-fluid"> --}}
-{{-- </div> --}}
-<!--end top-bar-section -->
 
 <!-- start header section -->
 <header class="bg-light d-lg-block d-none header">
@@ -317,9 +297,7 @@
                         @endphp
                         @if ($nav['navigationsCount'] >= 0 && $nav['navigationsCount'] <= 10)
                             @foreach ($nav['navigations'] as $key => $navigation)
-                                @if (
-                                    $navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||
-                                        $navigation->navigationable_type == \App\Models\Menu::class)
+                                @if ($navigation['navigationable']['lang_id'] == getFrontSelectLanguage())
                                     @php
                                         $isSubNav = count($nav['navigationsTakeData'][$navigation->id]) > 0;
                                         $subNavLangs = $nav['navigationsTakeData'][$navigation->id];
@@ -343,11 +321,11 @@
                                             @if ($navigation->navigationable->link !== null) href="{{ getNavUrl($navigation->navigationable->link) }}"
                                            @else
                                            href="{{ route('categoryPage', $navigation->navigationable->slug) }}" @endif>{!! $navigation->navigationable->name ? $navigation->navigationable->name : $navigation->navigationable->title !!}
-                                            @if (($langId || $navigation->navigationable_type == \App\Models\Menu::class) && $isSubNav)
+                                            @if ($langId && $isSubNav)
                                                 <i class="fa-solid fa-angle-down icon ms-1 fs-12"></i>
                                             @endif
                                         </a>
-                                        @if ($langId || $navigation->navigationable_type == \App\Models\Menu::class)
+                                        @if ($langId)
                                             @if ($isSubNav)
                                                 <ul class="dropdown-nav ps-0">
                                                     @php
@@ -385,9 +363,8 @@
                                 @endif
                             @endforeach
                         @endif
-                        {{-- <li class="nav-item">
-                            <a class="nav-link fs-14 fw-6 {{ ((Request::is('g')) || (Request::is('g/*'))) ? 'active' : '' }}" href="{{route('galleryPage')}}">{{ __('messages.details.gallery') }}</a>
-                        </li> --}}
+                       
+                        
                         @if ($nav['navigationsCount'] >= 6)
                             <li class="nav-item dropdown">
                                 <a class="nav-link" aria-current="page" href="#">
@@ -395,9 +372,7 @@
                                 </a>
                                 <ul class="dropdown-nav ps-0">
                                     @foreach ($nav['navigationsSkipData'] as $key => $navigation)
-                                        @if (
-                                            $navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||
-                                                $navigation->navigationable_type == \App\Models\Menu::class)
+                                        @if ($navigation['navigationable']['lang_id'] == getFrontSelectLanguage())
                                             @php
                                                 $isSubNav = count($nav['navigationsSkipItem'][$navigation->id]) > 0;
                                                 $subNavLangs = $nav['navigationsSkipItem'][$navigation->id];
@@ -416,14 +391,14 @@
                                                 }
                                             @endphp
                                             <li class="dropdown-sub-nav">
-                                                <a href="{{ $navigation->navigationable_type == \App\Models\Menu::class ? $navigation->navigationable->link : route('categoryPage', $navigation->navigationable->slug) }}"
+                                                <a href="{{ route('categoryPage', $navigation->navigationable->slug) }}"
                                                     class="fs-14 fw-6 d-flex justify-content-between {{ $menuName == ucfirst(last(request()->segments())) ? 'active' : '' }}">
                                                     {!! $navigation->navigationable->name ? $navigation->navigationable->name : $navigation->navigationable->title !!}
-                                                    @if (($langId || $navigation->navigationable_type == \App\Models\Menu::class) && $isSubNav)
+                                                    @if ($langId  && $isSubNav)
                                                         <i class="fa-solid fa-angle-right fs-12 "></i>
                                                     @endif
                                                 </a>
-                                                @if ($langId || $navigation->navigationable_type == \App\Models\Menu::class)
+                                                @if ($langId)
                                                     @if ($isSubNav)
                                                         <ul class="dropdown-sub-list ps-0">
                                                             @foreach ($nav['navigationsSkipItem'] as $key => $navSub)
@@ -509,25 +484,6 @@
                     </ul>
                 </nav>
             </div>
-            {{-- <div class="col-lg-1">
-                <div class="dropdown header-icon d-lg-flex  justify-content-end d-none position-relative">
-                    <button class="dropdown-toggle border-0 bg-transparent position-relative me-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <a href="javascript:void(0)"><i class="fa-solid text-black fa-magnifying-glass fs-20 "></i></a>
-                    </button>
-                    <div class="dropdown-menu" >
-                        <form action="{{ route('allPosts') }}" class="form search-form-box search-input">
-                            <div class="form-group border-0 search-input">
-                                <input type="text" name="search" id="search" placeholder="{{__('messages.search')}}" class="form-control bg-light rt-search-control custom-input-control search-input mb-0" value="">
-                                <button type="submit" class="search-submit custom-submit search-input">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-
-            </div> --}}
         </div>
     </div>
 </header>

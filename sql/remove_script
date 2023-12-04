@@ -11,3 +11,4 @@ pages
 
 ))routes
 route('detailPage', $breakingPost->slug)
+galleryPage
