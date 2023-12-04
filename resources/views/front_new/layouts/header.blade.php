@@ -209,12 +209,7 @@
                                             {{ __('messages.details.gallery') }}
                                         </a>
                                     </div>
-                                    <div class="set">
-                                        <a href="{{ route('contact.index') }}"
-                                            class="fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}">
-                                            {{ __('messages.details.contact_us') }}
-                                        </a>
-                                    </div>
+                                    
                                     @if (getLogInUser())
                                         <div class="set">
                                             <a href="javascript:void(0)" class="fs-14 fw-6">
@@ -412,17 +407,7 @@
                                             </li>
                                         @endif
                                     @endforeach
-                                    <li class="">
-                                        <a class="fs-14 fw-6 d-flex justify-content-between {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
-                                            href="{{ route('contact.index') }}">{{ __('messages.details.contact_us') }}</a>
-                                    </li>
                                 </ul>
-                            </li>
-                        @endif
-                        @if ($nav['navigationsCount'] <= 5)
-                            <li class="nav-item">
-                                <a class="nav-link fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
-                                    href="{{ route('contact.index') }}">{{ __('messages.details.contact_us') }}</a>
                             </li>
                         @endif
                     </ul>

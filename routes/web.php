@@ -5,12 +5,10 @@ use App\Http\Controllers\AlbumCategoriesController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
-use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\DBDownloadController;
 use App\Http\Controllers\FollowersController;
-use App\Http\Controllers\ForumControllerFrontend;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupPostBackend;
@@ -227,9 +225,6 @@ Route::middleware('xss','setLanguage')->group(function () {
     Route::get('/terms-conditions', [LandingPageController::class, 'displayTerms'])->name('page.Terms');
     Route::get('/support', [LandingPageController::class, 'displayTerms'])->name('page.support');
     Route::get('/privacy', [LandingPageController::class, 'displayTerms'])->name('page.privacy');
-
-    Route::get('/contact-save', [ContactController::class, 'store'])->name('contact.store');
-    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 
     Route::get('profile/{user}', [LandingPageController::class, 'profileDashboard'])->name('userDetails');
 
