@@ -6,10 +6,7 @@ use App\Models\Category;
 use App\Models\Followers;
 use App\Models\Language;
 use App\Models\MailSetting;
-use App\Models\Menu;
 use App\Models\Navigation;
-use App\Models\Page;
-use App\Models\PaymentGateway;
 use App\Models\Plan;
 use App\Models\Poll;
 use App\Models\PollResult;
@@ -21,8 +18,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -142,35 +137,28 @@ function getRandomColor($index): string
  * @param $index
  * @return string
  */
-function getParentMenu()
-{
-    $menu = Menu::whereNotNull('link')->pluck('link', 'id')->sort();
+// function getParentMenu()
+// {
+//     $menu = Menu::whereNotNull('link')->pluck('link', 'id')->sort();
 
-    return $menu;
-}
+//     return $menu;
+// }
 
 /**
  * @return mixed
  */
 function getHeaderElement()
 {
-    $data['navigations'] = Navigation::with('navigationable')
-        ->whereHas('navigationable', function ($q) {
-            $q->where('show_in_menu', 1);
-        })->whereNull('parent_id')->orderBy('order_id')->get();
-
+    $data['navigations'] = Navigation::with('navigationable')->whereNull('parent_id')->orderBy('order_id')->get();
     //child
     $data['navigationsTakeData'] = [];
     foreach ($data['navigations'] as $item) {
         $navigationType = $item->navigationable_type == Category::class ? SubCategory::class : $item->navigationable_type;
         $data['navigationsTakeData'][$item->id] = Navigation::with('navigationable')
-            ->whereHas('navigationable', function ($q) {
-                $q->where('show_in_menu', 1);
-            })->where('navigationable_type', $navigationType)
+            ->where('navigationable_type', $navigationType)
             ->where('parent_id', $item->navigationable_id)->orderBy('order_id')->get();
     }
-
-    $data['pages'] = Page::where('location', Page::MAIN_MENU)->where('visibility', 1)->get()->sort();
+    
 
     return $data;
 }
@@ -226,8 +214,6 @@ function getNavigationDetails(): array
     foreach ($data['navigations'] as $menu) {
         if ($menu['navigationable']['lang_id'] == getFrontSelectLanguage()) {
             $data['menus'][] = $menu;
-        } elseif ($menu->navigationable_type == Menu::class) {
-            $data['menus'][] = $menu;
         }
     }
     
@@ -272,8 +258,6 @@ function getNavigationDetails(): array
     $countMenu = Category::whereShowInMenu(1)->where('lang_id', '!=', getFrontSelectLanguage())->count();
     //total navigation
     $data['navigationsCount'] = $data['navigationsSkipData']->count() + $data['navigations']->count() - $countMenu;
-    //pages
-    $data['pages'] = Page::whereLangId(getFrontSelectLanguage())->where('location', Page::MAIN_MENU)->where('visibility', 1)->get()->sort();
 
     return $data;
 }

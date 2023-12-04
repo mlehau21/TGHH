@@ -151,13 +151,12 @@
                                     </div>
                                     @php
                                         $nav = getHeaderElement();
-                                        dump($nav);
                                     @endphp
                                     @foreach ($nav['navigations'] as $key => $navigation)
                                         @if ($navigation['navigationable']['lang_id'] == getFrontSelectLanguage())
                                             @php
                                                 $isSubNav = count($nav['navigationsTakeData'][$navigation->id]) > 0;
-                                                $subNavLangs = $nav['navigationsTakeData'][$navigation->id];
+                                                $subNavLangs = $nav['navigationsTakeData'][$navigation->id]; 
                                                 $menuName = $navigation->navigationable->name ? $navigation->navigationable->name : $navigation->navigationable->title;
                                                 $langId = false;
                                                 foreach ($subNavLangs as $subNavLang) {
@@ -201,8 +200,9 @@
                                                 @endif
                                             </div>
                                         @endif
+                                           
                                     @endforeach
-
+                                    
                                     <div class="set">
                                         <a href="{{ route('galleryPage') }}"
                                             class="fs-14 fw-6 {{ Request::is('g') || Request::is('g/*') ? 'active' : '' }}">
@@ -214,26 +214,6 @@
                                             class="fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}">
                                             {{ __('messages.details.contact_us') }}
                                         </a>
-                                    </div>
-                                    <div class="set">
-                                        @if ($nav['pages']->count() > 0)
-                                            <a href="javascript:void(0)"
-                                                class="fs-14 fw-6 {{ 'Pages' == ucfirst(last(request()->segments())) ? 'active' : '' }}">
-                                                {{ __('messages.pages') }}
-                                            </a>
-                                            <a href="#" class="p-0" data-turbo="false"><i
-                                                    class="fa fa-plus"></i></a>
-                                        @endif
-                                        <div class="content">
-                                            @foreach ($nav['pages'] as $page)
-                                                <li>
-                                                    <a href="{{ route('pages.show-page-slug', $page->slug) }}"
-                                                        class="fs-14 fw-6">
-                                                        {!! $page->name !!}
-                                                    </a>
-                                                </li>
-                                            @endforeach
-                                        </div>
                                     </div>
                                     @if (getLogInUser())
                                         <div class="set">
@@ -436,23 +416,6 @@
                                         <a class="fs-14 fw-6 d-flex justify-content-between {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
                                             href="{{ route('contact.index') }}">{{ __('messages.details.contact_us') }}</a>
                                     </li>
-                                    <li class="{{ $nav['pages']->count() > 0 ? 'dropdown-sub-nav' : '' }}">
-                                        @if ($nav['pages']->count() > 0)
-                                            <a href="#"
-                                                class="fs-14 fw-6 d-flex justify-content-between {{ 'Page' == ucfirst(last(request()->segments())) ? 'active' : '' }}">{{ __('messages.pages') }}
-                                                <i class="fa-solid fa-angle-right fs-12 "></i>
-                                            </a>
-                                            <ul class="dropdown-sub-list ps-0">
-                                                @foreach ($nav['pages'] as $page)
-                                                    <li>
-                                                        <a class="fs-14 fw-6"
-                                                            href="{{ route('pages.show-page-slug', $page->slug) }}">
-                                                            {!! $page->name !!}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-                                    </li>
                                 </ul>
                             </li>
                         @endif
@@ -460,25 +423,6 @@
                             <li class="nav-item">
                                 <a class="nav-link fs-14 fw-6 {{ 'Contact' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
                                     href="{{ route('contact.index') }}">{{ __('messages.details.contact_us') }}</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                @if ($nav['pages']->count() > 0)
-                                    <a class="nav-link fs-14 fw-6 {{ 'Pages' == ucfirst(last(request()->segments())) ? 'active' : '' }}"
-                                        href="javascript:void(0)">{{ __('messages.pages') }}
-                                        <i class="fa-solid fa-angle-down icon ms-1 fs-12"></i>
-                                    </a>
-                                @endif
-                                @if ($nav['pages']->count() > 0)
-                                    <ul class="dropdown-nav ps-0">
-                                        @foreach ($nav['pages'] as $page)
-                                            <li>
-                                                <a class="fs-14 fw-6"
-                                                    href="{{ route('pages.show-page-slug', $page->slug) }}">
-                                                    {!! $page->name !!}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                @endif
                             </li>
                         @endif
                     </ul>
