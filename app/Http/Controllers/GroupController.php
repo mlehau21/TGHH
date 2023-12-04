@@ -11,14 +11,16 @@ class GroupController extends Controller
 {
     public function index()
     {
-        $response = FBPost::with('comment')->latest()->paginate(21);
+        $response = FBPost::with('comment')->latest()->where('active_status', 1)->paginate(21);
         return view('front_new.group', ['posts' => $response]);
     }
 
     public function store()
     {
-        $ENV_TOKEN = env('FACEBOOK_ACCESS_TOKEN');
-        $ENV_GROUP_ID = env('FACEBOOK_GROUP_ID');
+        // $ENV_TOKEN = env('FACEBOOK_ACCESS_TOKEN');
+        $ENV_TOKEN = "EAAaEcLhPkJkBO0g3ZCPIoBDr8BXWz8MGyOyhY0xd485LKFIwZBeYZBWV2R2ShFpDXLfjsvawT5QQtnbMvZABZBBYk8cuOHuHIwMyGIm6LKyheSKoFUlC50DwCsQJpMIRoP5rTTK9dwjM4n10DyqGO1NmQZCpZBEIhC874FPGCUNCEEOfJFMZCyZCfW54IGHANN9qWzKYc3brssgBLcsnENXPjDHunOYnZAZAK1PWKAZD";
+        // $ENV_GROUP_ID = env('FACEBOOK_GROUP_ID');
+        $ENV_GROUP_ID = "2199166670415368";
         $LIMIT = env("FACEBOOK_DATA_LIMIT");
 
         $url = "https://graph.facebook.com/v18.0/{$ENV_GROUP_ID}/feed?fields=message,created_time,link,picture,attachments{media},comments.limit(3)&limit={$LIMIT}&access_token={$ENV_TOKEN}";

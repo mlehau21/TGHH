@@ -15,8 +15,7 @@ class GroupPostBackend extends Controller
 
     public function fbPostDelete($id)
     {
-        dd($id);
         FBPost::findOrFail($id)->update(['active_status' => 0]);
-        return redirect()->back();
+        return redirect()->back()->with('deleted');
     }
 }
