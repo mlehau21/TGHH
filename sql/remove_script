@@ -1,0 +1,13 @@
+Fix image errors and add delete button for fb-post.
+Delete data tables and related components of:
+album
+album_categories
+audio_post
+galleries
+Contact
+menus
+pages
+
+
+))routes
+route('detailPage', $breakingPost->slug)

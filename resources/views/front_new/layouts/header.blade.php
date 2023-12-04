@@ -15,37 +15,6 @@
         </div>
     @endif
 @endif
-<!-- start-breaking-news-section -->
-{{-- <div class="breaking-news-section py-2" id="topbar-wrap">
-    <div class="container">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-8 text-center">
-                <div class="title d-flex align-items-center justify-content-center">
-                    <div class="icon bg-primary d-flex justify-content-center align-items-center me-1">
-                        <i class="fas fa-bolt text-white"></i>
-                    </div>
-                    <div class="trending-title d-flex ">
-                        <a href="#" class="text-white">{{ __('messages.details.breaking')  }}</a>
-                    </div>
-                    <span class="text-gray mx-2 h-100" aria-live="assertive" aria-atomic="true"> | </span>
-                    <div class="content float-left breaking-slider swiper-container">
-                        <div class="swiper-wrapper">
-                            @foreach (getBreakingPost() as $breakingPost)
-                                <div class="content item d-flex justify-content-start align-items-center swiper-slide">
-                                    <i class="fa-solid fa-circle text-white me-2"></i>
-                                    <a href="{{ route('detailPage', $breakingPost->slug) }}" class="fs-12 text-white" >
-                                        {!! $breakingPost->title !!}
-                                    </a>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-<!-- end-breaking-news-section -->
 
 <!--start top-bar-section -->
 <section class="top-bar-section py-lg-2 py-3 top-bar">
@@ -56,22 +25,6 @@
                     <img src="{{ $settings['logo'] }}" alt="" class="img-fluid w-100 h-100" />
                 </a>
             </div>
-
-            {{-- <div class="col-xl-3 col-md-8 col-9 ">
-                <div class="row align-items-center justify-content-end">
-                <div class="col-xxl-3 col-lg-4 col-sm-6  br-gray  text-end  pe-xl-4 pe-lg-4 ">
-                    <a href="{{ route('register') }}"
-                    class="fs-14 text-black fw-6 login-btn d-none d-sm-block"
-                    data-turbo="false">{{ __('auth.group') }}</a>
-                </div>
-                <div class="col-xl-3 col-lg-4 br-gray py-1 d-lg-block d-none ">
-                    <a href="{{ route('register') }}"
-                    class="fs-14 text-black fw-6 login-btn d-none d-sm-block"
-                    data-turbo="false">{{ __('auth.forum') }}</a>
-                </div>
-                </div>
-            </div> --}}
-
             <div class="col-xl-9 col-md-8 col-9 ">
                 <div class="row align-items-center justify-content-end">
 
@@ -83,21 +36,6 @@
                         <a href="{{ route('forum') }}" class="fs-14 text-black fw-6 login-btn d-none d-sm-block"
                             data-turbo="false">{{ __('auth.forum') }}</a>
                     </div>
-
-                    {{-- <div class="col-xxl-3 col-lg-4 col-sm-6  br-gray  text-end  pe-xl-4 pe-lg-4 ">
-                        <span class="text-secondary fs-14 pe-sm-0">{{ \Carbon\Carbon::now()->isoFormat('ddd, MMM DD YYYY') }}</span>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 br-gray py-1 d-lg-block d-none ">
-                        <div class="social-icon d-flex justify-content-around ">
-                            <a href="{{$settings['facebook_url']}}" target="_blank"> <i
-                                        class="fa-brands fa-facebook text-secondary fs-18"></i></a>
-                            <a href="{{$settings['twitter_url']}}" target="_blank"> <i class="fa-brands fa-twitter text-secondary fs-18"></i></a>
-                            <a href="{{$settings['linkedin_url']}}" target="_blank"> <i class="fa-brands fa-linkedin-in text-secondary fs-18"></i></a>
-                            <a href="{{$settings['pinterest_url']}}" target="_blank"> <i class="fa-brands fa-pinterest text-secondary fs-18"></i></a>
-                            <a href="{{$settings['instagram_url']}}" target="_blank"> <i class="fa-brands fa-instagram text-secondary fs-18"></i></a>
-                        </div>
-                    </div> --}}
-
                     <div class="col-xl-2 col-lg-4 br-gray py-1 d-lg-block d-none">
                         <div class="dropdown header-icon d-lg-flex  justify-content-end d-none position-relative">
                             <button class="dropdown-toggle border-0 bg-transparent position-relative me-4"
@@ -168,6 +106,7 @@
                                     data-turbo="false">{{ __('auth.register') }}</a>
                             </div>
                         @endif
+                        
                         <div class="language-dropdown pe-sm-0 pe-2">
                             <ul class="mb-0 ps-0">
                                 <li class="nav-item">
@@ -189,19 +128,7 @@
                                 </li>
                             </ul>
                         </div>
-                        {{-- <button class="dropdown border-0 bg-transparent position-relative me-2 d-lg-none" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                <a href="javascript:void(0)"><i class="fa-solid fa-magnifying-glass fs-15"></i></a>
-                            </button>
-                            <div class="dropdown-menu mobile-search" >
-                                <form action="{{ route('allPosts') }}" class="form search-form-box search-input">
-                                    <div class="form-group border-0 search-input">
-                                        <input type="text" name="search" id="search" placeholder="Search..." class="form-control bg-light rt-search-control custom-input-control search-input mb-0" value="">
-                                        <button type="submit" class="search-submit custom-submit search-input">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div> --}}
+                        
                         <div class="offcanvas-toggle d-lg-none d-block">
 
                             <a href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasToggle"
@@ -224,11 +151,10 @@
                                     </div>
                                     @php
                                         $nav = getHeaderElement();
+                                        dump($nav);
                                     @endphp
                                     @foreach ($nav['navigations'] as $key => $navigation)
-                                        @if (
-                                            $navigation['navigationable']['lang_id'] == getFrontSelectLanguage() ||
-                                                $navigation->navigationable_type == \App\Models\Menu::class)
+                                        @if ($navigation['navigationable']['lang_id'] == getFrontSelectLanguage())
                                             @php
                                                 $isSubNav = count($nav['navigationsTakeData'][$navigation->id]) > 0;
                                                 $subNavLangs = $nav['navigationsTakeData'][$navigation->id];
@@ -251,11 +177,11 @@
                                                     class="fs-14 fw-6">
                                                     {!! $navigation->navigationable->name ? $navigation->navigationable->name : $navigation->navigationable->title !!}
                                                 </a>
-                                                @if (($langId || $navigation->navigationable_type == \App\Models\Menu::class) && $isSubNav)
+                                                @if ($langId && $isSubNav)
                                                     <a href="#" class="p-0" data-turbo="false"><i
                                                             class="fa fa-plus"></i></a>
                                                 @endif
-                                                @if ($langId || $navigation->navigationable_type == \App\Models\Menu::class)
+                                                @if ($langId)
                                                     @if ($isSubNav)
                                                         <div class="content">
                                                             @foreach ($nav['navigationsTakeData'] as $key => $navSub)
