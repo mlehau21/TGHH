@@ -1,15 +1,12 @@
 <?php
 
 use App\Http\Controllers\AdSpacesController;
-use App\Http\Controllers\AlbumCategoriesController;
-use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EmojiController;
 use App\Http\Controllers\DBDownloadController;
 use App\Http\Controllers\FollowersController;
-use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupPostBackend;
 use App\Http\Controllers\LandingPageController;
@@ -115,10 +112,7 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
         Route::get('resend-email/{id}', [StaffController::class, 'resendEmail'])->name('resend-email');
     });
 
-    // album category route
-    Route::middleware('permission:manage_albums_category')->group(function () {
-        Route::resource('album-categories', AlbumCategoriesController::class);
-    });
+ 
     //Add-Post Route
     Route::middleware('permission:manage_all_post')->group(function () {
         Route::resource('posts', PostController::class);
@@ -138,10 +132,6 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
     Route::middleware('permission:manage_rss_feeds')->group(function () {
         Route::resource('rss-feed', RssFeedController::class);
         Route::post('rss-feed/manuallyUpdate/{rssFeed}', [RssFeedController::class, 'manuallyUpdate'])->name('rss-feed.manuallyUpdate');
-    });
-
-    Route::middleware('permission:manage_albums')->group(function () {
-        Route::resource('albums', AlbumController::class);
     });
 
     Route::middleware('permission:manage_language')->group(function () {
@@ -175,10 +165,6 @@ Route::prefix('admin')->middleware('auth', 'xss')->group(function () {
         Route::get('post-comments', [CommentController::class, 'index'])->name('post-comments.index');
         Route::delete('post-comments/{comment}', [CommentController::class, 'delete'])->name('post-comments.destroy');
     });
-
-    Route::resource('gallery-images', GalleryController::class);
-    Route::get('album-list', [GalleryController::class, 'getAlbums'])->name('album-list');
-    Route::get('album-category-list', [GalleryController::class, 'getCategory'])->name('album-category-list');
 
     // Emojis
     Route::middleware('permission:manage_emoji')->group(function () {

@@ -2,7 +2,6 @@
 
 namespace App\MediaLibrary;
 
-use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\PostGallery;
 use App\Models\PostSortList;
@@ -32,8 +31,7 @@ class CustomPathGenerator implements PathGenerator
                 return str_replace('{PARENT_DIR}', Setting::FAVICON, $path);
             case User::NEWS_IMAGE:
                 return str_replace('{PARENT_DIR}', User::NEWS_IMAGE, $path);
-            case Gallery::GALLERY_IMAGE:
-                return str_replace('{PARENT_DIR}', Gallery::GALLERY_IMAGE, $path);
+
             case Post::IMAGE_POST:
                 return str_replace('{PARENT_DIR}', Post::IMAGE_POST, $path);
             case Post::FILE_POST:

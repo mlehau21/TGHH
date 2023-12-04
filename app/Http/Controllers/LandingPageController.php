@@ -3,13 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCommentRequest;
-use App\Models\Album;
-use App\Models\AlbumCategory;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Emoji;
 use App\Models\Followers;
-use App\Models\Gallery;
 use App\Models\Post;
 use App\Models\PostReactionEmoji;
 use App\Models\Setting;
