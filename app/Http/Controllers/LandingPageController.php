@@ -300,24 +300,24 @@ class LandingPageController extends AppBaseController
         return view('front_new.page', compact('termData', 'term'));
     }
 
-    public function audioDetails(Request $request)
-    {
-        $audioPost = [];
-        $audioPost['data'] = Post::with(['postAudios', 'media'])->where('slug', $request->audio_slug)->whereVisibility(Post::VISIBILITY_ACTIVE)->firstOrFail();
-        $audioPost['audioData'] = $audioPost['data'];
-        $lists = [];
+    // public function audioDetails(Request $request)
+    // {
+    //     $audioPost = [];
+    //     $audioPost['data'] = Post::with(['postAudios', 'media'])->where('slug', $request->audio_slug)->whereVisibility(Post::VISIBILITY_ACTIVE)->firstOrFail();
+    //     $audioPost['audioData'] = $audioPost['data'];
+    //     $lists = [];
 
-        foreach ($audioPost['audioData']->postAudios->media as $data) {
-            $list = [];
-            $list['name'] = $data['name'];
-            $list['url'] = $data->getFullUrl();
-            $list['cover_art_url'] = $audioPost['audioData']->media[0]->getFullUrl();
-            $lists[] = $list;
-        }
-        $audioPost['list'] = $lists;
+    //     foreach ($audioPost['audioData']->postAudios->media as $data) {
+    //         $list = [];
+    //         $list['name'] = $data['name'];
+    //         $list['url'] = $data->getFullUrl();
+    //         $list['cover_art_url'] = $audioPost['audioData']->media[0]->getFullUrl();
+    //         $lists[] = $list;
+    //     }
+    //     $audioPost['list'] = $lists;
 
-        return $this->sendResponse($audioPost, __('messages.placeholder.data_retried'));
-    }
+    //     return $this->sendResponse($audioPost, __('messages.placeholder.data_retried'));
+    // }
 
     public function postReaction(Request $request)
     {

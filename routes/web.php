@@ -205,7 +205,7 @@ Route::middleware('xss','setLanguage')->group(function () {
     Route::get('p/{data}/{id}', [LandingPageController::class, 'detailPage'])->name('detailPage.gallery');
     Route::get('c/{category?}/{slug?}', [LandingPageController::class, 'categoryPage'])->name('categoryPage');
     Route::get('t/{tag}', [LandingPageController::class, 'popularTagPage'])->name('popularTagPage');
-    Route::post('audio-detail-page', [LandingPageController::class, 'audioDetails'])->name('audioDetailPage');
+    // Route::post('audio-detail-page', [LandingPageController::class, 'audioDetails'])->name('audioDetailPage');
 
     Route::get('/terms-conditions', [LandingPageController::class, 'displayTerms'])->name('page.Terms');
     Route::get('/support', [LandingPageController::class, 'displayTerms'])->name('page.support');

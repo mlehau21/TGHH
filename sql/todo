@@ -1,0 +1,9 @@
+Fix image errors and add delete button for fb-post.
+Delete data tables and related components of:
+album --done
+album_categories --done
+audio_post --done
+galleries --done
+Contact --done
+menus --done
+pages --done
