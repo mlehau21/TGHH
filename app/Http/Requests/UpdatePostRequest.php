@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use App\Models\Post;
 use App\Models\PostArticle;
-use App\Models\PostAudio;
 use App\Models\PostGallery;
 use App\Models\PostSortList;
 use App\Models\PostVideo;
@@ -29,7 +28,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = Post::$rules + PostArticle::$rules + PostGallery::$rules + PostSortList::$rules + PostVideo::$rules + PostAudio::$rules;
+        $rules = Post::$rules + PostArticle::$rules + PostGallery::$rules + PostSortList::$rules + PostVideo::$rules;
         $rules['slug'] = 'required|unique:posts,slug,'.request()->get('id');
         $rules['image'] = 'nullable|mimes:jpeg,png,jpg,webp,svg';
 

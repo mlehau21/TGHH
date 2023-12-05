@@ -463,10 +463,6 @@ class Post extends Model implements HasMedia
         return $this->hasOne(PostVideo::class);
     }
 
-    public function postAudios(): HasOne
-    {
-        return $this->hasOne(PostAudio::class);
-    }
 
     protected static function boot()
     {
