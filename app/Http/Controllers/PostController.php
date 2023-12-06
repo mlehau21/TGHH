@@ -232,7 +232,7 @@ if ($request->get('section') != null) {
     public function edit($post)
     {
         $post = Post::withoutGlobalScope(LanguageScope::class)->withoutGlobalScope(PostDraftScope::class)->with([
-            'language', 'category', 'subCategory', 'postArticle', 'postAudios', 'postGalleries.media', 'postSortLists.media',
+            'language', 'category', 'subCategory', 'postArticle', 'postGalleries.media', 'postSortLists.media',
         ])->findOrFail($post);
         $sectionType = $post->post_types;
         $allStaff = User::where('type', User::STAFF)->pluck('first_name', 'id');
