@@ -29,7 +29,7 @@ class CreatePostRequest extends FormRequest
      */
     public function rules()
     {
-        return Post::$rules + PostArticle::$rules + PostGallery::$rules + PostSortList::$rules + PostVideo::$rules + PostAudio::$rules;
+        return Post::$rules + PostArticle::$rules + PostGallery::$rules + PostSortList::$rules + PostVideo::$rules;
     }
 
     public function messages()
@@ -37,7 +37,7 @@ class CreatePostRequest extends FormRequest
         return [
             'gallery_title.*.max' => __('messages.placeholder.gallery_title_must_not_be_greater_than_190_characters'),
             'sort_list_title.*.max' => __('messages.placeholder.sort_list_title_must_not_be_greater_than_190_characters'),
-            'audios.*.mimes' => __('messages.placeholder.the_audios_must_be_a_file_of_type'),
+            // 'audios.*.mimes' => __('messages.placeholder.the_audios_must_be_a_file_of_type'),
             'uploadVideo.max' => __('messages.placeholder.the_upload_video_must_not_be_greater_than_150_MB'),
         ];
     }

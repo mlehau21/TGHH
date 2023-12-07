@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            {{-- <div class="col-12">
                                 <div class="card-header border-0 pt-5 pb-1">
                                     <div class="px-2 py-2">
                                         <h3>{{ __('messages.dashboard_show.post_views') }}</h3>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="card mb-5 mb-xl-8 p-5" id="postChartContainer" >
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     @endcan
                     {{-- @can('manage_staff')
