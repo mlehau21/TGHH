@@ -105,7 +105,7 @@
         </a>
     </li>
 @endcan
-@can('manage_forum')
+{{-- @can('manage_forum') --}}
 <li class="nav-item {{ Request::is('user/forums*', 'user/forum/view*') ? 'active' : '' }}">
     <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('forum.index') }}">
         <span class="aside-menu-icon pe-3">
@@ -114,7 +114,7 @@
         <span class="aside-menu-title">Forum</span>
     </a>
 </li>
-@endcan
+{{-- @endcan --}}
 {{-- @can('manage_menu')
     <li class="nav-item {{ Request::is('admin/menus*') ? 'active' : '' }}">
         <a class="nav-link d-flex align-items-center py-3" aria-current="page" href="{{ route('menus.index') }}">
