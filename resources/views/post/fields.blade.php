@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                {{-- <div class="row mt-2">
+                <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
                                 class="form-label">{{__('messages.post.add_to_slider')}}</label>
@@ -106,7 +106,7 @@
                                     (old('slider') ? 'checked' : '' ) }} >
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <div class="row mt-2">
                     <div class="col-lg-4 mb-4">
                         <label
@@ -157,7 +157,7 @@
                 </textarea>
                 @elseif($sectionType == \App\Models\Post::VIDEO_TYPE_ACTIVE)
                     <button type="button" class="btn btn-primary mb-2 btn-add-image" data-role="{{getLoginUserRole()}}">
-                        {{__('messages.ypost.add_image') }}
+                        {{__('messages.post.add_image') }}
                     </button>
                     <textarea name="video_content" class="tox-target video-text-description form-control" rows="25">
                     {!! $post->postVideo->video_content??old('video_content')!!}

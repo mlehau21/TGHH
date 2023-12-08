@@ -158,7 +158,7 @@ function getHeaderElement()
             ->where('navigationable_type', $navigationType)
             ->where('parent_id', $item->navigationable_id)->orderBy('order_id')->get();
     }
-    
+
 
     return $data;
 }
@@ -216,7 +216,7 @@ function getNavigationDetails(): array
             $data['menus'][] = $menu;
         }
     }
-    
+
     $data['navigations'] = collect($data['menus'])->take(8);
     //child
     $data['navigationsTakeData'] = [];
@@ -757,7 +757,7 @@ function getCategorySubCategory($categoryId)
     $subCategory = SubCategory::whereParentCategoryId($categoryId)->pluck('name','id')->toArray();
 
     return $subCategory;
-} 
+}
 function getFrontLanguage()
 {
     $language = Language::whereFrontLanguageStatus(Language::ACTIVE)->pluck('name', 'id');

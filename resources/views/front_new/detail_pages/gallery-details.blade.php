@@ -131,15 +131,15 @@
                                         </section>
                                     </div>
                                 </div>
-                                <div class="news-content-img position-relative">
+                                {{-- <div class="news-content-img position-relative">
                                     <div class="news-details-img rounded-10">
-                                        <a href="#">
+                                        <a href="#"> --}}
 {{--                                            <img data-src="{{$postDetail->post_image}}" src="{{ asset('front_web/images/bg-process.png') }}" class="w-100 h-100 lazy">--}}
-                                            <img src="{{$postDetail->post_image}}" class="w-100 h-100">
+                                            {{-- <img src="{{$postDetail->post_image}}" class="w-100 h-100">
                                         </a>
                                     </div>
                                     <a href="#" class="tags position-absolute">{{$postDetail->category->name}}</a>
-                                </div>
+                                </div> --}}
                                 <div class="news-desc mb-20 position-relative mt-4">
                                     @if(!empty($galleryPost))
                                         <h3 class="text-black fw-7 fs-20">{{$galleryPostNo}}.{{$galleryPost->gallery_title}}</h3>

@@ -303,7 +303,7 @@
 @endif
 <!-- start popular-tag-section -->
 <!-- start popular-tag-section -->
-@if (count($getPopularTags))
+{{-- @if (count($getPopularTags))
 <section class="popular-tag-section py-4">
 <div class=" border-0 mb-30">
 <div class="row align-items-center">
@@ -324,7 +324,7 @@
 @endforeach
 </div>
 </section>
-@endif
+@endif --}}
 <!-- end popular-tag-section -->
 
 <!-- start voting-poll-section -->
