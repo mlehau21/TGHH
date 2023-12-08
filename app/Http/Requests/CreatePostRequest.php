@@ -29,7 +29,7 @@ class CreatePostRequest extends FormRequest
      */
     public function rules()
     {
-        return Post::$rules + PostArticle::$rules + PostGallery::$rules + PostSortList::$rules + PostVideo::$rules + PostAudio::$rules;
+        return Post::$rules + PostArticle::$rules + PostGallery::$rules + PostSortList::$rules + PostVideo::$rules;
     }
 
     public function messages()

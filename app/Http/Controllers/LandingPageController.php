@@ -89,7 +89,7 @@ class LandingPageController extends AppBaseController
             return $this->sendSuccess( __('messages.placeholder.language_change_successfully'));
         }
 
-        $post = Post::with(['category', 'postArticle', 'postVideo', 'postAudios', 'postGalleries', 'postSortLists.media', 'postSortLists', 'media', 'rssFeed',
+        $post = Post::with(['category', 'postArticle', 'postVideo', 'postGalleries', 'postSortLists.media', 'postSortLists', 'media', 'rssFeed',
         ])->where('slug', $slug)->whereVisibility(Post::VISIBILITY_ACTIVE)->firstOrFail();
 
         $data['showCaptcha'] = Setting::where('key', 'show_captcha')->first()->value;
@@ -144,10 +144,6 @@ class LandingPageController extends AppBaseController
                 $data['postDetail'] = $post;
 
                 return view('front_new.detail_pages.video-details')->with($data);
-            } elseif ($post->post_types == Post::AUDIO_TYPE_ACTIVE) {
-                $data['postDetail'] = $post;
-
-                return view('front_new.detail_pages.audio-details')->with($data);
             } else {
                 return redirect(route('front.home'));
             }
@@ -340,13 +336,13 @@ class LandingPageController extends AppBaseController
     public function declineCookie(){
         session(['declined' => 1]);
     }
-    
+
     public function profileDashboard(User $user): Factory|View|Application
     {
             $posts = Post::with('comment')->whereVisibility(Post::VISIBILITY_ACTIVE)->whereCreatedBy($user->id)->get();
         $following = Followers::with('follower')->whereFollowing($user->id)->get();
             $followers = Followers::with('follow')->whereFollowers($user->id)->get();
-   
+
         return view('front_new.detail_pages.front-user-dashboard',compact('posts','user','following','followers'));
     }
 }
