@@ -17,18 +17,17 @@ class GroupController extends Controller
 
     public function store()
     {
-        // $ENV_TOKEN = env('FACEBOOK_ACCESS_TOKEN');
-        $ENV_TOKEN = "EAAaEcLhPkJkBO0g3ZCPIoBDr8BXWz8MGyOyhY0xd485LKFIwZBeYZBWV2R2ShFpDXLfjsvawT5QQtnbMvZABZBBYk8cuOHuHIwMyGIm6LKyheSKoFUlC50DwCsQJpMIRoP5rTTK9dwjM4n10DyqGO1NmQZCpZBEIhC874FPGCUNCEEOfJFMZCyZCfW54IGHANN9qWzKYc3brssgBLcsnENXPjDHunOYnZAZAK1PWKAZD";
-        // $ENV_GROUP_ID = env('FACEBOOK_GROUP_ID');
-        $ENV_GROUP_ID = "2199166670415368";
-        $LIMIT = env("FACEBOOK_DATA_LIMIT");
+
+        $ENV_TOKEN = "EAAJyinuCS04BO2GtIDuGNnlZC18oE7wgOOIm6NmAcd8OZA70mYQE2K9l8PGqJNO6IX9PawUJ8TfZBJtybkuD0uP16IhOGzX6gcELXHfdmkgJ7JVAR8MFokhRZBC7MQ7CcvzT85AddGAjsVZClHWWyLI3JZBLzrHAizS8vG9xZBcwLqMSQPAd8vKaKhWgHMR9Ljkevct5ZCHrIQoaLcSWjECWZCdlVZBNxypQZDZD";
+        $ENV_GROUP_ID = "223637925531254";
+        $LIMIT = "1";
 
         $url = "https://graph.facebook.com/v18.0/{$ENV_GROUP_ID}/feed?fields=message,created_time,link,picture,attachments{media},comments.limit(3)&limit={$LIMIT}&access_token={$ENV_TOKEN}";
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         $response = curl_exec($ch);
         $decodeData = json_decode($response, true);
-        
+        // dd($decodeData);
         if (!isset($decodeData['error']['code'])) {
             foreach ($decodeData['data'] as $single) {
                 if (isset($single['picture']) || isset($single['message'])) {
@@ -37,7 +36,7 @@ class GroupController extends Controller
                     if (!isset($facebookPost)) {
                         $facebookPost = new FBPost();
                     }
-                    
+
                     $facebookPost->message = isset($single['message']) ? $single['message'] : '';
                     $facebookPost->created_time = Carbon::parse($single['created_time']);
                     $facebookPost->link = $single['link'];
